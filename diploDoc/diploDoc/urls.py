@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include(('shop.urls', 'shop'), namespace= 'shop' )),
-    path('users/', include(('users.urls', 'users'), namespace= 'users' )),
-    path('flea_market', include(('flea_market.urls', 'flea_market'), namespace= 'flea_market' )),
+    path('CMS/', admin.site.urls),
+    # path('', include(('shop.urls', 'shop'), namespace= 'shop' )),
+    # path('users/', include(('users.urls', 'users'), namespace= 'users' )),
+    # path('training', include(('training.urls', 'training'), namespace= 'training' )),
 ]
