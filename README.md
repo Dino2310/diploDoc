@@ -12,3 +12,7 @@ https://docs.google.com/spreadsheets/d/1zxatDJ5MitSU15L_71qKW-9NtgkCsKYvWGAuu94P
 &nbsp;&nbsp;&nbsp;&nbsp;      2)в самом файле в кавычках прописать в перемнной SECRET_KEY присланный ключ <br>
 <br>
 Добавлен файл с уставноленными пакетами для устваноки списком в виртуальную среду. Необходимо в терминале ввести комманду : <br>&nbsp;&nbsp;&nbsp;&nbsp;  pip install -r requirements.txt<br>
+<br><br>
+Создание моделей
+<br>
+https://docs.google.com/document/d/1Fo8sQ5u4X8dB1fLptIVqr9vtCHZBernUV9lPe5fBuA4/edit?usp=sharing
