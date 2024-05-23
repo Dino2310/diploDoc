@@ -16,3 +16,5 @@ https://docs.google.com/spreadsheets/d/1zxatDJ5MitSU15L_71qKW-9NtgkCsKYvWGAuu94P
 Создание моделей
 <br>
 https://docs.google.com/document/d/1Fo8sQ5u4X8dB1fLptIVqr9vtCHZBernUV9lPe5fBuA4/edit?usp=sharing
+
+<a href = 'https://docs.google.com/document/d/1SElu6Ja0KJEuuIIiV13XjbOZttSNs-7eMoCnvR3hI1g/edit?usp=sharing'>Докемнт предложения по изменению сайта</a>
