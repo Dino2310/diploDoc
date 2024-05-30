@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django_ajax.decorators import ajax
+
 from .models import*
 
 def index(request):
@@ -10,6 +12,21 @@ def index(request):
         'ad' : ad
     }
     return render(request, 'shop/index.html', content)
-=======
-    return render(request, 'shop/index.html', content)
->>>>>>> b68cdf655362cc333c3045fa9cb7a0eb0bac9809
+
+def category(request):
+    cat = Categorical.objects.all()
+    return render(request, 'shop/category.html',{"cat":cat})
+
+@ajax
+def cat_filter(request):
+    tmp = Categorical.__doc__.split(',')
+    if request.method == "POST":
+        res = request.POST
+        answer = True
+        for i in tmp:
+            if res[i] == 'ON':
+                answer &= Categorical.objects.filter(i=True)
+        return {'filter': answer }
+
+        
+
