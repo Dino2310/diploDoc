@@ -10,6 +10,6 @@ def index(request):
         'ad' : ad
     }
     return render(request, 'shop/index.html', content)
-
-def category(request):
-    cat = 
+=======
+    return render(request, 'shop/index.html', content)
+>>>>>>> b68cdf655362cc333c3045fa9cb7a0eb0bac9809
