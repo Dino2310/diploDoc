@@ -10,3 +10,6 @@ def index(request):
         'ad' : ad
     }
     return render(request, 'shop/index.html', content)
+
+def category(request):
+    cat = 
