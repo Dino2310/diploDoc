@@ -1,8 +1,19 @@
 {% load static %}
 {% load index %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
+    <!-- 
+    strt -->
+
+    <link rel="stylesheet"
+        href="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49061893.min.css?t=1716483041"
+        type="text/css" media="all" onerror="this.loaderr='y';" />
+
+
+
+
+    <!-- stop -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -15,7 +26,7 @@
     <meta property="og:title" content="SweetHome" />
     <meta property="og:description" content="Магазин умных товаров" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="images/tild3566-3737-4964-a564-366636363162__-__resize__504x____.jpg" />
+    <meta property="og:image" content="{% static 'image/icon.png' %}" />
 
     <meta name="format-detection" content="telephone=no" />
     <meta http-equiv="x-dns-prefetch-control" content="on">
@@ -690,7 +701,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D91c201f', en
         {% block contetnt %}
         {% endblock %}
         <div id="rec749346415" class="r t-rec t-rec_pt_0 t-rec_pb_0"
-            style="padding-top:0px;padding-bottom:0px;background-color:#111111; " data-animationappear="off"
+            style="padding-bottom:0;background-color:#111111; " data-animationappear="off"
             data-record-type="345" data-bg-color="#111111"><!-- T345 -->
             <div class="t345" id="footer_749346415">
                 <div class="t345-wrapper" style="border-top: 1px solid;border-top-color: #292929;">
@@ -783,8 +794,9 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D91c201f', en
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
         <script
-            src='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js'></script>
-
+        src='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js'></script>
+        
+        <script src="{% static 'js.js' %}" defer></script>
 
     </div>
 </body>

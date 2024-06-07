@@ -5,6 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
+*..onetoc2
 .env
 v/
 # Distribution / packaging
