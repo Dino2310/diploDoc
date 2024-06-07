@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django_ajax.decorators import ajax
+
 from .models import*
 
 def index(request):

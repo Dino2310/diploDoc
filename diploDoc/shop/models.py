@@ -166,3 +166,17 @@ class Education(models.Model):
    
     def __str__(self):
         return self.slug
+
+
+
+class Categorical(models.Model):
+    """id, prod, RS485, Wi_Fi, TWI, buttons, sensors, panels_management, controllers_management, relay"""
+    prod = models.ForeignKey(Product, on_delete=models.SET_NULL, null= True)
+    RS485 = models.BooleanField(blank=True, default=False)
+    Wi_Fi = models.BooleanField(blank=True, default=False)
+    TWI = models.BooleanField(blank=True, default=False)
+    buttons = models.BooleanField(blank=True, default=False)
+    sensors = models.BooleanField(blank=True, default=False)
+    panels_management = models.BooleanField(blank=True, default=False)
+    controllers_management = models.BooleanField(blank=True, default=False)
+    relay = models.BooleanField(blank=True, default=False)
