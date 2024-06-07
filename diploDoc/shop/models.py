@@ -49,8 +49,8 @@ class Marketing(models.Model):
         max_length=200, unique=True, blank=True, null=True, verbose_name='URL'
         )
    
-    def __str__(self):
-        return self.slug
+    # def __str__(self):
+    #     return self.slug
    
 class SubUser(models.Model):
     user = models.OneToOneField(
@@ -170,7 +170,8 @@ class Education(models.Model):
 
 
 class Categorical(models.Model):
-    prod = models.ForeignKey(Product, on_delet=models.SET_NULL)
+    """id, prod, RS485, Wi_Fi, TWI, buttons, sensors, panels_management, controllers_management, relay"""
+    prod = models.ForeignKey(Product, on_delete=models.SET_NULL, null= True)
     RS485 = models.BooleanField(blank=True, default=False)
     Wi_Fi = models.BooleanField(blank=True, default=False)
     TWI = models.BooleanField(blank=True, default=False)

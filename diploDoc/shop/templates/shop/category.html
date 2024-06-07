@@ -1,0 +1,369 @@
+{% extends "base.html" %}
+{% load static %}
+{% load index %}
+{% block contetnt %}
+
+
+<div id="rec749319188" class="r t-rec t-rec_pt_0 t-rec_pb_75"
+    style="margin-top: 173px; padding-top:0px;padding-bottom:75px;background-color:#333333; " data-animationappear="off"
+    data-record-type="951" data-bg-color="#333333">
+    <!-- t951 --><!-- @classes: t-text t-text_xxs t-name t-name_xs t-name_md t-name_xl t-descr t-descr_xxs t-btn t-btn_xs t-btn_sm t-btn_md data-zoomable="yes" -->
+    <div class="t951"><!-- grid container start -->
+        <div class="t-store js-store">
+            <div class="js-store-cont-w-filter t951__cont-w-filter t-store__grid-cont t-store__grid-cont_col-width_stretch t-store__grid-cont_indent"
+                data-col-gap="20">
+                <div class="t951__cont-wrapper">
+                    <div class="js-store-parts-select-container t951__sidebar" data-col-gap="20"></div>
+                    <!-- preloader els -->
+                    <div class="js-store-grid-cont-preloader t-store__grid-cont t-store__grid-cont-preloader_hidden t-store__grid-cont_col-width_stretch t-store__grid-cont_indent t-store__grid-cont_mobile-grid t-store__mobile-two-columns"
+                        data-col-gap="20">
+
+                    </div><!-- preloader els end -->
+                    <div class="t951__grid-cont t951__grid-cont_hidden 
+                t-store__grid-cont_col-width_stretch t-store__grid-cont_indent 
+                t-store__grid-cont_mobile-grid t-store__mobile-two-columns mobile-two-columns t951__container_mobile-grid"
+                        data-col-gap="20">
+                        {% for a in prod %}
+                        <div class="js-product t-store__card t-store__stretch-col t-store__stretch-col_25 t-align_left t-item"
+                            data-product-inv="19" data-product-lid="" data-product-uid=""
+                            data-product-gen-uid="533700663881" data-product-pack-label="lwh" data-product-pack-m="20"
+                            data-product-pack-x="0" data-product-pack-y="0" data-product-pack-z="0"
+                            data-product-url="{{a.image.url}}"
+                            data-product-part-uid="105910355071,661490731271" data-card-size="small"
+                            data-product-img="{{a.image.url}}">
+                            <a href="{% url 'shop:prod' a.id %}">
+                                <div class="t-store__card__imgwrapper  t-store__card__imgwrapper_4-3" style="">
+                                    <div class="js-product-img t-store__card__bgimg t-store__card__bgimg_hover t-bgimg loaded"
+                                        data-original="{{a.image.url}}"
+                                        style="background-image: url({{a.image.url}});"
+                                        src=""></div>
+                                    <div class="t-store__card__bgimg_second t-bgimg loaded"
+                                        data-original="{{a.image.url}}"
+                                        style="background-image: url({{a.image.url}});"
+                                        src=""></div>
+                                </div>
+                                <div class="t-store__card__textwrapper">
+                                    <div
+                                        class="js-store-prod-name js-product-name t-store__card__title t-typography__title t-name t-name_xs">
+                                        {{a.name}}</div>
+                                    <div class="js-store-price-wrapper t-store__card__price-wrapper">
+                                        <div class="t-store__card__price t-store__card__price-item t-name t-name_xs">
+                                            <div class="js-product-price js-store-prod-price-val t-store__card__price-value"
+                                                translate="no" data-product-price-def="218"
+                                                data-product-price-def-str="218">{{a.price}}</div>
+                                            <div class="t-store__card__price-currency" translate="no">р.</div>
+                                        </div>
+                                        <div class="t-store__card__price_old t-store__card__price-item t-name t-name_xs"
+                                            style="display: none;">
+                                            <div class="js-store-prod-price-old-val t-store__card__price-value"
+                                                translate="no"></div>
+                                            <div class="t-store__card__price-currency" translate="no">р.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
+                                style="display:none;"></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div><!-- grid container end -->
+    </div><!-- catalog setup start -->
+    <style>
+        /* separator style for ST330 */
+        /* Slider stiles */
+        #rec749319188 .t-slds__bullet_active .t-slds__bullet_body {
+            background-color: #222 !important;
+        }
+
+        #rec749319188 .t-slds__bullet:hover .t-slds__bullet_body {
+            background-color: #222 !important;
+        }
+
+        /* Store part switch buttons styles */
+        #rec749319188 .t-store__parts-switch-btn {
+            font-size: 22px;
+            font-family: Arial;
+            font-weight: 700;
+        }
+
+        /* Store filters buttons styles */
+        #rec749319188 .t-store__filter__item-title,
+        #rec749319188 .t-store__filter__opts-mob-btn {
+            font-family: Arial;
+            font-weight: 700;
+        }
+    </style>
+    <style>
+        #rec749319188 .t-store__card .t-typography__title {
+            font-size: 24px;
+            color: #0d9889;
+            font-weight: 700;
+            font-family: 'Arial';
+        }
+
+        #rec749319188 .t-store__relevants__title {
+            font-size: 24px;
+            color: #0d9889;
+            font-weight: 700;
+            font-family: 'Arial';
+        }
+
+        #rec749319188 .t-store__card .t-store__card__price {
+            font-size: 20px;
+            color: #0af5dd;
+            font-weight: 600;
+        }
+
+        #rec749319188 .t-store__card .t-store__card__price_old {
+            font-size: 20px;
+            color: #f56105;
+            font-weight: 600;
+        }
+    </style>
+    <style>
+        #rec749319188 .t-popup .t-typography__title {
+            color: #0d9889;
+            font-weight: 700;
+            font-family: 'Arial';
+        }
+
+        #rec749319188 .t-popup .t-store__prod-popup__price {
+            color: #0af5dd;
+            font-weight: 600;
+        }
+
+        #rec749319188 .t-popup .t-store__prod-popup__price_old {
+            color: #f56105;
+            font-weight: 600;
+        }
+    </style>
+    <div class="js-store-tpl-slider-arrows" style="display: none;">
+        <li class="t-slds__arrow_wrapper t-slds__arrow_wrapper-left" data-slide-direction="left"><button type="button"
+                class="t-slds__arrow t-slds__arrow-left t-slds__arrow-withbg" aria-controls="carousel_749319188"
+                aria-disabled="false" aria-label="Предыдущий слайд"
+                style="width: 40px; height: 40px;background-color: rgba(255,255,255,1);">
+                <div class="t-slds__arrow_body t-slds__arrow_body-left" style="width: 9px;"><svg role="presentation"
+                        focusable="false" style="display: block" viewBox="0 0 9.3 17" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <polyline fill="none" stroke="#000000" stroke-linejoin="butt" stroke-linecap="butt"
+                            stroke-width="1" points="0.5,0.5 8.5,8.5 0.5,16.5" />
+                    </svg></div>
+            </button></li>
+        <li class="t-slds__arrow_wrapper t-slds__arrow_wrapper-right" data-slide-direction="right"><button type="button"
+                class="t-slds__arrow t-slds__arrow-right t-slds__arrow-withbg" aria-controls="carousel_749319188"
+                aria-disabled="false" aria-label="Следующий слайд"
+                style="width: 40px; height: 40px;background-color: rgba(255,255,255,1);">
+                <div class="t-slds__arrow_body t-slds__arrow_body-right" style="width: 9px;"><svg role="presentation"
+                        focusable="false" style="display: block" viewBox="0 0 9.3 17" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <polyline fill="none" stroke="#000000" stroke-linejoin="butt" stroke-linecap="butt"
+                            stroke-width="1" points="0.5,0.5 8.5,8.5 0.5,16.5" />
+                    </svg></div>
+            </button></li>
+    </div>
+    <script>t_onReady(function () {
+            var prodcard_optsObj = {
+                blockId: '951',
+                hasWrap: '',
+                txtPad: '',
+                bgColor: '#0d9889',
+                borderRadius: '',
+                shadow: '',
+                shadowSize: '',
+                shadowOpacity: '',
+                shadowHover: '',
+                shadowSizeHover: '',
+                shadowOpacityHover: '',
+                shadowShiftyHover: '',
+                btnTitle1: '',
+                btnLink1: 'popup',
+                btnTitle2: '',
+                btnLink2: 'popup',
+                showOpts: false,
+                style: '',
+                hasImg: false,
+                hasDescr: true,
+                hasSeparator: true
+            };
+            var price_optsObj = {
+                color: '#0af5dd',
+                colorOld: '#f56105',
+                position: '',
+                priceRange: ''
+            };
+            var popup_optsObj = {
+                popupContainer: '',
+                columns: '6',
+                columns2: '6',
+                isVertical: '',
+                align: 'left',
+                btnTitle: 'Добавить в корзину',
+                closeText: 'Все товары',
+                iconColor: '#000000',
+                containerBgColor: '#ffffff',
+                overlayBgColor: '#ffffff',
+                overlayBgColorRgba: 'rgba(255,255,255,1)',
+                popupStat: '/tilda/popup/rec749319188/opened',
+                tabsPosition: '',
+                fixedButton: false,
+                mobileGalleryStyle: ''
+            };
+            var slider_optsObj = {
+                anim_speed: '',
+                videoPlayerIconColor: '',
+                cycle: '',
+                controls: 'arrowsthumbs',
+                bgcolor: '#0d9889'
+            };
+            var slider_dotsOptsObj = {
+                size: '',
+                bgcolor: '',
+                bordersize: '',
+                bgcoloractive: ''
+            };
+            var slider_slidesOptsObj = {
+                zoomable: true,
+                bgsize: 'cover',
+                ratio: '1'
+            };
+            var typography_optsObj = {
+                descrColor: '',
+                titleColor: '#0d9889'
+            };
+            var default_sort = {
+                default: null,
+                in_stock: false
+            };
+            var options = {
+                storepart: '520502757011',
+                previewmode: 'yes',
+                prodCard: prodcard_optsObj,
+                popup_opts: popup_optsObj,
+                defaultSort: default_sort,
+                galleryStyle: '',
+                slider_opts: slider_optsObj,
+                slider_dotsOpts: slider_dotsOptsObj,
+                slider_slidesOpts: slider_slidesOptsObj,
+                typo: typography_optsObj,
+                price: price_optsObj,
+                blocksInRow: '4',
+                colClass: 't-store__stretch-col t-store__stretch-col_25',
+                sidebar: true,
+                colWidth: '',
+                colClassFullWidth: 't-store__stretch-col t-store__stretch-col_100',
+                imageHover: true,
+                imageHeight: '400px',
+                imageWidth: '',
+                imageRatio: '1',
+                imageRatioClass: 't-store__card__imgwrapper_4-3',
+                align: 'left',
+                vindent: '20px',
+                isHorizOnMob: false,
+                itemsAnim: '',
+                hasOriginalAspectRatio: false,
+                size: 36,
+                markColor: '#ffffff',
+                markBgColor: '#ff4a4a',
+                currencySide: 'r',
+                currencyTxt: 'р.',
+                currencySeparator: ',',
+                currencyDecimal: '',
+                btnSize: '',
+                btn1_style: 'color:#ffffff;background-color:#0d9889;border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px;',
+                btn2_style: 'color:#000000;border:1px solid #000000;border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px;',
+                isFlexCols: 'true',
+                hideStoreParts: false,
+                verticalAlignButtons: false,
+                hideFilters: false,
+                titleRelevants: '',
+                showRelevants: '',
+                showPagination: '',
+                tabs: '',
+                relevants_slider: false,
+                relevants_quantity: '4',
+                sliderthumbsside: '',
+                showStoreBtnQuantity: '',
+                verticalAlign: '',
+                rightColumnWidth: '',
+                isTitleClip: false,
+                horizontalScrollHint: 'hand'
+            };
+            t_onFuncLoad('t_store_init', function () {
+                t_store_init('749319188', options);
+            });
+        });</script><!-- catalog setup end -->
+    <style>
+        #rec749319188 .t-menu__link-item {}
+
+        @supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+
+            #rec749319188 .t-menu__link-item,
+            #rec749319188 .t-menu__link-item.t-active {
+                opacity: 1 !important;
+            }
+        }
+    </style>
+    <style>
+        #rec749319188 .t951__cont-wrapper .t951__sidebar {
+            background-color: #0d9889;
+            padding: 30px;
+            ;
+        }
+
+        @media screen and (max-width: 960px) {
+            #rec749319188 .t-store__grid-cont_col-width_stretch .t951__sidebar {
+                margin: 0px 20px 20px 20px;
+            }
+
+            #rec749319188 .t-store__grid-cont_col-width_stretch.t-container_100[data-col-gap='20'] .t951__sidebar,
+            #rec749319188 .t-store__grid-cont_col-width_stretch.t-container_100[data-col-gap='10'] .t951__sidebar {
+                margin: 30px 10px;
+            }
+
+            #rec749319188 .t-store__grid-cont_col-width_stretch.t-container_100[data-col-gap='0'] .t951__sidebar {
+                margin: 30px 0;
+            }
+
+            #rec749319188 .t951__sidebar-wrapper .t-store__parts-switch-wrapper {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            #rec749319188 .t951__sidebar-wrapper .t-store__filter {
+                margin-bottom: 0;
+            }
+        }
+
+        #rec749319188 .t951 .t951__sidebar .t-store__filter__item .t-checkbox__control {
+            color: inherit;
+        }
+
+        #rec749319188 .t951 .t951__sidebar .t-store__filter__custom-sel {
+            color: inherit;
+        }
+
+        #rec749319188 .t951 .t951__sidebar .t-store__filter__btn-text {
+            color: inherit;
+        }
+
+        #rec749319188 .t951 .t951__sidebar .t-store__filter__btn-expand {
+            border-color: inherit;
+        }
+
+        @media screen and (min-width: 960px) {
+            #rec749319188 .t951 .t-store__filter__chosen-bar {}
+
+            #rec749319188 .t951 .t951__sidebar_sticky .t951__sidebar-wrapper {
+                top: 50px;
+                max-height: calc(100vh - 50px);
+            }
+        }
+    </style><!--Reset t951 specific variables-->
+</div>
+
+
+{% endblock %}
