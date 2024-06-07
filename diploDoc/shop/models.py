@@ -49,8 +49,8 @@ class Marketing(models.Model):
         max_length=200, unique=True, blank=True, null=True, verbose_name='URL'
         )
    
-    def __str__(self):
-        return self.slug
+    # def __str__(self):
+    #     return self.slug
    
 class SubUser(models.Model):
     user = models.OneToOneField(
