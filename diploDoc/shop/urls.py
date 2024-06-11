@@ -8,5 +8,6 @@ urlpatterns = [
     path('category/', views.category, name = 'category'),
     path('learn/', views.learn, name = 'learn'),
     path('prod/<int:c_id>', views.prod, name = 'prod'),
+    path('a/', views.ajax_ansvwer, name = 'a'),
 
     ]
