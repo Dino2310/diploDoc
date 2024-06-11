@@ -1,11 +1,7 @@
 $('#rec749301459').css({ 'padding-bottom': '0' })
 
 $('.t754__col').children().css({
-<<<<<<< HEAD
-    'width':'40vh'
-=======
     'width': '20vh'
->>>>>>> e90d0650af0f10da8242ecf3c2a36f4f4d55db94
 })
 
 $('#rec749319188').css({'position':'static'})
