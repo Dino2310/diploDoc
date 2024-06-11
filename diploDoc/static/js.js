@@ -1,6 +1,8 @@
 $('.t754__col').children().css({
-    'width':'20vh'
+    'width':'40vh'
 })
+
+$('#rec749319188').css({'position':'static'})
 $('.t754__parent').css(
     {
         'display':'flex',
