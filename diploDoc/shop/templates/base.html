@@ -7,11 +7,13 @@
     <!-- 
     strt -->
 
-    <link rel="stylesheet"
+    <!-- <link rel="stylesheet"
         href="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49061893.min.css?t=1716483041"
+        type="text/css" media="all" onerror="this.loaderr='y';" /> -->
+
+        <link rel="stylesheet"
+        href="{% static 'tilda/css/tilda-blocks-page49061893.min.css' %}"
         type="text/css" media="all" onerror="this.loaderr='y';" />
-
-
 
 
     <!-- stop -->
@@ -32,14 +34,23 @@
     <meta name="format-detection" content="telephone=no" />
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <link rel="shortcut icon" href="{% static 'image/icon.png' %}" type="image/x-icon" />
-    <link rel="dns-prefetch" href="https://ws.tildacdn.com">
-    <script src="https://neo.tildacdn.com/js/tilda-fallback-1.0.min.js" async charset="utf-8"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- <link rel="dns-prefetch" href="https://ws.tildacdn.com"> -->
+    <script src="{% static 'tilda/js/tilda-fallback-1.0.min.js' %}" async charset="utf-8"></script>
+
+    <script src="{% static 'tilda/css/tilda-blocks-page49061893.min.js' %}"
+        charset="utf-8" async onerror="this.loaderr='y';"></script>
     <link rel="stylesheet"
+        href="{% static 'tilda/css/tilda-blocks-page49064109.min.css' %}"
+        type="text/css" media="all" onerror="this.loaderr='y';" />
+    <!-- <link rel="stylesheet"
         href="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49064109.min.css?t=1716483053"
         type="text/css" media="all" onerror="this.loaderr='y';" />
     <script src="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49064109.min.js?t=1716483053"
-        charset="utf-8" async onerror="this.loaderr='y';"></script>
-    <script src="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49061893.min.js?t=1716483041"
+        charset="utf-8" async onerror="this.loaderr='y';"></script> -->
+    <!-- <script src="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49061893.min.js?t=1716483041"
+        charset="utf-8" async onerror="this.loaderr='y';"></script> -->
+    <script src="{% static 'tilda/js/tilda-blocks-page49061893.min' %}"
         charset="utf-8" async onerror="this.loaderr='y';"></script>
     <link rel="stylesheet" href="{% static 'tilda/css/tilda-grid-3.0.min.css' %}" type="text/css" media="all"
         onerror="this.loaderr='y';" />
@@ -133,7 +144,7 @@
         })();</script>
 </head>
 
-<body class="t-body"><!--allrecords-->
+<body class="t-body" ><!--allrecords-->
     <div id="allrecords" data-tilda-export="yes" class="t-records" data-hook="blocks-collection-content-node"
         data-tilda-project-id="9598093" data-tilda-page-id="49061893"
         data-tilda-formskey="090905e9ff3aa8c5fbc05a0269598093" data-tilda-cookie="no" data-tilda-lazy="yes"
@@ -803,6 +814,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D91c201f', en
         <script src="{% static 'js.js' %}" defer></script>
 
     </div>
+    
+  
 </body>
 
 </html>
