@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django_ajax.decorators import ajax
+from django.db.models import Count, Sum, Avg, Max, Min
 
 from .models import*
 
@@ -21,6 +22,7 @@ def search(request):
         print(request.POST.get('search'))
     return index(request)
 
+
 def category(request):
     prod = Product.objects.filter( quantity__gt = 0)
     content = {
@@ -29,9 +31,28 @@ def category(request):
     return render(request, 'shop/category.html', content)
 
 
+    
+
+
 def learn(request):
     return render(request, 'shop/learn.html', {})
 
 def prod(request, c_id):
 
     return render(request, 'shop/prod.html', {'prod':Product.objects.filter(id = c_id)[0]})
+
+@ajax
+def ajax_ansvwer(request):
+    price_min, price_max = Product.objects.filter( quantity__gt = 0).aggregate(Min('price'), Max('price')).values()
+    
+    if request.GET.get('max'):
+        filter_max = request.GET.get('max')
+        filter_min = request.GET.get('min')
+    else:
+        filter_min, filter_max = price_min, price_max
+    contetnt = {
+        'change':{"max":filter_max, 'min':filter_min},
+        'price': {"max":price_max,'min':price_min} 
+    }
+
+    return {"res" :render(request, 'shop/price.html', contetnt)}
