@@ -3,43 +3,34 @@
 {% load index %}
 {% block contetnt %}
 
-
-<div id="rec749319188" class="r t-rec t-rec_pt_0 t-rec_pb_75" "
-    style="margin-top: 11vh; padding-top:0px;padding-bottom:75px;background-color:#333333; " data-animationappear="off"
-    data-record-type="951" data-bg-color="#333333">
+<div id='product_card'></div>
+<div id="rec749319188" class="r t-rec t-rec_pt_0 t-rec_pb_75"
+    style="padding-top:82px;padding-bottom:75px;background-color:#333333; pointer-events: all;">
     <!-- t951 --><!-- @classes: t-text t-text_xxs t-name t-name_xs t-name_md t-name_xl t-descr t-descr_xxs t-btn t-btn_xs t-btn_sm t-btn_md data-zoomable="yes" -->
     <div class="t951"><!-- grid container start -->
         <div class="t-store js-store">
-            <div class="js-store-cont-w-filter t951__cont-w-filter t-store__grid-cont t-store__grid-cont_col-width_stretch t-store__grid-cont_indent"
-                data-col-gap="20">
+            <div
+                class="js-store-cont-w-filter t951__cont-w-filter t-store__grid-cont t-store__grid-cont_col-width_stretch t-store__grid-cont_indent">
                 <div class="t951__cont-wrapper">
-                    <div class="js-store-parts-select-container t951__sidebar" data-col-gap="20"></div>
+                    <div class="js-store-parts-select-container t951__sidebar"></div>
                     <!-- preloader els -->
-                    <div class="js-store-grid-cont-preloader t-store__grid-cont t-store__grid-cont-preloader_hidden t-store__grid-cont_col-width_stretch t-store__grid-cont_indent t-store__grid-cont_mobile-grid t-store__mobile-two-columns"
-                        data-col-gap="20">
+                    <div
+                        class="js-store-grid-cont-preloader t-store__grid-cont t-store__grid-cont-preloader_hidden t-store__grid-cont_col-width_stretch t-store__grid-cont_indent t-store__grid-cont_mobile-grid t-store__mobile-two-columns">
 
                     </div><!-- preloader els end -->
-                    <div class="t951__grid-cont t951__grid-cont_hidden 
+                    <div
+                        class="t951__grid-cont t951__grid-cont_hidden 
                 t-store__grid-cont_col-width_stretch t-store__grid-cont_indent 
-                t-store__grid-cont_mobile-grid t-store__mobile-two-columns mobile-two-columns t951__container_mobile-grid"
-                        data-col-gap="20">
+                t-store__grid-cont_mobile-grid t-store__mobile-two-columns mobile-two-columns t951__container_mobile-grid">
                         {% for a in prod %}
-                        <div class="js-product t-store__card t-store__stretch-col t-store__stretch-col_25 t-align_left t-item"
-                            data-product-inv="19" data-product-lid="" data-product-uid=""
-                            data-product-gen-uid="533700663881" data-product-pack-label="lwh" data-product-pack-m="20"
-                            data-product-pack-x="0" data-product-pack-y="0" data-product-pack-z="0"
-                            data-product-url="{{a.image.url}}"
-                            data-product-part-uid="105910355071,661490731271" data-card-size="small"
-                            data-product-img="{{a.image.url}}">
-                            <a href="{% url 'shop:prod' a.id %}">
-                                <div class="t-store__card__imgwrapper  t-store__card__imgwrapper_4-3" style="">
+                        <div  class=" t-store__stretch-col t-store__stretch-col_25 t-align_left t-item" style="pointer-events: all;" onclick="prod({{a.id}})">
+                            
+                                <div class="t-store__card__imgwrapper  t-store__card__imgwrapper_4-3" >
                                     <div class="js-product-img t-store__card__bgimg t-store__card__bgimg_hover t-bgimg loaded"
-                                        data-original="{{a.image.url}}"
-                                        style="background-image: url({{a.image.url}});"
+                                        data-original="{{a.image.url}}" style="background-image: url({{a.image.url}});"
                                         src=""></div>
                                     <div class="t-store__card__bgimg_second t-bgimg loaded"
-                                        data-original="{{a.image.url}}"
-                                        style="background-image: url({{a.image.url}});"
+                                        data-original="{{a.image.url}}" style="background-image: url({{a.image.url}});"
                                         src=""></div>
                                 </div>
                                 <div class="t-store__card__textwrapper">
@@ -61,8 +52,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
                             
+
                             <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
                                 style="display:none;"></div>
                         </div>
@@ -296,18 +287,8 @@
                 t_store_init('749319188', options);
             });
         });</script><!-- catalog setup end -->
-    
-    <style>
-        #rec749319188 .t-menu__link-item {}
 
-        @supports (overflow:-webkit-marquee) and (justify-content:inherit) {
 
-            #rec749319188 .t-menu__link-item,
-            #rec749319188 .t-menu__link-item.t-active {
-                opacity: 1 !important;
-            }
-        }
-    </style>
     <style>
         #rec749319188 .t951__cont-wrapper .t951__sidebar {
             background-color: #0d9889;
@@ -320,14 +301,7 @@
                 margin: 0px 20px 20px 20px;
             }
 
-            #rec749319188 .t-store__grid-cont_col-width_stretch.t-container_100[data-col-gap='20'] .t951__sidebar,
-            #rec749319188 .t-store__grid-cont_col-width_stretch.t-container_100[data-col-gap='10'] .t951__sidebar {
-                margin: 30px 10px;
-            }
 
-            #rec749319188 .t-store__grid-cont_col-width_stretch.t-container_100[data-col-gap='0'] .t951__sidebar {
-                margin: 30px 0;
-            }
 
             #rec749319188 .t951__sidebar-wrapper .t-store__parts-switch-wrapper {
                 margin-bottom: 30px;
@@ -353,15 +327,6 @@
 
         #rec749319188 .t951 .t951__sidebar .t-store__filter__btn-expand {
             border-color: inherit;
-        }
-
-        @media screen and (min-width: 960px) {
-            #rec749319188 .t951 .t-store__filter__chosen-bar {}
-
-            #rec749319188 .t951 .t951__sidebar_sticky .t951__sidebar-wrapper {
-                top: 50px;
-                max-height: calc(100vh - 50px);
-            }
         }
     </style><!--Reset t951 specific variables-->
 </div>

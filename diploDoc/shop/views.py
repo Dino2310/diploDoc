@@ -30,6 +30,9 @@ def category(request):
     }
     return render(request, 'shop/category.html', content)
 
+def search (request):
+    print(request.POST)
+    return render(request, 'shop/search.html', {})
 
     
 
@@ -37,9 +40,11 @@ def category(request):
 def learn(request):
     return render(request, 'shop/learn.html', {})
 
-def prod(request, c_id):
-
-    return render(request, 'shop/prod.html', {'prod':Product.objects.filter(id = c_id)[0]})
+@ajax
+def prod(request):
+    c_id = request.GET.get('id')
+    print(c_id)
+    return {'res' : render(request, 'shop/prod.html', {'prod':Product.objects.filter(id = c_id)[0]})}
 
 @ajax
 def ajax_ansvwer(request):

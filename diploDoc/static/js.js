@@ -14,19 +14,37 @@ $('.t754__parent').css(
     }
 )
 
+function prod(id_prod){
+    
+    $.ajax({
+        url:'/prod',
+        type: 'GET',
+        data : {'id': id_prod},
+
+        success: function(data){
+            $('#product_card').html(data['content']['res'])
+        },
+    error: function (s) {
+        console.log('err');
+    }
+    })
+    $('#product_card').css({'display':'flex'})
+}
+
 
 
 
 
 function reloadcat(max = 0, min = 0) {
-    let cat = $('.t951__sidebar-wrapper')
+    let cat = $('.t951__sidebar-wrapper').children()
     $.ajax({
         url: '/a',
         type: "GET",
         data: (max)?{ "min": min, 'max': max }:{},
 
         success: function (data) {
-            cat.html(data['content']['res'])
+            cat.eq(0).html(data['content']['res'])
+            cat.eq(1).html("")
         },
         error: function (s) {
             console.log('err');

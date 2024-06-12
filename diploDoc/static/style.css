@@ -20,6 +20,22 @@
 }
 
 
+#product_card{
+    background-color: rgba(255, 255, 255, 0.599);
+    display: none;
+    position: absolute;
+    float: right;
+    width: 73%;
+    height: 90%;
+    bottom: 0%;
+    right: 0;
+    z-index:100;
+}
+.prodimg{
+    width: 40%;
+    object-fit: contain;
+}
+
 .t-store .t-store__filter__item_custom .t-store__filter__checkmark {
     position: relative;
     display: block;
