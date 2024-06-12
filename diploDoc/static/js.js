@@ -44,6 +44,8 @@ function reloadcat(max = 0, min = 0) {
 
         success: function (data) {
             cat.eq(0).html(data['content']['res'])
+            $('#cat_prod').html(data['content']['prod'])
+            $('.t-store__filter__search-and-sort').html(data['content']['search'])
             cat.eq(1).html("")
         },
         error: function (s) {
@@ -62,14 +64,13 @@ function filter_price(val) {
     // reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val())
 }
 function change_price() {
-    $(`input[name="price:${val}"]`).val($(`input[name=${val}]`).val())
     reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val())
+    
 }
 
-$(`input[name= "max"]`).on('change',function(){
-    alert('Курсор мыши вышел из границ элемента "foo"');
-  });
-   
+$('#sort').on('change', function(e){
+    alert(this.val())
+})
 
 setTimeout(reloadcat, 200);
 

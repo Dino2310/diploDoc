@@ -1,0 +1,36 @@
+{% for a in products %}
+<div  class=" t-store__stretch-col t-store__stretch-col_25 t-align_left t-item" style="pointer-events: all; margin: 10px;" onclick="prod({{a.id}})">
+    
+        <div class="t-store__card__imgwrapper  t-store__card__imgwrapper_4-3" >
+            <div class="js-product-img t-store__card__bgimg t-store__card__bgimg_hover t-bgimg loaded"
+                data-original="{{a.image.url}}" style="background-image: url({{a.image.url}});"
+                src=""></div>
+            <div class="t-store__card__bgimg_second t-bgimg loaded"
+                data-original="{{a.image.url}}" style="background-image: url({{a.image.url}});"
+                src=""></div>
+        </div>
+        <div class="t-store__card__textwrapper">
+            <div
+                class="js-store-prod-name js-product-name t-store__card__title t-typography__title t-name t-name_xs">
+                {{a.name}}</div>
+            <div class="js-store-price-wrapper t-store__card__price-wrapper">
+                <div class="t-store__card__price t-store__card__price-item t-name t-name_xs">
+                    <div class="js-product-price js-store-prod-price-val t-store__card__price-value"
+                        translate="no" data-product-price-def="218"
+                        data-product-price-def-str="218">{{a.price}}</div>
+                    <div class="t-store__card__price-currency" translate="no">р.</div>
+                </div>
+                <div class="t-store__card__price_old t-store__card__price-item t-name t-name_xs"
+                    style="display: none;">
+                    <div class="js-store-prod-price-old-val t-store__card__price-value"
+                        translate="no"></div>
+                    <div class="t-store__card__price-currency" translate="no">р.</div>
+                </div>
+            </div>
+        </div>
+    
+
+    <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
+        style="display:none;"></div>
+</div>
+{% endfor %}
