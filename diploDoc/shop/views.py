@@ -30,6 +30,9 @@ def category(request):
     }
     return render(request, 'shop/category.html', content)
 
+def search (request):
+    print(request.POST)
+    return render(request, 'shop/search.html', {})
 
     
 
@@ -37,22 +40,31 @@ def category(request):
 def learn(request):
     return render(request, 'shop/learn.html', {})
 
-def prod(request, c_id):
-
-    return render(request, 'shop/prod.html', {'prod':Product.objects.filter(id = c_id)[0]})
+@ajax
+def prod(request):
+    c_id = request.GET.get('id')
+    print(c_id)
+    return {'res' : render(request, 'shop/prod.html', {'prod':Product.objects.filter(id = c_id)[0]})}
 
 @ajax
 def ajax_ansvwer(request):
-    price_min, price_max = Product.objects.filter( quantity__gt = 0).aggregate(Min('price'), Max('price')).values()
+    price_min, price_max = list(map(int,Product.objects.filter( quantity__gt = 0).aggregate(Min('price'), Max('price')).values()))
     
     if request.GET.get('max'):
         filter_max = request.GET.get('max')
         filter_min = request.GET.get('min')
     else:
         filter_min, filter_max = price_min, price_max
+    products = Product.objects.filter(price__range = (filter_min, filter_max))
     contetnt = {
         'change':{"max":filter_max, 'min':filter_min},
-        'price': {"max":price_max,'min':price_min} 
+        'price': {"max":price_max,'min':price_min},
+        'products' : products
     }
 
-    return {"res" :render(request, 'shop/price.html', contetnt)}
+    products = Product.objects.filter(price__range = (filter_min, filter_max))
+
+    return {"res" : render(request, 'shop/price.html', contetnt),
+             'prod': render(request, 'shop/cat_prod.html', contetnt),
+             'search': render( request, 'shop/cat_search.html', {})
+            }

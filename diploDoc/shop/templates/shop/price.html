@@ -5,34 +5,34 @@
         <div class=" t-store__parts-switch-btn controller" onclick="cat(`controller`)">Контроллеры</div>
         <div class=" t-store__parts-switch-btn reley" onclick="cat(`reley`)">Реле</div>
     </div>
-    <div class="t-store__filter js-store-filter">
+    <div class="t-store__filter ">
         <div class="t-store__filter__options ">
             <div
-                class="t-store__filter__item_sort-mobile t-store__filter__item  t-store__filter__item_select js-store-filter-item t-descr t-descr_xxs">
-                <div class="t-store__filter__item-title js-store-filter-item-title" >Сортировка
+                class="t-store__filter__item_sort-mobile t-store__filter__item  t-store__filter__item_select  t-descr t-descr_xxs">
+                <div class="t-store__filter__item-title " >Сортировка
                 </div>
-                <div class="t-store__filter__item-controls-wrap js-store-filter-item-controls-wr">
+                <div class="t-store__filter__item-controls-wrap ">
                     <div class="t-store__filter__item-controls-container "> <input type="hidden"
-                            class="js-store-filter-opt" name="sort">
-                        <div class="t-store__filter__custom-sel  js-store-filter-custom-select t-store__filter__item_sort-mobile" type="selectbox">
+                            class="" name="sorted">
+                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
                             <div class="t-store__filter__title ">Порядок: по умолчанию</div>
                         </div>
-                        <div class="t-store__filter__custom-sel  js-store-filter-custom-select t-store__filter__item_sort-mobile" type="selectbox">
+                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
                             <div class="t-store__filter__title ">Порядок: сперва старые</div>
                         </div>
-                        <div class="t-store__filter__custom-sel  js-store-filter-custom-select t-store__filter__item_sort-mobile" type="selectbox">
+                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
                             <div class="t-store__filter__title ">Порядок: сперва новые</div>
                         </div>
-                        <div class="t-store__filter__custom-sel  js-store-filter-custom-select t-store__filter__item_sort-mobile"type="selectbox">
+                        <div class="t-store__filter__custom-sel  t-store__filter__item_sort-mobile"type="selectbox">
                             <div class="t-store__filter__title ">Цена: по возрастанию</div>
                         </div>
-                        <div class="t-store__filter__custom-sel  js-store-filter-custom-select t-store__filter__item_sort-mobile" type="selectbox">
+                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
                             <div class="t-store__filter__title ">Цена: по убыванию</div>
                         </div>
-                        <div class="t-store__filter__custom-sel  js-store-filter-custom-select t-store__filter__item_sort-mobile" type="selectbox">
+                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
                             <div class="t-store__filter__title ">Название: А—Я</div>
                         </div>
-                        <div class="t-store__filter__custom-sel  js-store-filter-custom-select t-store__filter__item_sort-mobile" type="selectbox">
+                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
                             <div class="t-store__filter__title ">Название: Я—А</div>
                         </div>
                     </div>
@@ -45,9 +45,9 @@
                     <div class="t-store__filter__price-outer t-store__filter__price-outer_start" style="width: 0%;">
                     </div>
                     <div class="t-store__filter__price-outer t-store__filter__price-outer_end" style="width: 0%;"></div>
-                    <input class="t-store__filter__range " type="range" name= 'min' oninput="filter_price('min')" onmouseup ="change_price() " style="pointer-events:all"
+                    <input class="t-store__filter__range " type="range" name= 'min' oninput="filter_price('min')" onmouseup ="change_price()" style="pointer-events:all"
                         min="{{price.min}}" max="{{price.max}}" step="1"  value="{{change.min}}">
-                    <input  class="t-store__filter__range"  type="range" name="max" oninput="filter_price('max')" onmouseover ="change_price()" style="pointer-events:all"
+                    <input  class="t-store__filter__range"  type="range" name="max" oninput="filter_price('max')" onmouseup ="change_price()" style="pointer-events:all"
                         min="{{price.min}}" max="{{price.max}}" step="1"  value="{{change.max}}">
                     <div class="t-store__filter__range_bg"></div>
                 </div>

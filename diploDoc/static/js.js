@@ -3,6 +3,8 @@ $('#rec749301459').css({ 'padding-bottom': '0' })
 $('.t754__col').children().css({
     'width': '20vh'
 })
+
+$('#rec749319188').css({'position':'static'})
 $('.t754__parent').css(
     {
         'display': 'flex',
@@ -12,19 +14,39 @@ $('.t754__parent').css(
     }
 )
 
+function prod(id_prod){
+    
+    $.ajax({
+        url:'/prod',
+        type: 'GET',
+        data : {'id': id_prod},
+
+        success: function(data){
+            $('#product_card').html(data['content']['res'])
+        },
+    error: function (s) {
+        console.log('err');
+    }
+    })
+    $('#product_card').css({'display':'flex'})
+}
+
 
 
 
 
 function reloadcat(max = 0, min = 0) {
-    let cat = $('.t951__sidebar-wrapper')
+    let cat = $('.t951__sidebar-wrapper').children()
     $.ajax({
         url: '/a',
         type: "GET",
         data: (max)?{ "min": min, 'max': max }:{},
 
         success: function (data) {
-            cat.html(data['content']['res'])
+            cat.eq(0).html(data['content']['res'])
+            $('#cat_prod').html(data['content']['prod'])
+            $('.t-store__filter__search-and-sort').html(data['content']['search'])
+            cat.eq(1).html("")
         },
         error: function (s) {
             console.log('err');
@@ -42,14 +64,13 @@ function filter_price(val) {
     // reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val())
 }
 function change_price() {
-    $(`input[name="price:${val}"]`).val($(`input[name=${val}]`).val())
     reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val())
+    
 }
 
-$(`input[name= "max"]`).on('change',function(){
-    alert('Курсор мыши вышел из границ элемента "foo"');
-  });
-   
+$('#sort').on('change', function(e){
+    alert(this.val())
+})
 
 setTimeout(reloadcat, 200);
 
