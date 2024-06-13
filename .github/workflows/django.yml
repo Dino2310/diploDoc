@@ -18,12 +18,11 @@ jobs:
     steps:
 
     - name: Run command on remote server
-      uses: nekiro/ssh-job@main
+      uses: D3rHase/ssh-command-action@v0.2.2
       with:
         host: ${{ secrets.HOST }}
-        key: ${{ secrets.KEY_PRIVAT }}
+        private_key: ${{ secrets.KEY_PRIVAT }}
         user: ${{secrets.USERNAME}}
-        password: ${{secrets.PWD}}
         command: |
             cd elicta7e.beget.tech;
             git checkout main;
