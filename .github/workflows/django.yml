@@ -23,6 +23,7 @@ jobs:
         host: ${{ secrets.HOST }}
         private_key: ${{ secrets.KEY_PRIVAT }}
         user: ${{secrets.USERNAME}}
+        host_fingerprint: ${{ secrets.fingerprint }}
         command: |
             cd elicta7e.beget.tech;
             git checkout main;
