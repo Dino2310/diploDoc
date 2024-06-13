@@ -21,6 +21,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Deploy to Hosting
+      uses: actions/setup-python@v3
+      with:
+          server: ${{ secrets./elicta7e.beget.tech}}
+          username: ${{ secrets.elicta7e_2310 }}
+          password: ${{ secrets.Elicta2310! }}
+          server-dir: elicta7e.beget.tech/
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
