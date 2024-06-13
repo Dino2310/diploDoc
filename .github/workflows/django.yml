@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run command on remote server
-      uses: D3rHase/ssh-command-action@v0.2.2
+      uses: tiyee/action-ssh@release
       with:
         host: ${{secrets.HOST}}
         user: ${{secrets.USERNAME}}
