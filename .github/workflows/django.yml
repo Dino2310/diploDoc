@@ -27,6 +27,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run command on remote server
+      id: action-ssh
       uses: tiyee/action-ssh@release
       with:
         host: ${{secrets.HOST}}
