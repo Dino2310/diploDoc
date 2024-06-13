@@ -31,7 +31,7 @@ jobs:
       with:
         host: ${{secrets.HOST}}
         user: ${{secrets.USERNAME}}
-        private_key: ${{secrets.KEY_SSH}}
+        private_key: ${{secrets.KAY_PUBLIC}}
         command: |
             cd ${{ secrets.PROJECT_FOLDER }};
             git checkout main;
