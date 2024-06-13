@@ -20,7 +20,7 @@ jobs:
     - name: Run command on remote server
       uses: nekiro/ssh-job@main
       with:
-        host: elicta7e.beget.tech
+        host: ${{ secrets.HOST }}
         key: ${{ secrets.KEY_PRIVAT }}
         user: ${{secrets.USERNAME}}
         password: ${{secrets.PWD}}
