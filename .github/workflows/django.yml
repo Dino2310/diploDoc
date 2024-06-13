@@ -32,7 +32,6 @@ jobs:
         host: ${{ secrets.HOST }}
         key: ${{ secrets.KEY_PUBLIC }}
         user: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PWD }}
         command: |
             cd ${{ secrets.PROJECT_FOLDER }};
             git checkout main;
