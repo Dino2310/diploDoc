@@ -27,12 +27,11 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run command on remote server
-      id: action-ssh
-      uses: tiyee/action-ssh@releasev1.0.1
+      uses: nekiro/ssh-job@main
       with:
-        host: ${{secrets.HOST}}
-        user: ${{secrets.USERNAME}}
-        private_key: ${{secrets.KAY_PUBLIC}}
+        host: ${{ secrets.HOST }}
+        key: ${{ secrets.KAY_PUBLIC }}
+        user: ${{ secrets.USERNAME }}
         command: |
             cd ${{ secrets.PROJECT_FOLDER }};
             git checkout main;
