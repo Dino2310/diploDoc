@@ -14,6 +14,10 @@ from pathlib import Path
 from environs import Env
 import os
 
+import os, sys
+sys.path.insert(0, '/home/e/elicta7e/elicta7e..beget.tech/diploDoc')
+sys.path.insert(1, '/home/e/elicta7e/elicta7e.beget.tech/vl/lib/python3.10/site-packages')
+
 env: Env = Env()
 env.read_env()
 
@@ -25,12 +29,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY =  'django-insecure-lzb$6_%%2dlu!3dy_6tfjotj($jxkqs*)bnv+mw9+#=#4t-@ir'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["elicta7e.beget.tech"]
 
 
 # Application definition
