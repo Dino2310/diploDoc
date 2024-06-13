@@ -30,8 +30,10 @@ jobs:
       uses: nekiro/ssh-job@main
       with:
         host: ${{ secrets.HOST }}
-        key: ${{ secrets.KEY_PUBLIC }}
+        key: ${{ secrets.KEY_PRIVAT }}
         user: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PWD }}
+        passphrase: ${{ secrets.KEY_PUBLIC }}
         command: |
             cd ${{ secrets.PROJECT_FOLDER }};
             git checkout main;
