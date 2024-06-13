@@ -20,11 +20,11 @@ jobs:
     - name: Run command on remote server
       uses: nekiro/ssh-job@main
       with:
-        host: ${{ secrets.HOST }}
+        host: elicta7e.beget.tech
         key: ${{ secrets.KEY_PRIVAT }}
-        user: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PWD }}
+        user: elicta7e
+        password: elicta2310
         command: |
-            cd ${{ secrets.PROJECT_FOLDER }};
+            cd elicta7e.beget.tech;
             git checkout main;
             git pull;
