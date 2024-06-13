@@ -27,11 +27,11 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run command on remote server
+      uses: D3rHase/ssh-command-action@v0.2.2
       with:
-        host: ${{secrets.HOST}} # Remote server address / ip - required
-        port: ${{secrets.PORT}} # Remote server port -  Default: 22 - optional
-        user: ${{secrets.USERNAME}} # Remote server user - required
-        private_key: ${{secrets.KEY_SSH}} # Private ssh key registered on the remote server - required
+        host: ${{secrets.HOST}}
+        user: ${{secrets.USERNAME}}
+        private_key: ${{secrets.KEY_SSH}}
         command: |
             cd ${{ secrets.PROJECT_FOLDER }};
             git checkout main;
