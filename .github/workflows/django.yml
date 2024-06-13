@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run command on remote server
-    - with:
+      with:
         host: ${{secrets.HOST}} # Remote server address / ip - required
         port: ${{secrets.PORT}} # Remote server port -  Default: 22 - optional
         user: ${{secrets.USERNAME}} # Remote server user - required
