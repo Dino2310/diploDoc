@@ -27,4 +27,8 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        - run: cd app && rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . m71516@hostru04.fornex.org:/home/elicta7e.beget.tech/
+            set -eu
+            mkdir "$HOME/.ssh"
+            echo "$" > "$HOME/.ssh/KEY"
+            chmod 600 "$HOME/.ssh/KEY"
+            cd app && rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . m71516@hostru04.fornex.org:/home/elicta7e.beget.tech/
