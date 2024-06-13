@@ -25,24 +25,24 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-deploy:
-  needs: test
-  runs-on: ubuntu-latest
-  if: github.ref == 'refs/heads/main'
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Install Ruby and gems
-      uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
-      with:
-        bundler-cache: true
-    - name: Run command on remote server
-    - with:
-        host: ${{secrets.HOST}} # Remote server address / ip - required
-        port: ${{secrets.PORT}} # Remote server port -  Default: 22 - optional
-        user: ${{secrets.USERNAME}} # Remote server user - required
-        private_key: ${{secrets.KEY_SSH}} # Private ssh key registered on the remote server - required
-        command: |
-            cd ${{ secrets.PROJECT_FOLDER }};
-            git checkout main;
-            git pull;
+  deploy:
+    
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+        with:
+          bundler-cache: true
+      - name: Run command on remote server
+      - with:
+          host: ${{secrets.HOST}} # Remote server address / ip - required
+          port: ${{secrets.PORT}} # Remote server port -  Default: 22 - optional
+          user: ${{secrets.USERNAME}} # Remote server user - required
+          private_key: ${{secrets.KEY_SSH}} # Private ssh key registered on the remote server - required
+          command: |
+              cd ${{ secrets.PROJECT_FOLDER }};
+              git checkout main;
+              git pull;
