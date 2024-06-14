@@ -65,16 +65,21 @@ def ajax_ansvwer(request):
         filter_min = result.get('min')
     else:
         filter_min, filter_max = price_min, price_max
-    tmp = Product.objects.filter(price__range = (filter_min, filter_max))
+    products = Product.objects.filter(Q(price__range = (filter_min, filter_max)) & Q(quantity__gt = 0))
+    tmp = Product.objects.filter(Q(id =-1))
 
-    filter_list = cat_lib.get(result.get('type_dev')).append(result.get('interface'))
-    for filter_cat in filter_list:
-        tmp+=products.filter(**{'prod__'+filter_cat : True})
+    # if result.get('type_dev'):
+    #     answer =  cinnects if result.get('interface') is None else result.get('interface')
+    #     filter_list = cat_lib.get(result.get('type_dev') or 'all') + answer
+    #     for filter_cat in filter_list:
+    #         tmp |= products.filter(Q(**{'categorical__'+filter_cat : True}))
+    #     products = tmp
+
     if (answer := result.get('sort')):
-        tmp.order_by(answer).distinct("id")
-    products = tmp
-    if (answer := result.get('serach')):
-        products = tmp.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))
+        products = products.order_by(answer)
+    if (answer := result.get('search')):
+        
+        products = products.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))
     contetnt = {
         'change':{"max":filter_max, 'min':filter_min},
         'price': {"max":price_max,'min':price_min},
