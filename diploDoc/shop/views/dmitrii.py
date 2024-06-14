@@ -72,10 +72,10 @@ def ajax_ansvwer(request):
         'products' : products,
         'cinnects' : cinnects
     }
-    filter_list = cat_lib.get(result.get('type_dev')).append(result.get('interface'))
-    tmp = []
-    for filter_cat in filter_list:
-        tmp.append(products.filter(eval(f'prod__{filter_cat}')=True))
+    # filter_list = cat_lib.get(result.get('type_dev')).append(result.get('interface'))
+    # tmp = []
+    # for filter_cat in filter_list:
+    #     tmp.append(products.filter(eval(f'prod__{filter_cat}') = True))
     return {"res" : render(request, 'shop/price.html', contetnt),
              'prod': render(request, 'shop/cat_prod.html', contetnt),
              'search': render( request, 'shop/sorted_and_search.html', contetnt)
