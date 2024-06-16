@@ -1,6 +1,6 @@
 {% for a in products %}
-<div  class=" t-store__stretch-col t-store__stretch-col_25 t-align_left t-item" style="pointer-events: all; margin: 10px;" onclick="prod({{a.id}})">
-    
+<div  class=" t-store__stretch-col t-store__stretch-col_25 t-align_left t-item" style="pointer-events: all; margin: 10px;" >
+    <span onclick="prod({{a.id}})">
         <div class="t-store__card__imgwrapper  t-store__card__imgwrapper_4-3" >
             <div class="js-product-img t-store__card__bgimg t-store__card__bgimg_hover t-bgimg loaded"
                 data-original="{{a.image.url}}" style="background-image: url({{a.image.url}});"
@@ -28,9 +28,9 @@
                 </div>
             </div>
         </div>
-    
-    {% include 'shop/button.html' with id=a.id %}
-    <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
+    </span>
+        <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
         style="display:none;"></div>
-</div>
+        {% include 'shop/button.html' with id=a.id %}
+    </div>
 {% endfor %}

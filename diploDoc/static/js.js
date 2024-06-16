@@ -1,8 +1,6 @@
 $('#rec749301459').css({ 'padding-bottom': '0' })
 
-$('.t754__col').children().css({
-    'width': '20vh'
-})
+$('.t754__col').children().css({'width': '20vh'})
 
 $('#rec749319188').css({'position':'static'})
 $('.t754__parent').css(
@@ -14,20 +12,36 @@ $('.t754__parent').css(
     }
 )
 
-
+function s(){
+    if($('.js-store-parts-switcher').length){
+        init()}
+    else{
+    setTimeout(d,10)
+}
+function d(){
+    setTimeout(s,10)}
+}
 
 function init() {
-    let cat = $('.t951__sidebar-wrapper').children()
+    let list = $('.t951__sidebar-wrapper').children()
     $.ajax({
         url: '/a',
         type: "GET",
         data: {},
 
         success: function (data) {
-            cat.eq(0).html(data['content']['res'])
+            list.eq(0).html(data['content']['res'])
             $('#cat_prod').html(data['content']['prod'])
             $('.t-store__filter__search-and-sort').html(data['content']['search'])
-            cat.eq(1).html("")
+            list.eq(1).html("")
+            if (!$('.js-store-parts-switcher')){
+                s()}
+            else{
+                list.eq(0).html(data['content']['res'])
+                $('#cat_prod').html(data['content']['prod'])
+                $('.t-store__filter__search-and-sort').html(data['content']['search'])
+                list.eq(1).html("")
+            }
         },
         error: function (s) {
             console.log('err');
@@ -73,10 +87,9 @@ function reloadcat(search, interface, sort, price_max, price_min, type_dev) {
              'search' : search },
 
         success: function (data) {
-            cat.eq(0).html(data['content']['res'])
             $('#cat_prod').html(data['content']['prod'])
-            $('.t-store__filter__search-and-sort').html(data['content']['search'])
             cat.eq(1).html("")
+            
         },
         error: function (s) {
             console.log('err');
@@ -90,6 +103,8 @@ function reloadcat(search, interface, sort, price_max, price_min, type_dev) {
 
 }
 
+s()
+
 function select(){
     let interface = []
     let price_max = $(`input[name= "max"]`).val()
@@ -100,7 +115,6 @@ function select(){
         if (i.checked){interface.push(i.getAttribute('name'))}
     }
     let search = $('input[name="query"]').val()
-    $('input[name="query"]').val("")
     reloadcat(search, interface, sort, price_max, price_min, type_dev)
 
 } 
@@ -118,7 +132,13 @@ function change_price() {
     reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val()) 
 }
 
-
+function bascet(fn, prod,user){
+    if(fn){
+    console.log('+'+prod+user)}
+    else{
+        console.log('-'+prod+user)
+    }
+}
 
 
 
@@ -150,16 +170,16 @@ function on_input(){
 
 
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    setTimeout(init, 200)})
 
 
+function cart(name, prod){
+    console.log(name);
+    console.log(prod);
+}
 
 
+// setTimeout(s,100)
 
-
-
-//--------------------------------//
 window.isMobile = !1;
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     window.isMobile = !0
@@ -1076,3 +1096,7 @@ function t228_getFullHeight(el) {
     marginBottom = parseInt(marginBottom, 10) || 0;
     return el.offsetHeight + marginTop + marginBottom
 }
+
+
+
+//--------------------------------//
