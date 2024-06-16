@@ -177,6 +177,26 @@ function cart(name, prod){
     console.log(prod);
 }
 
+function bascet(fn, prod,user){
+    $.ajax({
+        url: '/count',
+        type: "GET",
+        data: { "fn": fn,
+             'id': prod,
+             'user' : user,
+            'scoer':$(`#count${prod}`).val() },
+
+        success: function (data) {
+            $(`#count${prod}`).val(data['content']['count'])
+            
+        },
+        error: function (s) {
+            console.log('err');
+        }
+    })
+
+}
+
 
 // setTimeout(s,100)
 

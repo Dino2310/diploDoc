@@ -6,7 +6,7 @@
             <td onclick="cart({{id}}, {% if user.is_authenticated %} '{{user.username}}' {% else %} false {% endif %})">В корзину</td>
             {% else %}
             <td class="button_bascet" onclick="bascet(0, {{id}}, {% if user.is_authenticated %} '{{user.username}}' {% else %} false {% endif %})">-</td>
-            <td id ='counts{{id}}' style="width: 40px;">count</td>
+            <td id ='counts{{id}}' style="width: 40px;" onchange=" bascet('N', {{id}}, {% if user.is_authenticated %} '{{user.username}}' {% else %} false {% endif %})">count</td>
             <td class="button_bascet" onclick="bascet(1, {{id}}, {% if user.is_authenticated %} '{{user.username}}' {% else %} false {% endif %})">+</td>
             {% endif %}
         </tr>
