@@ -105,7 +105,7 @@ class Order(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name="Дата добавления"
                             )
     status = models.TextField(
-        max_length=255, blank=True, null=True, verbose_name='Статус заказа'
+        max_length=255, blank=True, null=True, default= 'assembling', verbose_name='Статус заказа'
         )
     paid = models.BooleanField(
         default=False, verbose_name='Способ оплаты'
@@ -120,8 +120,6 @@ class Order(models.Model):
 
 
 class Products(models.Model):
-
-
     orders = models.ForeignKey(
         Order, on_delete=models.CASCADE, verbose_name="Пользователь"
         )
@@ -130,7 +128,7 @@ class Products(models.Model):
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Цена'
                                 )
     quantity = models.PositiveSmallIntegerField(
-        default=0, verbose_name="Количество"
+        default=1, verbose_name="Количество"
         )
     discount = models.DecimalField(
         default=0.00, max_digits=4, decimal_places=2, verbose_name='Скидка'

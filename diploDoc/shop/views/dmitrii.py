@@ -90,3 +90,13 @@ def ajax_ansvwer(request):
              'prod': render(request, 'shop/cat_prod.html', contetnt),
              'search': render( request, 'shop/sorted_and_search.html', contetnt)
             }
+
+def count_prod(request):
+    # if (user:= request.GET.get('user')):
+    #     заказ = Order.objects.filter(user__id)
+    #     prod = Products.objects.filter()
+    #     pass
+    # else:
+    #     request.seesion[request.GET.get('id')] = 0
+    count = 0
+    return {'count' : count}
