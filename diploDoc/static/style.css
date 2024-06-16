@@ -31,6 +31,20 @@
     right: 0;
     z-index:100;
 }
+
+.button_bascet{
+    background-color: white;
+    margin: -33px;
+    border-radius: 5px;
+    border: 1px solid;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 34px;
+
+    
+}
+
 .prodimg{
     width: 40%;
     object-fit: contain;

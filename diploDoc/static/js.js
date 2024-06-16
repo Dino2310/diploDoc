@@ -1,8 +1,6 @@
 $('#rec749301459').css({ 'padding-bottom': '0' })
 
-$('.t754__col').children().css({
-    'width': '20vh'
-})
+$('.t754__col').children().css({'width': '20vh'})
 
 $('#rec749319188').css({'position':'static'})
 $('.t754__parent').css(
@@ -13,6 +11,48 @@ $('.t754__parent').css(
 
     }
 )
+
+function s(){
+    if($('.js-store-parts-switcher').length){
+        init()}
+    else{
+    setTimeout(d,10)
+}
+function d(){
+    setTimeout(s,10)}
+}
+
+function init() {
+    let list = $('.t951__sidebar-wrapper').children()
+    $.ajax({
+        url: '/a',
+        type: "GET",
+        data: {},
+
+        success: function (data) {
+            list.eq(0).html(data['content']['res'])
+            $('#cat_prod').html(data['content']['prod'])
+            $('.t-store__filter__search-and-sort').html(data['content']['search'])
+            list.eq(1).html("")
+            if (!$('.js-store-parts-switcher')){
+                s()}
+            else{
+                list.eq(0).html(data['content']['res'])
+                $('#cat_prod').html(data['content']['prod'])
+                $('.t-store__filter__search-and-sort').html(data['content']['search'])
+                list.eq(1).html("")
+            }
+        },
+        error: function (s) {
+            console.log('err');
+        }
+    })
+    setTimeout(on_input,200)
+ 
+    $('.js-store-filters-prodsnumber').html("")
+
+}
+
 
 function prod(id_prod){
     
@@ -34,51 +74,83 @@ function prod(id_prod){
 
 
 
-
-function reloadcat(max = 0, min = 0) {
+function reloadcat(search, interface, sort, price_max, price_min, type_dev) {
     let cat = $('.t951__sidebar-wrapper').children()
     $.ajax({
         url: '/a',
         type: "GET",
-        data: (max)?{ "min": min, 'max': max }:{},
+        data: { "min": price_min,
+             'max': price_max,
+             'type_dev' : type_dev,
+             'sort' : sort ,
+             'interface' : interface,
+             'search' : search },
 
         success: function (data) {
-            cat.eq(0).html(data['content']['res'])
             $('#cat_prod').html(data['content']['prod'])
-            $('.t-store__filter__search-and-sort').html(data['content']['search'])
             cat.eq(1).html("")
+            
         },
         error: function (s) {
             console.log('err');
         }
     })
+    setTimeout(on_input, 200)
+ 
     $('.js-store-filters-prodsnumber').html("столько-то")
    
 
 
 }
 
+s()
 
-function filter_price(val) {
-    $(`input[name="price:${val}"]`).val($(`input[name=${val}]`).val())
-    // reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val())
+function select(){
+    let interface = []
+    let price_max = $(`input[name= "max"]`).val()
+    let price_min = $(`input[name= 'min']`).val()
+    let sort = $('#sort').val()
+    let type_dev = $('.active').attr('name')
+    for (let i of document.querySelectorAll('.t-checkbox')){
+        if (i.checked){interface.push(i.getAttribute('name'))}
+    }
+    let search = $('input[name="query"]').val()
+    reloadcat(search, interface, sort, price_max, price_min, type_dev)
+
+} 
+
+function filter_price(val, type = 0) {
+    if (type){
+        $(`input[name="price:${val}"]`).val($(`input[name=${val}]`).val())}
+    else{
+        $(`input[name=${val}]`).val($(`input[name="price:${val}"]`).val())
+    }
 }
+
+
 function change_price() {
-    reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val())
-    
+    reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val()) 
 }
 
-$('#sort').on('change', function(e){
-    alert(this.val())
-})
+function bascet(fn, prod,user){
+    if(fn){
+    console.log('+'+prod+user)}
+    else{
+        console.log('-'+prod+user)
+    }
+}
 
-setTimeout(reloadcat, 200);
+
+
+
+
 
 function cat(f) { //Это функция прилетет из браузера  страница category при выборе все, кнопка, контроллер, реле
     $('.t951__sidebar-wrapper').children().children().removeClass('active')
     $('.' + f).addClass('active')
     $('.js-store-filters-prodsnumber').html(f)
     $('.js-store-filters-prodsnumber').html("столько-то")
+    select()
 
 
 }
@@ -86,20 +158,48 @@ function cat(f) { //Это функция прилетет из браузера
 
 
 
+function on_input(){
+    $('#sort').on('change', select)
+    $('input[name= "min"]').on('mouseup', select)
+    $('input[name= "max"]').on('mouseup', select)
+    $('input[name= "price:min"]').on('blur', select)
+    $('input[name= "price:max"]').on('blur', select)
+    $('#interface').on('change', select)
+    $('input[name="query"]').on('change',select)
+}
 
 
 
 
 
+function cart(name, prod){
+    console.log(name);
+    console.log(prod);
+}
+
+function bascet(fn, prod,user){
+    $.ajax({
+        url: '/count',
+        type: "GET",
+        data: { "fn": fn,
+             'id': prod,
+             'user' : user,
+            'scoer':$(`#count${prod}`).val() },
+
+        success: function (data) {
+            $(`#count${prod}`).val(data['content']['count'])
+            
+        },
+        error: function (s) {
+            console.log('err');
+        }
+    })
+
+}
 
 
+// setTimeout(s,100)
 
-
-
-
-
-
-//--------------------------------//
 window.isMobile = !1;
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     window.isMobile = !0
@@ -1016,3 +1116,7 @@ function t228_getFullHeight(el) {
     marginBottom = parseInt(marginBottom, 10) || 0;
     return el.offsetHeight + marginTop + marginBottom
 }
+
+
+
+//--------------------------------//

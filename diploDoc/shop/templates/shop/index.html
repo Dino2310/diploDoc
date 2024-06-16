@@ -4,7 +4,7 @@
 
 {% block contetnt %}
 <div id="rec749598652" class="r t-rec t-rec_pt_135 t-rec_pb_15"
-    style="padding-top:204px;padding-bottom:15px;background-color:#333333; " data-record-type="43"
+    style="padding-top:100px;padding-bottom:15px;background-color:#333333; " data-record-type="43"
     data-bg-color="#333333"><!-- T030 -->
     <div class="t030">
         <div class="t-container t-align_center">
@@ -230,15 +230,7 @@
                         </div>
                     </div>
                 </a>
-                <div class="t754__buttons t1002__btns-wrapper t1002__btns-wrapper_center"><a href="#prodpopup"
-                        class="t754__btn t-btn t-btn_sm"
-                        style="color:#f50606;background-color:#0af5dd;border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;font-family:Arial;">
-                        <table role="presentation" style="width:100%; height:100%;">
-                            <tr>
-                                <td>купить</td>
-                            </tr>
-                        </table>
-                    </a></div>
+{% include 'shop/button.html'  with id=i.id %}
             </div>
             {% endfor %}
 
