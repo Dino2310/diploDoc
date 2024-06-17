@@ -92,6 +92,8 @@ class Delivery_address(models.Model):
 
 
 
+
+
 class Order(models.Model):
     """Инициализация заказа"""
 
@@ -99,32 +101,37 @@ class Order(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name="Пользователь"
         )
+    
 
     quantity = models.PositiveSmallIntegerField(
-        default=0, verbose_name="Количество")
+        default=1, verbose_name="Количество")
     date = models.DateField(auto_now_add=True, verbose_name="Дата добавления"
                             )
     status = models.TextField(
         max_length=255, blank=True, null=True, default= 'assembling', verbose_name='Статус заказа'
         )
-    paid = models.BooleanField(
-        default=False, verbose_name='Способ оплаты'
+    paid = models.TextField(
+        default="SBP", verbose_name='Способ оплаты'
         )
     delivery_address = models.ForeignKey(
-        Delivery_address, on_delete=models.CASCADE, verbose_name="Пользователь"
+        Delivery_address, on_delete=models.CASCADE, verbose_name="Адрес Доставки"
         )
    
     def __str__(self):
-        return f"Корзина {self.user.username} | Товар {self.product.name} | Количество {self.quantity}"
-   
+        return f"Корзина {self.user.username}  | Количество {self.quantity}"
 
 
-class Products(models.Model):
-    orders = models.ForeignKey(
-        Order, on_delete=models.CASCADE, verbose_name="Пользователь"
-        )
+
+
+
+
+
+class ReservProduct(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, verbose_name="Продукт")
+
+    order = models.ForeignKey(Order, on_delete= models.CASCADE, null=True, blank=True, verbose_name='Ссылка на заказ' )
+
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Цена'
                                 )
     quantity = models.PositiveSmallIntegerField(
@@ -140,8 +147,6 @@ class Products(models.Model):
         max_length=200, unique=True, blank=True, null=True, verbose_name='URL'
         )
    
-    def __str__(self):
-        return self.slug
 
 
 
@@ -178,3 +183,4 @@ class Categorical(models.Model):
     panels_management = models.BooleanField(blank=True, default=False)
     controllers_management = models.BooleanField(blank=True, default=False)
     relay = models.BooleanField(blank=True, default=False)
+

@@ -11,6 +11,10 @@ $('.t754__parent').css(
 
     }
 )
+setInterval(()=>{
+    if($('.js-store-parts-switcher').length){
+        init()}
+},100)
 
 function s(){
     if($('.js-store-parts-switcher').length){
@@ -47,7 +51,7 @@ function init() {
             console.log('err');
         }
     })
-    setTimeout(on_input,200)
+    
  
     $('.js-store-filters-prodsnumber').html("")
 
@@ -95,7 +99,7 @@ function reloadcat(search, interface, sort, price_max, price_min, type_dev) {
             console.log('err');
         }
     })
-    setTimeout(on_input, 200)
+    // setTimeout(on_input, 200)
  
     $('.js-store-filters-prodsnumber').html("столько-то")
    
@@ -115,6 +119,7 @@ function select(){
         if (i.checked){interface.push(i.getAttribute('name'))}
     }
     let search = $('input[name="query"]').val()
+    interface = interface? interface.join(','):[]
     reloadcat(search, interface, sort, price_max, price_min, type_dev)
 
 } 
@@ -141,7 +146,7 @@ function bascet(fn, prod,user){
 }
 
 
-
+setTimeout(on_input,200)
 
 
 
@@ -160,13 +165,23 @@ function cat(f) { //Это функция прилетет из браузера
 
 function on_input(){
     $('#sort').on('change', select)
-    $('input[name= "min"]').on('mouseup', select)
-    $('input[name= "max"]').on('mouseup', select)
-    $('input[name= "price:min"]').on('blur', select)
-    $('input[name= "price:max"]').on('blur', select)
+    $('input[name= "min"]').on('change', select)
+    $('input[name= "max"]').on('change', select)
+    $('input[name= "price:min"]').on('change', select)
+    $('input[name= "price:max"]').on('change', select)
     $('#interface').on('change', select)
     $('input[name="query"]').on('change',select)
 }
+
+// function on_input(){
+//     $('#sort').on('change', select)
+//     $('input[name= "min"]').on('mouseup', select)
+//     $('input[name= "max"]').on('mouseup', select)
+//     $('input[name= "price:min"]').on('blur', select)
+//     $('input[name= "price:max"]').on('blur', select)
+//     $('#interface').on('change', select)
+//     $('input[name="query"]').on('change',select)
+// }
 
 
 

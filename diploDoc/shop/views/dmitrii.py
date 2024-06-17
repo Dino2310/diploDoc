@@ -7,7 +7,7 @@ from ..models import*
 
 
 cat_lib = {
-    'all' : ['buttons','sensors', 'panels_management', 'controllers_management', 'rely'],
+    'all' : ['buttons','sensors', 'panels_management', 'controllers_management', 'relay'],
     'button':['buttons','sensors', 'panels_management'],
     'controller' : ['panels_management', 'controllers_management'],
     'relay' :['relay']
@@ -40,8 +40,11 @@ def category(request):
     return render(request, 'shop/category.html', content)
 
 def search (request):
-    print(request.POST)
-    return render(request, 'shop/search.html', {})
+    answer = request.POST.get('search')
+    products = Product.objects.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))
+    ''' тут ещё добавиьт поиск по обучяющим материалам'''
+    contetnt = {'products':products}
+    return render(request, 'shop/search.html', contetnt)
 
     
 
@@ -66,19 +69,23 @@ def ajax_ansvwer(request):
     else:
         filter_min, filter_max = price_min, price_max
     products = Product.objects.filter(Q(price__range = (filter_min, filter_max)) & Q(quantity__gt = 0))
-    tmp = Product.objects.filter(Q(id =-1))
+    
 
-    # if result.get('type_dev'):
-    #     answer =  cinnects if result.get('interface') is None else result.get('interface')
-    #     filter_list = cat_lib.get(result.get('type_dev') or 'all') + answer
-    #     for filter_cat in filter_list:
-    #         tmp |= products.filter(Q(**{'categorical__'+filter_cat : True}))
-    #     products = tmp
+    if result.get('type_dev'):
+        answer = tmp if (tmp := result.get('interface').split(','))[0] else cinnects
+        filter_list = cat_lib.get(result.get('type_dev') or 'all')
+        tmp = Product.objects.filter(Q(id =-1))
+        for filter_cat in filter_list:
+            tmp |= products.filter(Q(**{'categorical__'+filter_cat : True}))
+        products = tmp
+        tmp = Product.objects.filter(Q(id =-1))
+        for filter_cat in answer:
+            tmp |= products.filter(Q(**{'categorical__'+filter_cat : True}))
+        products = tmp
 
     if (answer := result.get('sort')):
         products = products.order_by(answer)
     if (answer := result.get('search')):
-        
         products = products.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))
     contetnt = {
         'change':{"max":filter_max, 'min':filter_min},
