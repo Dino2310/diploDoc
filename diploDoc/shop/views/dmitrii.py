@@ -21,7 +21,8 @@ def index(request):
         заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
-                count[i.id] = i.quantity
+                count[i.product.id] = i.quantity
+    
     
     content = {
         'ad' : ad,
@@ -79,7 +80,8 @@ def ajax_ansvwer(request):
         заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
-                prod[i.id] = i.quantity
+                prod[i.product.id] = i.quantity
+
 
     
 
@@ -112,28 +114,46 @@ def ajax_ansvwer(request):
             }
 @ajax
 def count_prod(request):
-    if request.GET.get('fn')=='fn':
-        заказ = Order.objects.filter(Q(user__username = request.GET.get('user')) & Q(status = 'assembling'))[0]
-        if not заказ:
-            заказ = Order.objects.create(user = User.objects.get(username = request.GET.get('user')))
-        ReservProduct.objects.create(product = Product.objects.filter(id = request.GET.get('id'))[0], price = Product.objects.filter(id = request.GET.get('id'))[0].price, order = заказ)  
-
     count = 0
-    if (user := request.GET.get('user')):
-        заказ = Order.objects.filter(Q(user__username = user) & Q(status = 'assembling'))[0]
-        # if заказ:
-        #     заказ = Order.objects.create(user = user)
-        prod = ReservProduct.objects.filter(Q(order = заказ)& Q(id = request.GET.get('id')))
-
-        if(prod):
-            count = prod[0].quantity
-            if request.GET.get('fn') == "1":
-                prod.update( quantity = (count := count+1))
-            else:
-                prod.update( quantity = (count := count-1))
-
+    if  not request.user.is_authenticated:
+        print(request.user , "sldknldsknln")
+    else: 
+        product = Product.objects.get(id = request.GET.get('id'))
+        orders = Order.objects.filter(Q(user = request.user) & Q(status = 'assembling'))
+        if len(orders) == 0:
+            ord = Order.objects.create(user = request.user)
+            ord.save()
+        elif len(orders) == 1: ord = orders[0]
+        else: pass #дописать проверку если заказов больше одного. надо будет всё подулаять и присовокупить их между собой
+        products = ReservProduct.objects.filter(Q(order = ord) & Q(product = product))
+        if request.GET.get('fn')=='fn':
+            
+            if len(products)==0:
                 
+                products = ReservProduct.objects.create(order = ord, product = product, price = product.price)
+                products.save()
+        
+        elif len(products):
+            count = products[0].quantity
+            if request.GET.get('fn') == '1':
+                products.update( quantity = (count := count+1))
+            else:
+                products.update( quantity = (count := count-1))
+                if count == 0: 
+                    print(f'count')
+                    print("0"*100)
+                    print("del", products)
+                    print('-'*100)
+                    products.delete()
 
-    # else:
-    #     request.seesion[request.GET.get('id')] = 0
+                    if not len(ReservProduct.objects.filter(order = ord)):
+                        print('del', ord)
+                        print('+'*100)
+                        ord.delete()
+        else:
+            print(products)
+            print(request.GET.get('id'))
+            print('/'*100)
+
+ 
     return {'count' : count}

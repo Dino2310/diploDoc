@@ -115,7 +115,7 @@ class Order(models.Model):
         )
    
     def __str__(self):
-        return f"Корзина {self.user.username}  | Количество {self.quantity}"
+        return f"Корзина {self.user.username} {self.status=} "
 
 
 
@@ -125,14 +125,14 @@ class Order(models.Model):
 
 class ReservProduct(models.Model):
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, verbose_name="Продукт")
+        Product, on_delete=models.SET_NULL, verbose_name="Продукт", null= True)
 
     order = models.ForeignKey(Order, on_delete= models.CASCADE, null=True, blank=True, verbose_name='Ссылка на заказ' )
 
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Цена'
                                 )
     quantity = models.PositiveSmallIntegerField(
-        default=1, verbose_name="Количество", blank=True,
+        default = 1, verbose_name="Количество", blank= False
         )
     discount = models.DecimalField(
         default=0.00, max_digits=4, decimal_places=2, verbose_name='Скидка'

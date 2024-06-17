@@ -17,7 +17,7 @@ setInterval(()=>{$('.t-slds__arrow-right').trigger('click')}, 3000)
 setInterval(()=>{
     if($('.js-store-parts-switcher').length){
         init()}
-},100)
+},1000)
 
 function s(){
     if($('.js-store-parts-switcher').length){
@@ -185,12 +185,14 @@ function cart(prod, name ){
             'score':$(`#count${prod}`).val() },
 
         success: function (data) {
+
             let count = data['content']['count']
             $(`#btn${prod}`).children().each(
                 function(){
                     $(this).toggleClass('btn_bsk')
                 }
             )
+            $(`#counts${prod}`).html(1)
             console.log(name);
             
         },
@@ -213,8 +215,17 @@ function bascet(fn, prod, user){
 
         success: function (data) {
             let count = data['content']['count']
+
             $(`#counts${prod}`).html(count)
+            if(count == 0){
+                $(`#btn${prod}`).children().each(
+                    function(){
+                        $(this).toggleClass('btn_bsk')
+                    }
+                )
+            }
             console.log(count);
+            console.log(fn);
             
         },
         error: function (s) {

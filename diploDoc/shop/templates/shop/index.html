@@ -241,7 +241,7 @@
                             <td id='counts{{a.id}}' class = '{% if  not counter  %} btn_bsk {% endif %}' style="width: 40px;" onchange=" bascet('N', {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> {{counter}}</td>
                             <td class="button_bascet {% if not counter  %} btn_bsk {% endif %}" onclick="bascet(1, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> +</td>
                             
-                            <td id='counts{{a.id}} {% if  counter %} btn_bsk {% endif %}' style="width: 40px;" onclick="cart({{a.id}},{% if user.username %} '{{user.username}}' {% else %} false {% endif %})">В корзину</td>
+                            <td id='counts{{a.id}}' class = '{% if  counter %} btn_bsk {% endif %}' style="width: 40px;" onclick="cart({{a.id}},{% if user.username %} '{{user.username}}' {% else %} false {% endif %})">В корзину</td>
                             
                         </tr>
                         {% endwith %}
