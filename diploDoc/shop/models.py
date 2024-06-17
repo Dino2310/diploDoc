@@ -102,19 +102,16 @@ class Order(models.Model):
         User, on_delete=models.CASCADE, verbose_name="Пользователь"
         )
     
-
-    quantity = models.PositiveSmallIntegerField(
-        default=1, verbose_name="Количество")
     date = models.DateField(auto_now_add=True, verbose_name="Дата добавления"
                             )
     status = models.TextField(
         max_length=255, blank=True, null=True, default= 'assembling', verbose_name='Статус заказа'
         )
     paid = models.TextField(
-        default="SBP", verbose_name='Способ оплаты'
+        default="SBP", verbose_name='Способ оплаты', blank= True, null= True
         )
     delivery_address = models.ForeignKey(
-        Delivery_address, on_delete=models.CASCADE, verbose_name="Адрес Доставки"
+        Delivery_address, on_delete=models.CASCADE, verbose_name="Адрес Доставки", blank= True, null= True
         )
    
     def __str__(self):
@@ -135,7 +132,7 @@ class ReservProduct(models.Model):
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Цена'
                                 )
     quantity = models.PositiveSmallIntegerField(
-        default=1, verbose_name="Количество"
+        default=1, verbose_name="Количество", blank=True,
         )
     discount = models.DecimalField(
         default=0.00, max_digits=4, decimal_places=2, verbose_name='Скидка'

@@ -16,20 +16,25 @@ cat_lib = {
 def index(request):
     ad = Marketing.objects.all()
     prod = Product.objects.filter( quantity__gt = 0)
+    count = dict([(i.id,0) for i in Product.objects.all()])
+    if (request.user != "AnonymousUser"):
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        if заказ:
+            for i in ReservProduct.objects.filter(order = заказ[0]):
+                count[i.id] = i.quantity
     
     content = {
         'ad' : ad,
         'lenAd':len(ad),
         'rAd':range(len(ad)),
         'prod':prod,
+        'count' : count
     }
     return render(request, 'shop/index.html', content)
 
 def search(request):
     if request.method == "POST":
-        print('yes')
-        print(request.POST.get('search'))
-    return index(request)
+        return index(request)
 
 
 def category(request):
@@ -55,7 +60,6 @@ def learn(request):
 @ajax
 def prod(request):
     c_id = request.GET.get('id')
-    print(c_id)
     return {'res' : render(request, 'shop/prod.html', {'prod':Product.objects.filter(id = c_id)[0]})}
 
 @ajax
@@ -69,6 +73,14 @@ def ajax_ansvwer(request):
     else:
         filter_min, filter_max = price_min, price_max
     products = Product.objects.filter(Q(price__range = (filter_min, filter_max)) & Q(quantity__gt = 0))
+
+    prod = dict([(i.id,0) for i in Product.objects.all()])
+    if (request.user != "AnonymousUser"):
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        if заказ:
+            for i in ReservProduct.objects.filter(order = заказ[0]):
+                prod[i.id] = i.quantity
+
     
 
     if result.get('type_dev'):
@@ -91,19 +103,37 @@ def ajax_ansvwer(request):
         'change':{"max":filter_max, 'min':filter_min},
         'price': {"max":price_max,'min':price_min},
         'products' : products,
-        'cinnects' : cinnects
+        'cinnects' : cinnects,
+        'count' : prod
     }
     return {"res" : render(request, 'shop/price.html', contetnt),
              'prod': render(request, 'shop/cat_prod.html', contetnt),
              'search': render( request, 'shop/sorted_and_search.html', contetnt)
             }
-
+@ajax
 def count_prod(request):
-    # if (user:= request.GET.get('user')):
-    #     заказ = Order.objects.filter(user__id)
-    #     prod = Products.objects.filter()
-    #     pass
+    if request.GET.get('fn')=='fn':
+        заказ = Order.objects.filter(Q(user__username = request.GET.get('user')) & Q(status = 'assembling'))[0]
+        if not заказ:
+            заказ = Order.objects.create(user = User.objects.get(username = request.GET.get('user')))
+        ReservProduct.objects.create(product = Product.objects.filter(id = request.GET.get('id'))[0], price = Product.objects.filter(id = request.GET.get('id'))[0].price, order = заказ)  
+
+    count = 0
+    if (user := request.GET.get('user')):
+        заказ = Order.objects.filter(Q(user__username = user) & Q(status = 'assembling'))[0]
+        # if заказ:
+        #     заказ = Order.objects.create(user = user)
+        prod = ReservProduct.objects.filter(Q(order = заказ)& Q(id = request.GET.get('id')))
+
+        if(prod):
+            count = prod[0].quantity
+            if request.GET.get('fn') == "1":
+                prod.update( quantity = (count := count+1))
+            else:
+                prod.update( quantity = (count := count-1))
+
+                
+
     # else:
     #     request.seesion[request.GET.get('id')] = 0
-    count = 0
     return {'count' : count}

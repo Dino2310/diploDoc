@@ -11,6 +11,9 @@ $('.t754__parent').css(
 
     }
 )
+
+setInterval(()=>{$('.t-slds__arrow-right').trigger('click')}, 3000)
+
 setInterval(()=>{
     if($('.js-store-parts-switcher').length){
         init()}
@@ -137,13 +140,7 @@ function change_price() {
     reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val()) 
 }
 
-function bascet(fn, prod,user){
-    if(fn){
-    console.log('+'+prod+user)}
-    else{
-        console.log('-'+prod+user)
-    }
-}
+
 
 
 setTimeout(on_input,200)
@@ -173,36 +170,51 @@ function on_input(){
     $('input[name="query"]').on('change',select)
 }
 
-// function on_input(){
-//     $('#sort').on('change', select)
-//     $('input[name= "min"]').on('mouseup', select)
-//     $('input[name= "max"]').on('mouseup', select)
-//     $('input[name= "price:min"]').on('blur', select)
-//     $('input[name= "price:max"]').on('blur', select)
-//     $('#interface').on('change', select)
-//     $('input[name="query"]').on('change',select)
-// }
 
 
 
 
 
-function cart(name, prod){
-    console.log(name);
-    console.log(prod);
+function cart(prod, name ){
+    $.ajax({
+        url: '/count',
+        type: "GET",
+        data: { "fn": "fn",
+             'id': prod,
+             'user' : name,
+            'score':$(`#count${prod}`).val() },
+
+        success: function (data) {
+            let count = data['content']['count']
+            $(`#btn${prod}`).children().each(
+                function(){
+                    $(this).toggleClass('btn_bsk')
+                }
+            )
+            console.log(name);
+            
+        },
+        error: function (s) {
+            console.log('err');
+        }
+    })
+
 }
 
-function bascet(fn, prod,user){
+
+function bascet(fn, prod, user){
     $.ajax({
         url: '/count',
         type: "GET",
         data: { "fn": fn,
              'id': prod,
              'user' : user,
-            'scoer':$(`#count${prod}`).val() },
+            'score':$(`#count${prod}`).val() },
 
         success: function (data) {
-            $(`#count${prod}`).val(data['content']['count'])
+            let count = data['content']['count']
+            $(`#counts${prod}`).html(count)
+            console.log(count);
             
         },
         error: function (s) {
