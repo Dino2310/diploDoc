@@ -18,7 +18,7 @@ setInterval(()=>{$('.t-slds__arrow-right').trigger('click')}, 3000)
 
 setInterval(()=>{
     if($('.js-store-parts-switcher').length){
-        init()}
+        init}
 },100)
 
 function s(){
@@ -45,6 +45,7 @@ function init() {
             list.eq(1).html("")
             if (!$('.js-store-parts-switcher')){
                 s()}
+                
             else{
                 list.eq(0).html(data['content']['res'])
                 $('#cat_prod').html(data['content']['prod'])
@@ -159,7 +160,7 @@ function change_price() {
 
 setTimeout(on_input,200)
 
-
+init()
 
 function cat(f) { //Это функция прилетет из браузера  страница category при выборе все, кнопка, контроллер, реле
     $('.t951__sidebar-wrapper').children().children().removeClass('active')
