@@ -1,5 +1,6 @@
 {% load static %}
 {% load index %}
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -58,6 +59,8 @@
         onerror="this.loaderr='y';" />
     <link rel="stylesheet" href="{% static 'tilda/css/tilda-cart-1.0.min.css' %}" type="text/css" media="all"
         onerror="this.loaderr='y';" />
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-catalog-filters-1.0.min.css' %}" type="text/css" media="all"
+        onerror="this.loaderr='y';" />
     <link rel="stylesheet" href="{% static 'tilda/css/tilda-slds-1.4.min.css' %}" type="text/css" media="print"
         onload="this.media='all';" onerror="this.loaderr='y';" /><noscript>
         <link rel="stylesheet" href="{% static 'tilda/css/tilda-slds-1.4.min.css' %}" type="text/css" media="all" />
@@ -112,9 +115,13 @@
     <script src="{% static 'tilda/js/hammer.min.js' %}" charset="utf-8" async onerror="this.loaderr='y';"></script>
     <script src="{% static 'tilda/js/tilda-products-1.0.min.js' %}" charset="utf-8" async
         onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-forms-payments-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
     <script src="{% static 'tilda/js/tilda-catalog-1.1.min.js' %}" charset="utf-8" async
         onerror="this.loaderr='y';"></script>
     <script src="{% static 'tilda/js/tilda-zoom-2.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-catalog-filters-1.0.min.js' %}" charset="utf-8" async
         onerror="this.loaderr='y';"></script>
     <script src="{% static 'tilda/js/tilda-skiplink-1.0.min.js' %}" charset="utf-8" async
         onerror="this.loaderr='y';"></script>
@@ -144,7 +151,7 @@
         })();</script>
 </head>
 
-<body class="t-body" ><!--allrecords-->
+<body class="t-body " ><!--allrecords-->
     <div id="allrecords" class="t-records" >
         <div id="rec749301449" class="r t-rec t-rec_pt_0 t-rec_pb_0"
             style="padding-top:0px;padding-bottom:0px;background-color:#292929; "><!-- T456 -->

@@ -4,7 +4,14 @@
 
 {% block contetnt %}
 
+<div style = '  scrollbar-width: thin; scrollbar-color: rgb(100, 98, 98) white; margin-top: 120px;'>
+{% for product in products %}
+<div ></div>
 
-<h1 style="margin-top: 600px;">{{pord.name}}</h1>
-
+<div>{{ product}}</div>
+<img src="{{product.image.url}}" style="max-width:230px; max-height:95px; width: auto; height: auto;" alt="">
+<div>{{ product}}</div>
+<button>Подробнее</button>
+{% endfor %}
+</div>
 {% endblock %}

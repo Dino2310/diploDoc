@@ -1,112 +1,55 @@
 <div class="t951__sidebar-wrapper">
-    <div class="t-store__parts-switch-wrapper t-align_center">
-        <div class=" t-store__parts-switch-btn all active" onclick="cat(`all`)">Все</div>
-        <div class=" t-store__parts-switch-btn button" onclick="cat(`button`)">Кнопки</div>
-        <div class=" t-store__parts-switch-btn controller" onclick="cat(`controller`)">Контроллеры</div>
-        <div class=" t-store__parts-switch-btn reley" onclick="cat(`reley`)">Реле</div>
+    <div class="t-store__parts-switch-wrapper t-align_center type_device">
+        <div class=" t-store__parts-switch-btn all active" onclick="cat(`all`)" name = 'all'>Все</div>
+        <div class=" t-store__parts-switch-btn button" onclick="cat(`button`)" name = 'button'>Кнопки и датчики</div>
+        <div class=" t-store__parts-switch-btn controller" onclick="cat(`controller`)" name = 'controller'>Контроллеры</div>
+        <div class=" t-store__parts-switch-btn reley" onclick="cat(`reley`)" name = 'relay'>Реле</div>
     </div>
-    <div class="t-store__filter ">
-        <div class="t-store__filter__options ">
-            <div
-                class="t-store__filter__item_sort-mobile t-store__filter__item  t-store__filter__item_select  t-descr t-descr_xxs">
-                <div class="t-store__filter__item-title " >Сортировка
-                </div>
-                <div class="t-store__filter__item-controls-wrap ">
-                    <div class="t-store__filter__item-controls-container "> <input type="hidden"
-                            class="" name="sorted">
-                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
-                            <div class="t-store__filter__title ">Порядок: по умолчанию</div>
-                        </div>
-                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
-                            <div class="t-store__filter__title ">Порядок: сперва старые</div>
-                        </div>
-                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
-                            <div class="t-store__filter__title ">Порядок: сперва новые</div>
-                        </div>
-                        <div class="t-store__filter__custom-sel  t-store__filter__item_sort-mobile"type="selectbox">
-                            <div class="t-store__filter__title ">Цена: по возрастанию</div>
-                        </div>
-                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
-                            <div class="t-store__filter__title ">Цена: по убыванию</div>
-                        </div>
-                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
-                            <div class="t-store__filter__title ">Название: А—Я</div>
-                        </div>
-                        <div class="t-store__filter__custom-sel t-store__filter__item_sort-mobile" type="selectbox">
-                            <div class="t-store__filter__title ">Название: Я—А</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="t-store__filter " style="pointer-events:all">
+        <div style="pointer-events:all" class="t-store__filter__options ">
+
             <div class="t-store__filter__item t-store__filter__item_price js-store-filter-item t-descr t-descr_xxs">
                 <div class="t-store__filter__item-title js-store-filter-item-title">Стоимость </div>
-                <div
-                    class="t-store__filter__item-controls-wrap t-store__filter__item-price-slider ">
+                <div class="t-store__filter__item-controls-wrap t-store__filter__item-price-slider ">
                     <div class="t-store__filter__price-outer t-store__filter__price-outer_start" style="width: 0%;">
                     </div>
                     <div class="t-store__filter__price-outer t-store__filter__price-outer_end" style="width: 0%;"></div>
-                    <input class="t-store__filter__range " type="range" name= 'min' oninput="filter_price('min')" onmouseup ="change_price()" style="pointer-events:all"
-                        min="{{price.min}}" max="{{price.max}}" step="1"  value="{{change.min}}">
-                    <input  class="t-store__filter__range"  type="range" name="max" oninput="filter_price('max')" onmouseup ="change_price()" style="pointer-events:all"
-                        min="{{price.min}}" max="{{price.max}}" step="1"  value="{{change.max}}">
+                    <input class="t-store__filter__range " type="range" name='min' oninput="filter_price('min',1)"
+                        style="pointer-events:all" min="{{price.min}}" max="{{price.max}}" step="1"
+                        value="{{change.min}}">
+                    <input class="t-store__filter__range" type="range" name="max" oninput="filter_price('max',1)"
+                        style="pointer-events:all" min="{{price.min}}" max="{{price.max}}" step="1"
+                        value="{{change.max}}">
                     <div class="t-store__filter__range_bg"></div>
                 </div>
-                <div
-                    class="t-store__filter__item-controls-wrap t-store__filter__item-price-box ">
-                    <input class="t-store__filter__input js-store-filter-pricemin" type="text" name="price:min"value="{{change.min}}" data-previousmin="80"><span
+                <div class="t-store__filter__item-controls-wrap t-store__filter__item-price-box ">
+                    <input class="t-store__filter__input js-store-filter-pricemin" type="text" name="price:min"
+                        value="{{change.min}}" oninput='filter_price("min")' data-previousmin="80"><span
                         class="t-store__filter__delimeter">&nbsp;—&nbsp;</span><input
-                        class="t-store__filter__input js-store-filter-pricemax" type="text" name="price:max" value="{{change.max}}">
-                        <button
-                        class="t-store__filter__btn js-store-filter-price-btn">OK</button>
+                        class="t-store__filter__input js-store-filter-pricemax" type="text" name="price:max"
+                        value="{{change.max}}" oninput='filter_price("max")'>
+                    <button class="t-store__filter__btn js-store-filter-price-btn">OK</button>
                 </div>
             </div>
             <div
                 class="t-store__filter__item   t-store__filter__item_checkbox js-store-filter-item t-descr t-descr_xxs">
                 <div class="t-store__filter__item-title js-store-filter-item-title" data-filter-label="brand"
-                    data-filter-name="brand">Brand</div>
+                    data-filter-name="brand">Интерфейс</div>
                 <div class="t-store__filter__item-controls-wrap js-store-filter-item-controls-wr">
-                    <div class="t-store__filter__item-controls-container " data-type="checkbox"> <input type="hidden"
-                            class="js-store-filter-opt" name="brand" data-info-type="array"> <label
+                    <div class="t-store__filter__item-controls-container " id = 'interface'> 
+                        {% for i in cinnects %}
+                        <label 
                             class="t-checkbox__control t-store__filter__checkbox t-descr t-descr_xxs"><input
-                                class="t-checkbox js-store-filter-opt-chb" type="checkbox" name="Elton"
-                                data-filter-value="Elton">
-                            <div class="t-checkbox__indicator"></div><span class="t-store__filter__title">Elton</span>
-                        </label><label class="t-checkbox__control t-store__filter__checkbox t-descr t-descr_xxs"><input
-                                class="t-checkbox js-store-filter-opt-chb" type="checkbox" name="GeekCook"
-                                data-filter-value="GeekCook">
-                            <div class="t-checkbox__indicator"></div><span
-                                class="t-store__filter__title">GeekCook</span>
-                        </label><label class="t-checkbox__control t-store__filter__checkbox t-descr t-descr_xxs"><input
-                                class="t-checkbox js-store-filter-opt-chb" type="checkbox" name="Immany"
-                                data-filter-value="Immany">
-                            <div class="t-checkbox__indicator"></div><span class="t-store__filter__title">Immany</span>
-                        </label><label class="t-checkbox__control t-store__filter__checkbox t-descr t-descr_xxs"><input
-                                class="t-checkbox js-store-filter-opt-chb" type="checkbox" name="Lettuce Grow"
-                                data-filter-value="Lettuce Grow">
-                            <div class="t-checkbox__indicator"></div><span class="t-store__filter__title">Lettuce
-                                Grow</span>
-                        </label><label class="t-checkbox__control t-store__filter__checkbox t-descr t-descr_xxs"><input
-                                class="t-checkbox js-store-filter-opt-chb" type="checkbox" name="Makao"
-                                data-filter-value="Makao">
-                            <div class="t-checkbox__indicator"></div><span class="t-store__filter__title">Makao</span>
-                        </label><label class="t-checkbox__control t-store__filter__checkbox t-descr t-descr_xxs"><input
-                                class="t-checkbox js-store-filter-opt-chb" type="checkbox" name="Records"
-                                data-filter-value="Records">
-                            <div class="t-checkbox__indicator"></div><span class="t-store__filter__title">Records</span>
-                        </label></div>
+                                class="t-checkbox" type="checkbox" name="{{i}}" checked  >
+                            <div class="t-checkbox__indicator"></div><span class="t-store__filter__title">{{i}}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    <div class="t-store__filter__item-title js-store-filter-item-title" style="margin-top: 20px; cursor: pointer;" onclick="location.reload()"
+                    data-filter-name="brand">Сбросить фильтр</div>
                 </div>
             </div>
-            <div class="t-store__filter__item t-store__filter__item_available js-store-filter-item t-descr t-descr_xxs">
-                <div class="t-store__filter__item-title js-store-filter-item-title" data-filter-name="quantity">
-                    Availability</div>
-                <div class="t-store__filter__item-controls-wrap js-store-filter-item-controls-wr"><label
-                        class="t-checkbox__control t-descr t-descr_xxs"><input
-                            class="t-checkbox js-store-filter-onlyavail" type="checkbox" name="Только товары в наличии"
-                            data-filter-value="Только товары в наличии">
-                        <div class="t-checkbox__indicator"></div>Только товары в наличии
-                    </label></div>
-            </div>
-        </div>'
+
+        </div>
     </div>
 </div>
-
