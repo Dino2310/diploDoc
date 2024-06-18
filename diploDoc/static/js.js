@@ -2,6 +2,8 @@ $('#rec749301459').css({ 'padding-bottom': '0' })
 
 $('.t754__col').children().css({'width': '20vh'})
 
+
+
 $('#rec749319188').css({'position':'static'})
 $('.t754__parent').css(
     {
@@ -17,7 +19,7 @@ setInterval(()=>{$('.t-slds__arrow-right').trigger('click')}, 3000)
 setInterval(()=>{
     if($('.js-store-parts-switcher').length){
         init()}
-},1000)
+},100)
 
 function s(){
     if($('.js-store-parts-switcher').length){
@@ -61,6 +63,7 @@ function init() {
 }
 
 
+
 function prod(id_prod){
     
     $.ajax({
@@ -69,13 +72,15 @@ function prod(id_prod){
         data : {'id': id_prod},
 
         success: function(data){
+            close_display()
             $('#product_card').html(data['content']['res'])
+            $('.t-popup__close-wrapper').click(close_display)
         },
     error: function (s) {
         console.log('err');
     }
     })
-    $('#product_card').css({'display':'flex'})
+    // $('#product_card').css({'display':'flex'})
 }
 
 
@@ -108,6 +113,15 @@ function reloadcat(search, interface, sort, price_max, price_min, type_dev) {
    
 
 
+}
+
+function close_display() {
+    console.log("close_display")
+    $('.t456__positionfixed').toggleClass('btn_bsk')
+    $('.t951__sidebar').toggleClass('btn_bsk')
+    $('#product_card').toggleClass('btn_bsk')
+    $('#product_card').toggleClass('dpl')
+    $('#product_card').html("")
 }
 
 s()

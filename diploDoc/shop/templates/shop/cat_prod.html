@@ -1,6 +1,6 @@
-{% for a in products %}
 {% load index %}
-<div  class=" t-store__stretch-col t-store__stretch-col_25 t-align_left t-item" style="pointer-events: all; margin: 10px;" >
+{% for a in products %}
+<div  class="t-store__stretch-col t-store__stretch-col_25 t-align_left t-item" style="pointer-events: all; margin: 10px; display: fixed;" >
     <span onclick="prod({{a.id}})">
         <div class="t-store__card__imgwrapper  t-store__card__imgwrapper_4-3" >
             <div class="js-product-img t-store__card__bgimg t-store__card__bgimg_hover t-bgimg loaded"

@@ -17,11 +17,14 @@ def index(request):
     ad = Marketing.objects.all()
     prod = Product.objects.filter( quantity__gt = 0)
     count = dict([(i.id,0) for i in Product.objects.all()])
-    if (request.user != "AnonymousUser"):
+    if (request.user.is_authenticated):
         заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 count[i.product.id] = i.quantity
+    else:
+        for key in count.keys():
+            count[key] = request.session.get(str(key),0)
     
     
     content = {
@@ -61,7 +64,21 @@ def learn(request):
 @ajax
 def prod(request):
     c_id = request.GET.get('id')
-    return {'res' : render(request, 'shop/prod.html', {'prod':Product.objects.filter(id = c_id)[0]})}
+    counter = 0
+    if request.user.is_authenticated:
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        if заказ:
+            for i in ReservProduct.objects.filter(order = заказ[0]):
+                counter = i.quantity
+    else:
+        counter = request.session.get(str(request.GET.get(c_id)),0)
+    
+    contetn = {
+        'prod': Product.objects.filter(id = c_id)[0],
+        "counter": counter
+
+    }
+    return {'res' : render(request, 'shop/poduct.html', contetn)}
 
 @ajax
 def ajax_ansvwer(request):
@@ -76,14 +93,14 @@ def ajax_ansvwer(request):
     products = Product.objects.filter(Q(price__range = (filter_min, filter_max)) & Q(quantity__gt = 0))
 
     prod = dict([(i.id,0) for i in Product.objects.all()])
-    if (request.user != "AnonymousUser"):
+    if request.user.is_authenticated:
         заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 prod[i.product.id] = i.quantity
-
-
-    
+    else:
+        for key in prod.keys():
+            prod[key] = request.session.get(str(key),0)
 
     if result.get('type_dev'):
         answer = tmp if (tmp := result.get('interface').split(','))[0] else cinnects
@@ -116,7 +133,16 @@ def ajax_ansvwer(request):
 def count_prod(request):
     count = 0
     if  not request.user.is_authenticated:
-        print(request.user , "sldknldsknln")
+
+        if not request.session.get(product := request.GET.get('id')):
+            request.session[product] = 1
+        if ((answer :=request.GET['fn']) == '1'):
+            request.session[product] += 1
+        elif answer == '0':
+            request.session[product] -= 1
+        
+        count = request.session[product]
+
     else: 
         product = Product.objects.get(id = request.GET.get('id'))
         orders = Order.objects.filter(Q(user = request.user) & Q(status = 'assembling'))
@@ -140,20 +166,11 @@ def count_prod(request):
             else:
                 products.update( quantity = (count := count-1))
                 if count == 0: 
-                    print(f'count')
-                    print("0"*100)
-                    print("del", products)
-                    print('-'*100)
                     products.delete()
-
                     if not len(ReservProduct.objects.filter(order = ord)):
-                        print('del', ord)
-                        print('+'*100)
                         ord.delete()
         else:
-            print(products)
-            print(request.GET.get('id'))
-            print('/'*100)
+            pass
 
  
     return {'count' : count}

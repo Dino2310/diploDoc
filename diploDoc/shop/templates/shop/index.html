@@ -3,6 +3,7 @@
 {% load index %}
 
 {% block contetnt %}
+<div id='product_card' class = 'btn_bsk'></div>
 <div id="rec749598652" class="r t-rec t-rec_pt_135 t-rec_pb_15"
     style="padding-top:100px;padding-bottom:15px;background-color:#333333; " data-record-type="43"
     data-bg-color="#333333"><!-- T030 -->
@@ -208,8 +209,7 @@
             </svg></div>
         <div class="t754__parent t754__container_mobile-flex">
             {% for a in prod %}
-            <div class="t754__col t-col t-col_3 t-align_center t-item js-product"><a class="js-product-link"
-                    href="#prodpopup">
+            <div class="t754__col t-col t-col_3 t-align_center t-item js-product"><span onclick="prod({{a.id}})">
                     <div class="t754__content">
                         <div class="t754__imgwrapper t1002__picture-wrapper " style="padding-bottom:76.923076923077%;">
                             <img src="{{ a.image.url }}" data-original="{{ a.image.url }}"
@@ -229,7 +229,7 @@
                             </div>
                         </div>
                     </div>
-                </a> 
+                </span> 
                 <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
                 style="display:none;"></div>
                 <div class="t754__buttons t1002__btns-wrapper t1002__btns-wrapper_center"><span class="t754__btn t-btn t-btn_sm"
@@ -250,7 +250,7 @@
             </div>
             {% endfor %}
 
-            <div class="t-popup" style="background-color: rgba(255,255,255,1);">
+            <div class="t-popup " style="background-color: rgba(255,255,255,1);">
                 <div class="t-popup__close" style="background-color: #ffffff;">
                     <div class="t-popup__close-wrapper"><svg role="presentation"
                             class="t-popup__close-icon t-popup__close-icon_arrow" width="26px" height="26px"
