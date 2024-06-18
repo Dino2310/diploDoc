@@ -46,12 +46,13 @@ function init() {
             if (!$('.js-store-parts-switcher')){
                 s()}
                 
-            else{
-                list.eq(0).html(data['content']['res'])
-                $('#cat_prod').html(data['content']['prod'])
-                $('.t-store__filter__search-and-sort').html(data['content']['search'])
-                list.eq(1).html("")
-            }
+                else{
+                    list.eq(0).html(data['content']['res'])
+                    $('#cat_prod').html(data['content']['prod'])
+                    $('.t-store__filter__search-and-sort').html(data['content']['search'])
+                    list.eq(1).html("")
+                }
+                
         },
         error: function (s) {
             console.log('err');
