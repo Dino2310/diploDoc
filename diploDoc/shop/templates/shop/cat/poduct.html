@@ -48,17 +48,17 @@
                                     <table role="presentation" style="width:100%; height:100%;">
                                         <tr id="btn{{prod.id}}">
                                             <td class="button_bascet {% if not counter %} btn_bsk {% endif %}"
-                                                onclick="bascet(0, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
+                                                onclick="bascet(0, {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
                                                 -</td>
-                                            <td id='counts{{prod.id}}'
-                                                class='{% if  not counter  %} btn_bsk {% endif %}' style="width: 40px;"
+                                            <td 
+                                                class='{% if  not counter  %} btn_bsk {% endif %} counts{{prod.id}}' style="width: 40px;"
                                                 onchange=" bascet('N', {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
                                                 {{counter}}</td>
                                             <td class="button_bascet {% if not counter  %} btn_bsk {% endif %}"
-                                                onclick="bascet(1, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
+                                                onclick="bascet(1, {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
                                                 +</td>
 
-                                            <td id='counts{{prod.id}}' class='{% if  counter %} btn_bsk {% endif %}'
+                                            <td  class='{% if  counter %} btn_bsk {% endif %} counts{{prod.id}}'
                                                 style="width: 40px;"
                                                 onclick="cart({{prod.id}},{% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
                                                 В корзину</td>

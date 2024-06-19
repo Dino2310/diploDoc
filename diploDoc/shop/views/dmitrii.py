@@ -13,6 +13,18 @@ cat_lib = {
     'relay' :['relay']
 }
 
+def summ(request):
+    if request.user.is_authenticated:
+        if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))):
+            print (sum([i.quantity for i in ReservProduct.objects.filter(order = ord[0])]))
+            return sum([i.quantity for i in ReservProduct.objects.filter(order = ord[0])])
+        print(0)
+        return 0
+    else:
+        print(sum([ request.session.get(str(i), 0) for i in  dict([(i.id,0) for i in Product.objects.all()]).keys()]))
+        return sum([ request.session.get(str(i), 0) for i in  dict([(i.id,0) for i in Product.objects.all()]).keys()])
+
+
 def index(request):
     ad = Marketing.objects.all()
     prod = Product.objects.filter( quantity__gt = 0)
@@ -32,7 +44,8 @@ def index(request):
         'lenAd':len(ad),
         'rAd':range(len(ad)),
         'prod':prod,
-        'count' : count
+        'count' : count,
+        'sum':summ(request)
     }
     return render(request, 'shop/index.html', content)
 
@@ -45,14 +58,16 @@ def category(request):
     prod = Product.objects.filter( quantity__gt = 0)
     content = {
         "prod":prod,
+        'sum':summ(request)
     }
-    return render(request, 'shop/category.html', content)
+    return render(request, 'shop/cat/category.html', content)
 
 def search (request):
     answer = request.POST.get('search')
     products = Product.objects.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))
     ''' тут ещё добавиьт поиск по обучяющим материалам'''
-    contetnt = {'products':products}
+    contetnt = {'products':products,
+        'sum':summ(request)}
     return render(request, 'shop/search.html', contetnt)
 
     
@@ -71,14 +86,17 @@ def prod(request):
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 counter = i.quantity
     else:
-        counter = request.session.get(str(request.GET.get(c_id)),0)
+        counter = request.session.get(str(c_id),0)
+
     
     contetn = {
         'prod': Product.objects.filter(id = c_id)[0],
-        "counter": counter
+        "counter": counter,
+        'sum':summ(request)
 
     }
-    return {'res' : render(request, 'shop/poduct.html', contetn)}
+    return {'res' : render(request, 'shop/cat/poduct.html', contetn),
+        'sum': summ(request)}
 
 @ajax
 def ajax_ansvwer(request):
@@ -123,12 +141,16 @@ def ajax_ansvwer(request):
         'price': {"max":price_max,'min':price_min},
         'products' : products,
         'cinnects' : cinnects,
-        'count' : prod
+        'count' : prod,
+        'sum': summ(request)
     }
-    return {"res" : render(request, 'shop/price.html', contetnt),
-             'prod': render(request, 'shop/cat_prod.html', contetnt),
-             'search': render( request, 'shop/sorted_and_search.html', contetnt)
+    return {"res" : render(request, 'shop/cat/price.html', contetnt),
+             'prod': render(request, 'shop/cat/cat_prod.html', contetnt),
+             'search': render( request, 'shop/cat/sorted_and_search.html', contetnt),
+            'sum': summ(request)
             }
+
+
 @ajax
 def count_prod(request):
     count = 0
@@ -173,4 +195,8 @@ def count_prod(request):
             pass
 
  
-    return {'count' : count}
+    return {'count' : count,
+        'sum':summ(request)}
+
+def about(request):
+    return render(request, 'shop/about.html', {})
