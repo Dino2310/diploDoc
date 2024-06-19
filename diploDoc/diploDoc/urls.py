@@ -24,7 +24,6 @@ urlpatterns = [
     path('', include(('shop.urls', 'shop'), namespace='shop')),
     path('users/', include(('users.urls', 'users'), namespace='users')),
     # path('training', include(('training.urls', 'training'), namespace= 'training' )),
-    path('cms/', include(('cms.urls', 'cms'), namespace='cms')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

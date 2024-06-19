@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Product
-from .forms import ProductForm
+from ..models import Product
+from ..forms import ProductForm
 
 def products(request):
     filter = request.GET.get('filter')
@@ -20,7 +20,7 @@ def add_product(request):
     form = ProductForm(request.POST or None,request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('cms:products')
+        return redirect('shop:products')
     return render(request, 'product_form.html',{'form': form})
 
 def edit_product(request,pk):
@@ -28,7 +28,7 @@ def edit_product(request,pk):
     form = ProductForm(request.POST or None,request.FILES or None,instance=product)
     if form.is_valid():
         form.save()
-        return redirect('cms:products')
+        return redirect('shop:products')
     return render(request, 'product_form.html', {'form': form})
 def archive_product(request,pk):
     product= Product.objects.get(pk=pk)
@@ -37,5 +37,5 @@ def archive_product(request,pk):
     else:
         product.status ='open'
     product.save()
-    return redirect('cms:products')
+    return redirect('shop:products')
 

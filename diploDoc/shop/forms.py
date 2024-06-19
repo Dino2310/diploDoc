@@ -110,14 +110,14 @@ class Delivery_addressForm(forms.ModelForm):
         model = Delivery_address
         fields = ["address", "user"]
         
-class CreateOrderForm(forms.ModelForm):
-    date = forms.DateField(widget=forms.DateInput(
-        attrs={"type": "date"}
-    ))
-    
-    class Meta:
-        model = Order
-        fields = ["user", "price", "quantity", "date", "status", "paid", "delivery_address"]
+# class CreateOrderForm(forms.ModelForm):
+#     date = forms.DateField(widget=forms.DateInput(
+#         attrs={"type": "date"}
+#     ))
+#
+#     class Meta:
+#         model = Order
+#         fields = ["user", "price", "quantity", "date", "status", "paid", "delivery_address"]
         
 class ProductsForm(forms.ModelForm):
     slug = forms.SlugField(widget=forms.TextInput(
@@ -140,4 +140,22 @@ class EducationForm(forms.ModelForm):
     class Meta:
         model = Education
         fields = ["word", "attributes", "image", "name", "slug"]
-        
+class ProductForm(forms.ModelForm):
+    title = (forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'input', 'placeholder': 'Название товара'}
+    )))
+    description = (forms.CharField(widget=forms.Textarea(
+        attrs={'class': 'textarea', 'placeholder': 'Описание товара'}
+    )))
+    quantity = (forms.CharField(widget=forms.NumberInput(
+        attrs={'class': 'input', 'placeholder': 'Кол-во товара'}
+    )))
+    price = (forms.CharField(widget=forms.NumberInput(
+        attrs={'class': 'input', 'placeholder': 'Цена  товара'}
+    )))
+    image = forms.FileField(required=False)
+
+
+    class Meta:
+        model = Product
+        fields =['title','description','quantity','price','image']

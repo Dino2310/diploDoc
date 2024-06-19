@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+STATUS = [
+    ('open', 'open'),
+    ('archived', 'archived')
+]
 
 class Product(models.Model):
     """Модель описания продукта"""
@@ -27,6 +30,7 @@ class Product(models.Model):
     attributes = models.TextField(
         max_length=1000, blank=True, null=True, verbose_name='Характеристики'
         )
+    status = models.CharField(max_length=255, choices=STATUS, default='open')
 
 
     def __str__(self):
