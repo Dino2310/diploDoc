@@ -19,10 +19,16 @@
     color: darkgray
 }
 
+.dpl{
+    display: flex;
+}
+.btn_bsk{
+    display: none;
+}
 
 #product_card{
     background-color: rgba(255, 255, 255, 0.599);
-    display: none;
+    /* display: none;*/
     position: absolute;
     float: right;
     width: 73%;
