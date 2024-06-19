@@ -18,7 +18,7 @@ $('.t754__parent').css(
 
 setInterval(()=>{  // проверяет формированность страницы категории,  чтобы запустить формирование полей зарпосов
     if($('.js-store-parts-switcher').length){
-        init}
+        init()}
 },100)
 
 
@@ -34,21 +34,7 @@ function init() { // инициализирует при запуске созд
             list.eq(0).html(data['content']['res'])
             $('#cat_prod').html(data['content']['prod'])
             $('.t-store__filter__search-and-sort').html(data['content']['search'])
-<<<<<<< HEAD
-            list.eq(1).html("")
-            if (!$('.js-store-parts-switcher')){
-                s()}
-                
-                else{
-                    list.eq(0).html(data['content']['res'])
-                    $('#cat_prod').html(data['content']['prod'])
-                    $('.t-store__filter__search-and-sort').html(data['content']['search'])
-                    list.eq(1).html("")
-                }
-                
-=======
             list.eq(1).html("")           
->>>>>>> edd4b94a37b2f4b995f59607b7c8e39cf043fcdf
         },
         error: function (s) {
             console.log('err');
