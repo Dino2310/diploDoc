@@ -16,12 +16,9 @@ cat_lib = {
 def summ(request):
     if request.user.is_authenticated:
         if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))):
-            print (sum([i.quantity for i in ReservProduct.objects.filter(order = ord[0])]))
             return sum([i.quantity for i in ReservProduct.objects.filter(order = ord[0])])
-        print(0)
         return 0
     else:
-        print(sum([ request.session.get(str(i), 0) for i in  dict([(i.id,0) for i in Product.objects.all()]).keys()]))
         return sum([ request.session.get(str(i), 0) for i in  dict([(i.id,0) for i in Product.objects.all()]).keys()])
 
 
