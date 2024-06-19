@@ -2,7 +2,7 @@ $('#rec749301459').css({ 'padding-bottom': '0' })
 
 $('.t754__col').children().css({'width': '20vh'})
 
-
+setInterval(()=>{$('.t-slds__arrow-right').trigger('click')}, 3000)
 
 $('#rec749319188').css({'position':'static'})
 $('.t754__parent').css(
