@@ -1,6 +1,7 @@
+{% load index %}
 {% for a in products %}
-<div  class=" t-store__stretch-col t-store__stretch-col_25 t-align_left t-item" style="pointer-events: all; margin: 10px;" onclick="prod({{a.id}})">
-    
+<div  class="t-store__stretch-col t-store__stretch-col_25 t-align_left t-item" style="pointer-events: all; margin: 10px; display: fixed;" >
+    <span onclick="prod({{a.id}})">
         <div class="t-store__card__imgwrapper  t-store__card__imgwrapper_4-3" >
             <div class="js-product-img t-store__card__bgimg t-store__card__bgimg_hover t-bgimg loaded"
                 data-original="{{a.image.url}}" style="background-image: url({{a.image.url}});"
@@ -28,9 +29,23 @@
                 </div>
             </div>
         </div>
-    
-
-    <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
+    </span>
+        <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
         style="display:none;"></div>
-</div>
+        <div class="t754__buttons t1002__btns-wrapper t1002__btns-wrapper_center"><span class="t754__btn t-btn t-btn_sm"
+            style="color:black;padding: 0; background-color:#0af5dd;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;font-family:Arial; ">
+            <table role="presentation" style="width:100%; height:100%;">
+                {% with counter=count|index:a.id %}
+                <tr id="btn{{a.id}}">
+                    <td class="button_bascet {% if not counter %} btn_bsk {% endif %}" onclick="bascet(0, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> -</td>
+                    <td class = 'counts{{a.id}} {% if  not counter  %} btn_bsk {% endif %}' style="width: 40px;" onchange=" bascet('N', {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> {{counter}}</td>
+                    <td class="button_bascet {% if not counter  %} btn_bsk {% endif %}" onclick="bascet(1, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> +</td>
+                    
+                    <td  class = ' ounts{{a.id}} {% if  counter %} btn_bsk {% endif %}' style="width: 40px;" onclick="cart({{a.id}},{% if user.username %} '{{user.username}}' {% else %} false {% endif %})">В корзину</td>
+                    
+                </tr>
+                {% endwith %}
+            </table>
+        </span></div>
+    </div>
 {% endfor %}

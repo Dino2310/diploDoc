@@ -73,7 +73,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('price', models.DecimalField(decimal_places=2, max_digits=15, verbose_name='Цена')),
-                ('quantity', models.PositiveSmallIntegerField(default=0, verbose_name='Количество')),
+                ('quantity', models.PositiveSmallIntegerField(default=1, verbose_name='Количество')),
                 ('discount', models.DecimalField(decimal_places=2, default=0.0, max_digits=4, verbose_name='Скидка')),
                 ('comment', models.CharField(blank=True, max_length=1000, null=True, verbose_name='Примечание')),
                 ('slug', models.SlugField(blank=True, max_length=200, null=True, unique=True, verbose_name='URL')),
