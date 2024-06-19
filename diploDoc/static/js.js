@@ -1,8 +1,8 @@
 $('#rec749301459').css({ 'padding-bottom': '0' })
 
-$('.t754__col').children().css({
-    'width': '20vh'
-})
+$('.t754__col').children().css({'width': '20vh'})
+
+
 
 $('#rec749319188').css({'position':'static'})
 $('.t754__parent').css(
@@ -14,77 +14,221 @@ $('.t754__parent').css(
     }
 )
 
-function prod(id_prod){
+
+
+setInterval(()=>{  // проверяет формированность страницы категории,  чтобы запустить формирование полей зарпосов
+    if($('.js-store-parts-switcher').length){
+        init()}
+},100)
+
+
+
+function init() { // инициализирует при запуске создание и наопленение страницы категории в питоне приложения shop запускает пориложение ajax_ansvwer
+    let list = $('.t951__sidebar-wrapper').children()
+    $.ajax({
+        url: '/a',
+        type: "GET",
+        data: {},
+
+        success: function (data) {
+            list.eq(0).html(data['content']['res'])
+            $('#cat_prod').html(data['content']['prod'])
+            $('.t-store__filter__search-and-sort').html(data['content']['search'])
+            list.eq(1).html("")           
+        },
+        error: function (s) {
+            console.log('err');
+        }
+    })
     
+ 
+    $('.js-store-filters-prodsnumber').html("")
+
+}
+
+
+
+function prod(id_prod){ // формирует модальнео окно товара в питоне приложения shop вызывает ф-ию prod
     $.ajax({
         url:'/prod',
         type: 'GET',
         data : {'id': id_prod},
 
         success: function(data){
+            close_display()
             $('#product_card').html(data['content']['res'])
+            $('.t-popup__close-wrapper').click(close_display)
+            $('.btn_bsk').click(select)
+            $('.t706__carticon-counter').html(data['content']['prod'])
         },
     error: function (s) {
         console.log('err');
     }
     })
-    $('#product_card').css({'display':'flex'})
+
 }
 
 
 
 
-
-function reloadcat(max = 0, min = 0) {
+function reloadcat(search, interface, sort, price_max, price_min, type_dev) {// обработка и применения фильтров на старнице категории в питоне вызывает ф-ию ajax_ansvwer приложения shop
     let cat = $('.t951__sidebar-wrapper').children()
     $.ajax({
         url: '/a',
         type: "GET",
-        data: (max)?{ "min": min, 'max': max }:{},
+        data: { "min": price_min,
+             'max': price_max,
+             'type_dev' : type_dev,
+             'sort' : sort ,
+             'interface' : interface,
+             'search' : search },
 
         success: function (data) {
-            cat.eq(0).html(data['content']['res'])
             $('#cat_prod').html(data['content']['prod'])
-            $('.t-store__filter__search-and-sort').html(data['content']['search'])
             cat.eq(1).html("")
+            
         },
         error: function (s) {
             console.log('err');
         }
     })
-    $('.js-store-filters-prodsnumber').html("столько-то")
-   
+}
 
-
+function close_display() { // работа с модлальным окном товара на страницах индекс и категории
+    $('.t456__positionfixed').toggleClass('btn_bsk')
+    $('.t951__sidebar').toggleClass('btn_bsk')
+    $('#product_card').toggleClass('btn_bsk')
+    $('#product_card').toggleClass('dpl')
+    $('#product_card').html("")
 }
 
 
-function filter_price(val) {
-    $(`input[name="price:${val}"]`).val($(`input[name=${val}]`).val())
-    // reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val())
-}
-function change_price() {
-    reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val())
-    
+
+function select(){  //считывает все фильтры страницы категории и отправляет в аякс для применения данных
+    let interface = []
+    let price_max = $(`input[name= "max"]`).val()
+    let price_min = $(`input[name= 'min']`).val()
+    let sort = $('#sort').val()
+    let type_dev = $('.active').attr('name')
+    for (let i of document.querySelectorAll('.t-checkbox')){
+        if (i.checked){interface.push(i.getAttribute('name'))}
+    }
+    let search = $('input[name="query"]').val()
+    interface = interface? interface.join(','):[]
+    reloadcat(search, interface, sort, price_max, price_min, type_dev)
+
+} 
+
+function filter_price(val, type = 0) { // менят значение дипазона цены в фильтре старинцы катеогрии в зависимости от положения ползунка
+    if (type){
+        $(`input[name="price:${val}"]`).val($(`input[name=${val}]`).val())}
+    else{
+        $(`input[name=${val}]`).val($(`input[name="price:${val}"]`).val())
+    }
 }
 
-$('#sort').on('change', function(e){
-    alert(this.val())
-})
 
-setTimeout(reloadcat, 200);
+
+
+
+
+
+
 
 function cat(f) { //Это функция прилетет из браузера  страница category при выборе все, кнопка, контроллер, реле
     $('.t951__sidebar-wrapper').children().children().removeClass('active')
     $('.' + f).addClass('active')
     $('.js-store-filters-prodsnumber').html(f)
     $('.js-store-filters-prodsnumber').html("столько-то")
-
-
+    select()
 }
 
 
 
+function cart(prod, name ){// функция обработки корзины ( кнопки в корзину на страницах категоии и старотовой) ф-ия в питоне count_prod
+    $.ajax({
+        url: '/count',
+        type: "GET",
+        data: { "fn": "fn",
+             'id': prod,
+             'user' : name,
+            'score':$(`.count${prod}`).val() },
+
+        success: function (data) {
+            $(`#btn${prod}`).children().each(
+                function(){
+                    $(this).toggleClass('btn_bsk')
+                }
+            )
+            $(`.counts${prod}:not(.btn_bsk)`).html(1)
+            let score = data['content']['sum']
+            if (!score){
+                $('.t706__carticon-imgwrap').toggleClass('btn_bsk')
+            }
+            else{
+                $('.t706__carticon-imgwrap').removeClass('btn_bsk')
+                $('.t706__carticon-counter').html(score)
+            }
+            
+        },
+        error: function (s) {
+            console.log('err');
+        }
+    })
+}
+
+
+function bascet(fn, prod, user){/* функция обработки корзины ( кнопки в корзину на страницах категоии и старотовой) ф-ия 
+    в питоне count_prod в отличае от предыдущей ф-ункции работает уже с кнопками сложить  и вычесть*/
+    $.ajax({                    
+        url: '/count',
+        type: "GET",
+        data: { "fn": fn,
+             'id': prod,
+             'user' : user,
+            'score':$(`#count${prod}`).val() },
+
+        success: function (data) {
+            let score = data['content']['sum']
+            if (!score){
+                $('.t706__carticon-imgwrap').toggleClass('btn_bsk')
+            }
+            else{
+                $('.t706__carticon-imgwrap').removeClass('btn_bsk')
+                $('.t706__carticon-counter').html(score)
+            }
+            let count = data['content']['count'] 
+
+            if(count){
+                $(`.counts${prod}:not(.btn_bsk)`).html(count)
+            }
+            else{                
+                $(`#btn${prod}`).children().each(
+                    function(){
+                        $(this).toggleClass('btn_bsk')
+                }
+            )
+
+            }
+            
+        },
+        error: function (s) {
+            console.log('err');
+        }
+    })
+}
+
+
+
+setTimeout(()=>{ // инициализация фистров на старице категории
+        $('#sort').on('change', select)
+        $('input[name= "min"]').on('change', select)
+        $('input[name= "max"]').on('change', select)
+        $('input[name= "price:min"]').on('change', select)
+        $('input[name= "price:max"]').on('change', select)
+        $('#interface').on('change', select)
+        $('input[name="query"]').on('change',select)
+    }, 1000)
 
 
 
@@ -99,7 +243,8 @@ function cat(f) { //Это функция прилетет из браузера
 
 
 
-//--------------------------------//
+
+    // ---------------------------------------------------------------------------------------------------//
 window.isMobile = !1;
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     window.isMobile = !0
@@ -1016,3 +1161,7 @@ function t228_getFullHeight(el) {
     marginBottom = parseInt(marginBottom, 10) || 0;
     return el.offsetHeight + marginTop + marginBottom
 }
+
+
+
+//--------------------------------//

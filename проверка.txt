@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Проверочная работа CI
 <<<<<<< HEAD
 gfgdfgdfgdfgdfgdfg
@@ -7,3 +8,5 @@ gfgdfgdfgdfgdfgdfg
 soooo
 и так, должно быть готово
 >>>>>>> 231b6a7ab333c5fb6949d2e21a3d113f825ea918
+=======
+>>>>>>> b5a7786a83a97ebf1ba444d09878aaa1246b3f24

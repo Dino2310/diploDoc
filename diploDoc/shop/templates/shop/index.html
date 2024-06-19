@@ -3,8 +3,9 @@
 {% load index %}
 
 {% block contetnt %}
+<div id='product_card' class = 'btn_bsk'></div>
 <div id="rec749598652" class="r t-rec t-rec_pt_135 t-rec_pb_15"
-    style="padding-top:204px;padding-bottom:15px;background-color:#333333; " data-record-type="43"
+    style="padding-top:100px;padding-bottom:15px;background-color:#333333; " data-record-type="43"
     data-bg-color="#333333"><!-- T030 -->
     <div class="t030">
         <div class="t-container t-align_center">
@@ -207,42 +208,49 @@
                 </style>
             </svg></div>
         <div class="t754__parent t754__container_mobile-flex">
-            {% for i in prod %}
-            <div class="t754__col t-col t-col_3 t-align_center t-item js-product"><a class="js-product-link"
-                    href="#prodpopup">
+            {% for a in prod %}
+            <div class="t754__col t-col t-col_3 t-align_center t-item js-product"><span onclick="prod({{a.id}})">
                     <div class="t754__content">
                         <div class="t754__imgwrapper t1002__picture-wrapper " style="padding-bottom:76.923076923077%;">
-                            <img src="{{ i.image.url }}" data-original="{{ i.image.url }}"
+                            <img src="{{ a.image.url }}" data-original="{{ a.image.url }}"
                                 class="t754__img t754__img_first_hover t-img js-product-img"
-                                imgfield="li_gallery__{{i.id}}:::0" /><img src="{{ i.image.url }}"
-                                data-original="{{ i.image.url }}" class="t754__img t754__img_second t-img" />
+                                imgfield="li_gallery__{{a.id}}:::0" /><img src="{{ a.image.url }}"
+                                data-original="{{ a.image.url }}" class="t754__img t754__img_second t-img" />
                         </div>
                         <div class="t754__textwrapper">
                             <div class="t754__title t-name t-name_xs js-product-name" field="li_title__{{i.id}}">
-                                {{i.name}}</div>
+                                {{a.name}}</div>
                             <div class="t754__price-wrapper ">
                                 <div class="t754__price t754__price-item t-name t-name_xs" style="">
                                     <div class="t754__price-value js-product-price notranslate" translate="off"
-                                        field="li_price__{{i.id}}">{{i.price}}</div>
+                                        field="li_price__{{a.id}}">{{a.price}}</div>
                                     <div class="t754__price-currency">р.</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
-                <div class="t754__buttons t1002__btns-wrapper t1002__btns-wrapper_center"><a href="#prodpopup"
-                        class="t754__btn t-btn t-btn_sm"
-                        style="color:#f50606;background-color:#0af5dd;border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;font-family:Arial;">
-                        <table role="presentation" style="width:100%; height:100%;">
-                            <tr>
-                                <td>купить</td>
-                            </tr>
-                        </table>
-                    </a></div>
+                </span> 
+                <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
+                style="display:none;"></div>
+                <div class="t754__buttons t1002__btns-wrapper t1002__btns-wrapper_center"><span class="t754__btn t-btn t-btn_sm"
+                    style="color:black;padding: 0; background-color:#0af5dd;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;font-family:Arial; ">
+                    <table role="presentation" style="width:100%; height:100%;">
+                        {% with counter=count|index:a.id %}
+                        <tr id="btn{{a.id}}">
+                            <td class="button_bascet {% if not counter %} btn_bsk {% endif %}" onclick="bascet(0, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> -</td>
+                            <td class = 'counts{{a.id}} {% if  not counter  %} btn_bsk {% endif %}' style="width: 40px;" onchange=" bascet('N', {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> {{counter}}</td>
+                            <td class="button_bascet {% if not counter  %} btn_bsk {% endif %}" onclick="bascet(1, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> +</td>
+                            
+                            <td  class = 'counts{{a.id}} {% if  counter %} btn_bsk {% endif %}' style="width: 40px;" onclick="cart({{a.id}},{% if user.username %} '{{user.username}}' {% else %} false {% endif %})">В корзину</td>
+                            
+                        </tr>
+                        {% endwith %}
+                    </table>
+                </span></div>
             </div>
             {% endfor %}
 
-            <div class="t-popup" style="background-color: rgba(255,255,255,1);">
+            <div class="t-popup " style="background-color: rgba(255,255,255,1);">
                 <div class="t-popup__close" style="background-color: #ffffff;">
                     <div class="t-popup__close-wrapper"><svg role="presentation"
                             class="t-popup__close-icon t-popup__close-icon_arrow" width="26px" height="26px"

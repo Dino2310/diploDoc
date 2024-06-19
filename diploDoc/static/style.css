@@ -19,10 +19,16 @@
     color: darkgray
 }
 
+.dpl{
+    display: flex;
+}
+.btn_bsk{
+    display: none;
+}
 
 #product_card{
     background-color: rgba(255, 255, 255, 0.599);
-    display: none;
+    /* display: none;*/
     position: absolute;
     float: right;
     width: 73%;
@@ -31,6 +37,20 @@
     right: 0;
     z-index:100;
 }
+
+.button_bascet{
+    background-color: white;
+    margin: -33px;
+    border-radius: 5px;
+    border: 1px solid;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 34px;
+
+    
+}
+
 .prodimg{
     width: 40%;
     object-fit: contain;
