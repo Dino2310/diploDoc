@@ -74,6 +74,7 @@ def search (request):
 
 
 def learn(request):
+    
     return render(request, 'shop/learn.html', {})
 
 @ajax
