@@ -14,24 +14,16 @@ $('.t754__parent').css(
     }
 )
 
-setInterval(()=>{$('.t-slds__arrow-right').trigger('click')}, 3000)
 
-setInterval(()=>{
+
+setInterval(()=>{  // проверяет формированность страницы категории,  чтобы запустить формирование полей зарпосов
     if($('.js-store-parts-switcher').length){
         init}
 },100)
 
-function s(){
-    if($('.js-store-parts-switcher').length){
-        init()}
-    else{
-    setTimeout(d,10)
-}
-function d(){
-    setTimeout(s,10)}
-}
 
-function init() {
+
+function init() { // инициализирует при запуске создание и наопленение страницы категории в питоне приложения shop запускает пориложение ajax_ansvwer
     let list = $('.t951__sidebar-wrapper').children()
     $.ajax({
         url: '/a',
@@ -42,6 +34,7 @@ function init() {
             list.eq(0).html(data['content']['res'])
             $('#cat_prod').html(data['content']['prod'])
             $('.t-store__filter__search-and-sort').html(data['content']['search'])
+<<<<<<< HEAD
             list.eq(1).html("")
             if (!$('.js-store-parts-switcher')){
                 s()}
@@ -53,6 +46,9 @@ function init() {
                     list.eq(1).html("")
                 }
                 
+=======
+            list.eq(1).html("")           
+>>>>>>> edd4b94a37b2f4b995f59607b7c8e39cf043fcdf
         },
         error: function (s) {
             console.log('err');
@@ -66,8 +62,7 @@ function init() {
 
 
 
-function prod(id_prod){
-    
+function prod(id_prod){ // формирует модальнео окно товара в питоне приложения shop вызывает ф-ию prod
     $.ajax({
         url:'/prod',
         type: 'GET',
@@ -77,18 +72,20 @@ function prod(id_prod){
             close_display()
             $('#product_card').html(data['content']['res'])
             $('.t-popup__close-wrapper').click(close_display)
+            $('.btn_bsk').click(select)
+            $('.t706__carticon-counter').html(data['content']['prod'])
         },
     error: function (s) {
         console.log('err');
     }
     })
-    // $('#product_card').css({'display':'flex'})
+
 }
 
 
 
 
-function reloadcat(search, interface, sort, price_max, price_min, type_dev) {
+function reloadcat(search, interface, sort, price_max, price_min, type_dev) {// обработка и применения фильтров на старнице категории в питоне вызывает ф-ию ajax_ansvwer приложения shop
     let cat = $('.t951__sidebar-wrapper').children()
     $.ajax({
         url: '/a',
@@ -109,16 +106,9 @@ function reloadcat(search, interface, sort, price_max, price_min, type_dev) {
             console.log('err');
         }
     })
-    // setTimeout(on_input, 200)
- 
-    $('.js-store-filters-prodsnumber').html("столько-то")
-   
-
-
 }
 
-function close_display() {
-    console.log("close_display")
+function close_display() { // работа с модлальным окном товара на страницах индекс и категории
     $('.t456__positionfixed').toggleClass('btn_bsk')
     $('.t951__sidebar').toggleClass('btn_bsk')
     $('#product_card').toggleClass('btn_bsk')
@@ -126,9 +116,9 @@ function close_display() {
     $('#product_card').html("")
 }
 
-s()
 
-function select(){
+
+function select(){  //считывает все фильтры страницы категории и отправляет в аякс для применения данных
     let interface = []
     let price_max = $(`input[name= "max"]`).val()
     let price_min = $(`input[name= 'min']`).val()
@@ -143,7 +133,7 @@ function select(){
 
 } 
 
-function filter_price(val, type = 0) {
+function filter_price(val, type = 0) { // менят значение дипазона цены в фильтре старинцы катеогрии в зависимости от положения ползунка
     if (type){
         $(`input[name="price:${val}"]`).val($(`input[name=${val}]`).val())}
     else{
@@ -152,14 +142,10 @@ function filter_price(val, type = 0) {
 }
 
 
-function change_price() {
-    reloadcat($(`input[name= "max"]`).val(), $(`input[name= 'min']`).val()) 
-}
 
 
 
 
-setTimeout(on_input,200)
 
 init()
 
@@ -169,59 +155,46 @@ function cat(f) { //Это функция прилетет из браузера
     $('.js-store-filters-prodsnumber').html(f)
     $('.js-store-filters-prodsnumber').html("столько-то")
     select()
-
-
 }
 
 
 
-
-function on_input(){
-    $('#sort').on('change', select)
-    $('input[name= "min"]').on('change', select)
-    $('input[name= "max"]').on('change', select)
-    $('input[name= "price:min"]').on('change', select)
-    $('input[name= "price:max"]').on('change', select)
-    $('#interface').on('change', select)
-    $('input[name="query"]').on('change',select)
-}
-
-
-
-
-
-
-function cart(prod, name ){
+function cart(prod, name ){// функция обработки корзины ( кнопки в корзину на страницах категоии и старотовой) ф-ия в питоне count_prod
     $.ajax({
         url: '/count',
         type: "GET",
         data: { "fn": "fn",
              'id': prod,
              'user' : name,
-            'score':$(`#count${prod}`).val() },
+            'score':$(`.count${prod}`).val() },
 
         success: function (data) {
-
-            let count = data['content']['count']
             $(`#btn${prod}`).children().each(
                 function(){
                     $(this).toggleClass('btn_bsk')
                 }
             )
-            $(`#counts${prod}`).html(1)
-            console.log(name);
+            $(`.counts${prod}:not(.btn_bsk)`).html(1)
+            let score = data['content']['sum']
+            if (!score){
+                $('.t706__carticon-imgwrap').toggleClass('btn_bsk')
+            }
+            else{
+                $('.t706__carticon-imgwrap').removeClass('btn_bsk')
+                $('.t706__carticon-counter').html(score)
+            }
             
         },
         error: function (s) {
             console.log('err');
         }
     })
-
 }
 
 
-function bascet(fn, prod, user){
-    $.ajax({
+function bascet(fn, prod, user){/* функция обработки корзины ( кнопки в корзину на страницах категоии и старотовой) ф-ия 
+    в питоне count_prod в отличае от предыдущей ф-ункции работает уже с кнопками сложить  и вычесть*/
+    $.ajax({                    
         url: '/count',
         type: "GET",
         data: { "fn": fn,
@@ -230,30 +203,62 @@ function bascet(fn, prod, user){
             'score':$(`#count${prod}`).val() },
 
         success: function (data) {
-            let count = data['content']['count']
+            let score = data['content']['sum']
+            if (!score){
+                $('.t706__carticon-imgwrap').toggleClass('btn_bsk')
+            }
+            else{
+                $('.t706__carticon-imgwrap').removeClass('btn_bsk')
+                $('.t706__carticon-counter').html(score)
+            }
+            let count = data['content']['count'] 
 
-            $(`#counts${prod}`).html(count)
-            if(count == 0){
+            if(count){
+                $(`.counts${prod}:not(.btn_bsk)`).html(count)
+            }
+            else{                
                 $(`#btn${prod}`).children().each(
                     function(){
                         $(this).toggleClass('btn_bsk')
-                    }
-                )
+                }
+            )
+
             }
-            console.log(count);
-            console.log(fn);
             
         },
         error: function (s) {
             console.log('err');
         }
     })
-
 }
 
 
-// setTimeout(s,100)
 
+setTimeout(()=>{ // инициализация фистров на старице категории
+        $('#sort').on('change', select)
+        $('input[name= "min"]').on('change', select)
+        $('input[name= "max"]').on('change', select)
+        $('input[name= "price:min"]').on('change', select)
+        $('input[name= "price:max"]').on('change', select)
+        $('#interface').on('change', select)
+        $('input[name="query"]').on('change',select)
+    }, 1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ---------------------------------------------------------------------------------------------------//
 window.isMobile = !1;
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     window.isMobile = !0
