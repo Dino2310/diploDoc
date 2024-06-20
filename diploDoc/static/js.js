@@ -133,7 +133,7 @@ function filter_price(val, type = 0) { // менят значение дипаз
 
 
 
-
+init()
 
 function cat(f) { //Это функция прилетет из браузера  страница category при выборе все, кнопка, контроллер, реле
     $('.t951__sidebar-wrapper').children().children().removeClass('active')

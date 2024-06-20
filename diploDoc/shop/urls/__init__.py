@@ -1,4 +1,4 @@
-from .dmitrii import urlpatterns as one 
-from .urls_test import urlpatterns as two
+from .dmitrii import urlpatterns as dmitrii
+from .alexandr import urlpatterns as alexandr
 
-urlpatterns = one + two
+urlpatterns = dmitrii + alexandr
