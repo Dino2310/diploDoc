@@ -125,8 +125,8 @@ class ProductsForm(forms.ModelForm):
     ))
     
     class Meta:
-        model = Products
-        fields = ["orders", "product", "price", "quantity", "discount", "comment", "slug"]
+        model = ReservProduct
+        fields = ["order", "product", "price", "quantity", "discount", "comment", "slug"]
 
 
 class EducationForm(forms.ModelForm):
