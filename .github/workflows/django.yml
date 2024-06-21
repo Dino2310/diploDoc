@@ -36,6 +36,7 @@ jobs:
         user: ${{secrets.USERNAME}}
         command: |
             cd elicta7e.beget.tech;
+            git reset --hard
             git checkout main;
             git pull origin main;
             elicta7e@vortex:~/elicta7e.beget.tech [0] $ touch tmp/restart.txt
