@@ -114,7 +114,7 @@ class Order(models.Model):
     paid = models.TextField(
         default="SBP", verbose_name='Способ оплаты', blank= True, null= True
         )
-    delivery_address = models.ForeignKey(
+    deliveryAddress = models.ForeignKey(
         Delivery_address, on_delete=models.CASCADE, verbose_name="Адрес Доставки", blank= True, null= True
         )
    

@@ -48,9 +48,7 @@ def index(request):
     }
     return render(request, 'shop/index.html', content)
 
-def search(request):
-    if request.method == "POST":
-        return index(request)
+
 
 
 def category(request):
@@ -63,13 +61,16 @@ def category(request):
 
 def search (request):
     answer = request.POST.get('search')
-    products = Product.objects.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))
-    ''' тут ещё добавиьт поиск по обучяющим материалам'''
+    products = set(list(Product.objects.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))) 
+                   + list(Education.objects.filter(Q(**{'name__icontains':answer}) | Q(**{'word__icontains':answer})))  
+                   + [Education.objects.get(id = i.education_id) for i in ContetnLearn.objects.filter(**{'text__icontains':answer})])
+
     contetnt = {'products':products,
-        'sum':summ(request)}
+        'sum':summ(request),
+        }
     return render(request, 'shop/search.html', contetnt)
 
-    
+ 
 
 
 def learn(request):

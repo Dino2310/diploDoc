@@ -3,20 +3,21 @@
 <div class="section">
     <div class="container">
         <div class="box " style="min-height:80vh; overflow-y:scroll;">
+            {% for i in ord %}
             <div class="columns is-vcentered">
                 <div class="column is-1">
                     <img src="../../media/default.png" alt="">
                 </div>
                 <div class="column is-3">
-                    <div class="subtitle"> Адрес доставки</div>
+                    <div class="subtitle"> {{i.deliveryaddress}}</div>
                     <div class="subtitle">
-                        Товары , через ,запаятую
+                        {% for j in i.reservproduct_set.all %} {{j.product.name}},{% endfor %}
                     </div>
                 </div>
                 <div class="column is-2 has-text-centered">
                     <div class="subtitnle">
                         Кол-во:<br>
-                        2шт
+                        шт
                     </div>
                 </div>
                 <div class="column is-2 has-text-centered">
@@ -31,6 +32,7 @@
                       </button>
                   </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

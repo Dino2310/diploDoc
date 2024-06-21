@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% load index %}
+{% block contetnt %}
+
+<div style="margin-top: 200px;">
+    <div>личные данные
+        <div>{{user.first_name}}</div> <button>изменить</button>
+        <div>{{user.second_name}}</div> <button>изменить</button>
+        <div>{{user.email}}</div> <button>изменить</button>
+        <div>{{user.username}}</div> <button>изменить</button> <br>
+        <img src="{{user.image.url}}" alt=""> <button>изменить</button> 
+        <h3>Добавиь в модели и вывести сюда номер телефона</h3> <button>изменить</button>
+    </div>
+    <div>Заказы
+        {% for i in ord %}
+        <div>
+            {{i}} {% if i.status == 'assembling' %} <button>Пепрейти к оформлению </button> {% else %} <button>Подобнее</button>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        Адреса Достакви
+
+        {% for i in delivery %}
+        <div>
+            {{i}}
+        </div>
+        {% endfor %}
+        <button>Добавить адрес доставки</button>
+    </div>
+</div>
+
+{% endblock %}
