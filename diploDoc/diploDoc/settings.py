@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'django_ajax',
     'users',
     'shop',
-    'training'
+    'training',
+    'cms'
+
 ]
 
 MIDDLEWARE = [

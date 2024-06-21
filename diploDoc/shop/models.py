@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+STATUS = [
+    ('open', 'open'),
+    ('archived', 'archived')
+]
 
 class Product(models.Model):
     """Модель описания продукта"""
@@ -27,6 +30,7 @@ class Product(models.Model):
     attributes = models.TextField(
         max_length=1000, blank=True, null=True, verbose_name='Характеристики'
         )
+    status = models.CharField(max_length=255, choices=STATUS, default='open')
 
 
     def __str__(self):
@@ -155,7 +159,7 @@ class Education(models.Model):
         upload_to='products/%Y/%m/%d', blank=True, verbose_name='Изображение'
         )
     name = models.CharField(
-        max_length=200, unique=True, verbose_name='Наменование продукта'
+        max_length=200, unique=True, verbose_name='Наменование'
         )
     attributes = models.TextField(
         max_length=1000, blank=True, null=True, verbose_name='Описание'
@@ -164,9 +168,14 @@ class Education(models.Model):
         max_length=200, unique=True, blank=True, null=True, verbose_name='URL'
         )
    
-    def __str__(self):
-        return self.slug
+    
 
+class ContetnLearn(models.Model):
+    image = models.ImageField(
+        upload_to='products/%Y/%m/%d', blank=True,  default= None, null = True )
+    text = models.TextField(blank=True, default= None, null = True)
+    education = models.ForeignKey(Education, on_delete=models.SET_NULL, null= True)
+    queue = models.PositiveSmallIntegerField()
 
 
 class Categorical(models.Model):
