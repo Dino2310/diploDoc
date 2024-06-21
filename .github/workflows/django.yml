@@ -17,15 +17,15 @@ jobs:
 
     steps:
     
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+    # - uses: actions/checkout@v4
+    # - name: Set up Python ${{ matrix.python-version }}
+    #   uses: actions/setup-python@v3
+    #   with:
+    #     python-version: ${{ matrix.python-version }}
+    # - name: Install Dependencies
+    #   run: |
+    #     python -m pip install --upgrade pip
+    #     pip install -r requirements.txt
 
 
     - name: Run command on remote server
@@ -38,3 +38,4 @@ jobs:
             cd elicta7e.beget.tech;
             git checkout main;
             git pull origin main;
+            elicta7e@vortex:~/elicta7e.beget.tech [0] $ touch tmp/restart.txt
