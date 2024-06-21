@@ -1,14 +1,9 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'bulma.min.css' %}">
-</head>
-<body>
-<nav class="navbar" role="navigation" aria-label="main navigation">
+{% load index %}
+
+{% block contetnt %}
+<nav class="navbar" role="navigation" aria-label="main navigation" style="margin-top: 103px;">
 
 
     <div id="navbarBasicExample" class="navbar-menu">
@@ -26,8 +21,7 @@
 
     </div>
 </nav>
-{% block content %}
+{% block content_cms %}
 {% endblock %}
 
-</body>
-</html>
+{% endblock %}

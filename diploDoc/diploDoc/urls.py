@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('CMS/', admin.site.urls),
+    path('CMS_admin/', admin.site.urls),
     path('', include(('shop.urls', 'shop'), namespace='shop')),
     path('users/', include(('users.urls', 'users'), namespace='users')),
     # path('training', include(('training.urls', 'training'), namespace= 'training' )),

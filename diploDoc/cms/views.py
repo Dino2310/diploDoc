@@ -32,6 +32,7 @@ def edit_product(request,pk):
         form.save()
         return redirect('cms:products')
     return render(request, 'product_form.html', {'form': form})
+
 def archive_product(request,pk):
     product= Product.objects.get(pk=pk)
     if product.status =='open':
