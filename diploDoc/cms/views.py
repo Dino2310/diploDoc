@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from shop.models import Product
+from shop.models import *
 from shop.forms import *
 
 def products(request):
