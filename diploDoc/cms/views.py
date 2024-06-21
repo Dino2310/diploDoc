@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from shop.models import Product
-from shop.forms import ProductForm
+from .models import Product
+from .forms import ProductForm
 
 def products(request):
     filter = request.GET.get('filter')
