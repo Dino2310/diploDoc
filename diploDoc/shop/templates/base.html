@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="{% static 'tilda/css/tilda-blocks-page49061893.min.css' %}" type="text/css" media="all"
         onerror="this.loaderr='y';" />
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% if 'cms' in request.path|split_url:'/' %}
     <link rel="stylesheet" href="{% static 'bulma.min.css' %}">
-
+    {% endif %}
     <!-- stop -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -671,6 +672,9 @@
                             <li class="t456__list_item" style="padding:0 15px;"><a class="t-menu__link-item"
                                     href="{% url 'shop:category' %}" data-menu-submenu-hook=""
                                     data-menu-item-number="2">Категории</a></li>
+                            <li class="t456__list_item" style="padding:0 15px;"><a class="t-menu__link-item"
+                                    href="{% url 'shop:category' %}" data-menu-submenu-hook=""
+                                    data-menu-item-number="2">  </a></li>
                             <li class="t456__list_item" style="padding:0 15px;"><a class="t-menu__link-item"
                                     href="{% url 'shop:learn' %}" data-menu-submenu-hook=""
                                     data-menu-item-number="3">Обучение</a>
