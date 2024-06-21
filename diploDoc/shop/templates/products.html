@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="section">
+    <div class="is-flex is-justify-content-space-between">
+        <a href="{% url 'shop:add_product' %}" class="button is-medium is-warning">
+        Добавить товар
+    </a>
+         <div class="buttons">
+            <a href ="{% url 'shop:products' %}" class="button {% if not filter %} is-success {% endif %}"> Все товары</a>
+            <a href ="{% url 'shop:products' %}?filter=archived" class="button {% if filter %} is-success {% endif %}">Архив</a>
+        </div>
+    </div>
+    {% if not products %}
+    <div class="section is-large ">
+        <div class="container">
+            <div class="columns is-centered is-vcentered">
+                <div class="column is-5 has-text-centered">
+                    <div class="title">
+                        Пока нет товаров
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% else %}
+
+
+    <div class="box mt-6">
+        {% for product in products %}
+        <div class="block">
+            <div class="columns is-vcentered">
+                <div class="column is-1">
+                    <img src="{{product.image.url}}" alt="">
+                </div>
+                <div class="column is-4">
+                    <div class="title is-5">
+                        {{product.title}}
+                    </div>
+                    <div class="subtitle is-6">
+                        {{product.description}}
+                    </div>
+
+                </div>
+                <div class="column is-2">
+                    <div class="title is-5">
+                        Кол-во:
+                        {{product.quantity}}
+
+                    </div>
+                </div>
+                <div class="column is-5 has-text-right">
+                    <a href="{% url 'shop:edit_product' product.pk %}" class="button is-info">
+                        <ion-icon name="create"></ion-icon>
+                    </a>
+                    <a class="button is-info" href="{% url 'shop:archive_product' product.pk %}">
+                        <ion-icon name="archive"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
