@@ -10,11 +10,14 @@ def products(request):
     return render(request,'products.html',{'products': products,'filter':filter})
 
 def orders(request):
-    return render(request,'orders.html',{})
+    ord = Order.objects.all()
+    return render(request,'orders.html',{'ord':ord})
 def customers(request):
-    return render(request,'customers.html',{})
+    user = User.objects.all()
+    return render(request,'customers.html',{'user':user})
 def ed_materials(request):
-    return render(request,'ed_materials.html',{})
+    meterials = Education.objects.all()
+    return render(request,'ed_materials.html',{'meterials':meterials})
 
 def add_product(request):
     form = ProductForm(request.POST or None,request.FILES or None)
