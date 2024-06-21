@@ -11,12 +11,12 @@
                     {% for i in meterials %}
                     <div class="columns is-vcentered">
                         <div class="column is-1">
-                            <img src="../../static/image/icon.png" alt="">
+                            <img src="{{i.image.url}}" alt="">
                         </div>
                         <div class="column is-3">
-                            <div class="title is-4">i.name</div>
+                            <div class="title is-4">{{i.name}}</div>
                             <div class="subtitle">
-                                i.word
+                                {{i.word}}
                             </div>
                         </div>
                         <div class="column has-text-right">
