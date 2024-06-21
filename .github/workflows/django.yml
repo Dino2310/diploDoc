@@ -37,4 +37,4 @@ jobs:
         command: |
             cd elicta7e.beget.tech;
             git checkout main;
-            git pull;
+            git pull origin main;
