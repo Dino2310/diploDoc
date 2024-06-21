@@ -71,8 +71,14 @@ def search (request):
 
 
 def learn(request):
-    
-    return render(request, 'shop/learn.html', {})
+    learn = Education.objects.all()
+    n = []
+    for i in range(0, len(learn), 3):
+        n.append(learn[i:i+3])
+    contetnt = {
+        "learn" : n,
+    }
+    return render(request, 'shop/learn.html', contetnt)
 
 @ajax
 def prod(request):
