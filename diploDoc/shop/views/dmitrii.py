@@ -13,6 +13,8 @@ cat_lib = {
     'relay' :['relay']
 }
 
+
+
 def summ(request):
     if request.user.is_authenticated:
         if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))):

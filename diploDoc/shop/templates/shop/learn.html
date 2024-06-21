@@ -16,7 +16,7 @@ data-record-type="1073" data-bg-color="#333333"><!-- t1073 -->
                 <div class="t1073__bgimg t-margin_auto t-bgimg" data-image-width="360"
                     data-image-height="400" bgimgfield="li_img__3844859894940"
                     data-original="{{j.image.url}}"
-                    style="background-image: url({{j.image.url}});"
+                    style="background-image: url({{j.image.url}}); width: auto; height: 10em; margin-top: 1em;"
                     itemscope itemtype="http://schema.org/ImageObject">
                     <meta itemprop="image"
                         content="{{j.image.url}}">
@@ -26,7 +26,7 @@ data-record-type="1073" data-bg-color="#333333"><!-- t1073 -->
                         {{ j.name }}</div>
                     <div class="t-card__uptitle t-descr t-descr_xxs" field="li_subtitle__3844859894940">
                         краткое описание возможностей</div>
-                    <div class="t-card__descr t-descr t-descr_xs" field="li_descr__3844859894940">{{j.attributes}}<br /><br /></div><a href="ссылка по Контроллер умного дома"
+                    <div class="t-card__descr t-descr t-descr_xs" field="li_descr__3844859894940">{{j.attributes}}<br /><br /></div><a href="{% url 'shop:detail' j.slug %}"
                         class="t-card__link" target="_blank">
                         <div class="t-card__btn t-btn t-btn_sm"
                             style="color:#ffffff;background-color:#eb633d;border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px;font-family:Arial;"
