@@ -5,13 +5,17 @@
 {% block contetnt %}
 
 <div style='  scrollbar-width: thin; scrollbar-color: rgb(100, 98, 98) white; margin-top: 120px;'>
-    {% for product in products %}
-    <div></div>
+    {% for res in products %}
+        {% if res %} <span onclick="prod({{res.id}})"> {% else  %} <a href="{% url 'shop:detail' j.slug %}"> {% endif %}
+        <div style="margin-top: 30px;">
 
-    <div>{{ product}}</div>
-    <img src="{{product.image.url}}" style="max-width:230px; max-height:95px; width: auto; height: auto;" alt="">
-    <div>{{ product}}</div>
-    <button>Подробнее</button>
+            <div>{{ res}}</div>
+            <img src="{{res.image.url}}" style="max-width:230px; max-height:95px; width: auto; height: auto;"
+                alt=""> <br>
+
+        </div>
+        {% if res.price %} </a>span> {% else  %} </a> {% endif %}
     {% endfor %}
+
 </div>
 {% endblock %}
