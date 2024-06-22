@@ -5,7 +5,7 @@ from django.db.models import Count, Sum, Avg, Max, Min
 from ..models import*
 
 def client(request):
-    ord = Order.objects.filter(user = request.user).order_by('date')
+    ord = Order.objects.filter(user = request.user).order_by('-date')
     delivery = Delivery_address.objects.filter(user = request.user)
 
     contetn = {"ord":ord,

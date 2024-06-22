@@ -78,6 +78,7 @@ class SubUser(models.Model):
     delivery_address = models.TextField(
         max_length=1000, blank=True, null=True, verbose_name='Адрес доставки'
         )
+    phone = models.CharField(max_length=20, null = True, default='+7(000)000-00-00')
 
 
     def __str__(self):

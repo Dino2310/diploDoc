@@ -11,6 +11,7 @@ urlpatterns = [
     path('a/', views.ajax_ansvwer, name = 'a'),
     path('count/', views.count_prod, name='count'),
     path('about/', views.about, name='about'),
-    path('detail/<str:slug>', views.detail, name='detail')
+    path('detail/<str:slug>', views.detail, name='detail'),
+    path('client_edit/', views.client_edit, name='client_edit')
 
     ]
