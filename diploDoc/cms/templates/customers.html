@@ -2,25 +2,27 @@
 {% block content_cms %}
 <div class="section">
     <div class="dox">
+        {% for user in users %}
         <div class="columns is-vcentered">
             <div class="column is-1">
-                <img src="../../static/image/icon.png" alt="">
+                <img src="{{user.image.url}}" alt="">
             </div>
             <div class="column is-2">
                 Имя: <br>
-                Пузиков Иван
+                user.first_name
+                user.second_name
             </div>
             <div class="column is-2">
                 Почта:<br>
-                ivan@example.com
+                user.email
             </div>
             <div class="column is-2">
                 Статус:<br>
-                Активен
+                user.is_acitve
             </div>
             <div class="column is-2">
                 Номер телефона:<br>
-                +799098675656756
+                user.phone
             </div>
             <div class="column has-text-right">
                 <button class="button">

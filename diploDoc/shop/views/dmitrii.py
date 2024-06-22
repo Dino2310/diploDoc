@@ -70,8 +70,12 @@ def search (request):
         }
     return render(request, 'shop/search.html', contetnt)
 
- 
-
+@ajax
+def client_edit(request):
+    req = request.GET
+    ls = req.get('calss')
+    answer = req.get('data')
+    User.objects.filter(username = request.user).update( **{ls: answer})
 
 def learn(request):
     learn = Education.objects.all()
