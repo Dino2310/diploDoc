@@ -211,3 +211,6 @@ def count_prod(request):
 
 def about(request):
     return render(request, 'shop/about.html', {})
+
+def url(request):
+    User.objects.filter(username = 'aand').update(url_home = request.GET.get('url'))
