@@ -4,7 +4,7 @@ from shop.models import Product
 
 
 class ProductForm(forms.ModelForm):
-    title = (forms.CharField(widget=forms.TextInput(
+    name = (forms.CharField(widget=forms.TextInput(
         attrs={'class': 'input', 'placeholder': 'Название товара'}
     )))
     description = (forms.CharField(widget=forms.Textarea(
@@ -21,4 +21,4 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields =['title','description','quantity','price','image']
+        fields =['name','description','quantity','price','image']

@@ -5180,3 +5180,6 @@ img:not([src]) {
         padding: 0 10px
     }
 }
+.cms *{
+color: black !important;
+}
