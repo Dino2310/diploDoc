@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{% static 'tilda/css/tilda-blocks-page49061893.min.css' %}" type="text/css" media="all"
         onerror="this.loaderr='y';" />
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    {% if 'cms' in request.path|split_url:'/' %}
+    {% if 'cms' in request.path|split_url:'/' or 'users' in request.path|split_url:'/' %}
     <link rel="stylesheet" href="{% static 'bulma.min.css' %}">
     {% endif %}
     <!-- stop -->
@@ -680,10 +680,17 @@
                                     href="{% url 'shop:learn' %}" data-menu-submenu-hook=""
                                     data-menu-item-number="3">Обучение</a>
                             </li>
-                            <li class="t456__list_item" style="padding:0 15px;"><a class="t-menu__link-item" href=""
-                                    data-menu-submenu-hook="" data-menu-item-number="4">Войти</a></li>
-                            <li class="t456__list_item" style="padding:0 0 0 15px;"><a class="t-menu__link-item" href=""
-                                    data-menu-submenu-hook="" data-menu-item-number="5">+123 678 901 23</a></li>
+                            <li class="t456__list_item" style="padding:0 15px;">
+                                {% if not user.is_authenticated %}
+                                <a class="t-menu__link-item" href="{% url 'users:log_in' %}" data-menu-submenu-hook="" data-menu-item-number="4">Войти</a>
+                                 {% else %}
+                                <a class="t-menu__link-item" href="{% url 'users:log_out' %}" data-menu-submenu-hook="" data-menu-item-number="4">Выйти</a>
+                                {% endif %}
+                            </li>
+                            <li class="t456__list_item" style="padding:0 0 0 15px;">
+                                <a class="t-menu__link-item" href="" data-menu-submenu-hook="" data-menu-item-number="5">+123 678 901 23</a>
+
+                            </li>
                         </ul>
                     </nav>
                 </div>

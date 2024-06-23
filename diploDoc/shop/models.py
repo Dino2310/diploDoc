@@ -123,6 +123,8 @@ class Order(models.Model):
         return f"Корзина {self.user.username} {self.status=} "
 
 
+    def total_sum(self):
+        return sum([i.price for i in self.reservproduct_set.all()])
 
 
 

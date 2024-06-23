@@ -26,7 +26,7 @@
     {% else %}
 
 
-    <div class="box mt-6">
+    <div class="box mt-2">
         {% for product in products %}
         <div class="block">
             <div class="columns is-vcentered">
@@ -34,12 +34,10 @@
                     <img src="{{product.image.url}}" alt="">
                 </div>
 
-                <div class="column is-3">
-                    <div class="title is-4">
-                        {{product.name}}
-                    </div>
+                <div class="column is-4">
+       
                     <div class="title is-5">
-                        {{product.title}}
+                        {{product.name}}
                     </div>
                     <div class="subtitle is-6">
                         {{product.description}}
@@ -53,7 +51,7 @@
 
                     </div>
                 </div>
-                <div class="column is-5 has-text-right">
+                <div class="column is-4 has-text-right">
                     <a href="{% url 'cms:edit_product' product.pk %}" class="button is-info">
                         <ion-icon name="create"></ion-icon>
                     </a>
