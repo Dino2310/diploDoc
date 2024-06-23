@@ -78,6 +78,7 @@ class SubUser(models.Model):
     delivery_address = models.TextField(
         max_length=1000, blank=True, null=True, verbose_name='Адрес доставки'
         )
+    phone = models.CharField(max_length=20, null = True, default='+7(000)000-00-00')
 
 
     def __str__(self):
@@ -114,7 +115,7 @@ class Order(models.Model):
     paid = models.TextField(
         default="SBP", verbose_name='Способ оплаты', blank= True, null= True
         )
-    delivery_address = models.ForeignKey(
+    deliveryAddress = models.ForeignKey(
         Delivery_address, on_delete=models.CASCADE, verbose_name="Адрес Доставки", blank= True, null= True
         )
    
@@ -159,7 +160,7 @@ class Education(models.Model):
         upload_to='products/%Y/%m/%d', blank=True, verbose_name='Изображение'
         )
     name = models.CharField(
-        max_length=200, unique=True, verbose_name='Наменование продукта'
+        max_length=200, unique=True, verbose_name='Наменование'
         )
     attributes = models.TextField(
         max_length=1000, blank=True, null=True, verbose_name='Описание'
@@ -168,9 +169,14 @@ class Education(models.Model):
         max_length=200, unique=True, blank=True, null=True, verbose_name='URL'
         )
    
-    def __str__(self):
-        return self.slug
+    
 
+class ContetnLearn(models.Model):
+    image = models.ImageField(
+        upload_to='products/%Y/%m/%d', blank=True,  default= None, null = True )
+    text = models.TextField(blank=True, default= None, null = True)
+    education = models.ForeignKey(Education, on_delete=models.SET_NULL, null= True)
+    queue = models.PositiveSmallIntegerField()
 
 
 class Categorical(models.Model):

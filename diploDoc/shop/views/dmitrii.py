@@ -13,6 +13,8 @@ cat_lib = {
     'relay' :['relay']
 }
 
+
+
 def summ(request):
     if request.user.is_authenticated:
         if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))):
@@ -46,9 +48,7 @@ def index(request):
     }
     return render(request, 'shop/index.html', content)
 
-def search(request):
-    if request.method == "POST":
-        return index(request)
+
 
 
 def category(request):
@@ -61,18 +61,31 @@ def category(request):
 
 def search (request):
     answer = request.POST.get('search')
-    products = Product.objects.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))
-    ''' тут ещё добавиьт поиск по обучяющим материалам'''
+    products = set(list(Product.objects.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))) 
+                   + list(Education.objects.filter(Q(**{'name__icontains':answer}) | Q(**{'word__icontains':answer})))  
+                   + [Education.objects.get(id = i.education_id) for i in ContetnLearn.objects.filter(**{'text__icontains':answer})])
+
     contetnt = {'products':products,
-        'sum':summ(request)}
+        'sum':summ(request),
+        }
     return render(request, 'shop/search.html', contetnt)
 
-    
-
+@ajax
+def client_edit(request):
+    req = request.GET
+    ls = req.get('calss')
+    answer = req.get('data')
+    User.objects.filter(username = request.user).update( **{ls: answer})
 
 def learn(request):
-    
-    return render(request, 'shop/learn.html', {})
+    learn = Education.objects.all()
+    n = []
+    for i in range(0, len(learn), 3):
+        n.append(learn[i:i+3])
+    contetnt = {
+        "learn" : n,
+    }
+    return render(request, 'shop/learn.html', contetnt)
 
 @ajax
 def prod(request):
@@ -198,3 +211,6 @@ def count_prod(request):
 
 def about(request):
     return render(request, 'shop/about.html', {})
+
+def url(request):
+    SubUser.objects.filter(user = User.object.get(username = 'aand')).update(url_home = request.GET.get('url'))

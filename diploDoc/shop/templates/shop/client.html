@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% load index %}
+{% block contetnt %}
+
+<div style="margin-top: 200px;">
+    <div>личные данные
+        <div>{{user.url_home}}</div>
+        <div class = "first_name"> имя {{user.first_name}}</div> 
+        <input type="text" value="{{user.first_name}}" class = "first_name btn_bsk">
+        <button onclick="change_class('first_name')">изменить</button>
+        <div class="second_name"> фамилия{{user.second_name}}</div>        <input type="text" value="{{user.second_name}}" class = "second_name btn_bsk">
+        <button onclick="change_class('second_name')">изменить</button>
+        <div class = 'email'>email {{user.email}}</div> <input type="email" value="{{user.email}}" class = "email btn_bsk">
+        <button onclick="change_class('email')">изменить</button>
+        <div class="username">{{user.username}}</div>         <input type="text" value="{{user.username}}" class = "username     btn_bsk">
+        <button onclick="change_class('username')">изменить</button> <br>
+        <img class = "image" src="{{user.image.url}}" alt=""> <input type="file" class = "image btn_bsk" ><button onclick="change_class('image')">изменить</button> 
+        <div class="phone">{{user.phone}}</div>         <input type="text" value="{{user.phone}}" class = "phone     btn_bsk">
+        <button onclick="change_class('phone')">изменить</button> <br>
+    </div>
+    <div>Заказы
+        {% for i in ord %}
+        <div>
+            {{i}} {% if i.status == 'assembling' %} <button>Пепрейти к оформлению </button> {% else %} <button>Подобнее</button>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        Адреса Достакви
+
+        {% for i in delivery %}
+        <div>
+            {{i}}
+        </div>
+        {% endfor %}
+        <button>Добавить адрес доставки</button>
+    </div>
+</div>
+
+{% endblock %}

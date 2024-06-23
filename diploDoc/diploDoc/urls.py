@@ -22,7 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('CMS_admin/', admin.site.urls),
     path('', include(('shop.urls', 'shop'), namespace='shop')),
-    path('users/', include(('users.urls', 'users'), namespace='users')),
+    # path('users/', include(('users.urls', 'users'), namespace='users')),
     # path('training', include(('training.urls', 'training'), namespace= 'training' )),
     path('cms/', include(('cms.urls', 'cms'), namespace='cms')),
 ]

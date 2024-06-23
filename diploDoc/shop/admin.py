@@ -9,5 +9,6 @@ admin.site.register(Order)
 admin.site.register(ReservProduct)
 admin.site.register(Education)
 admin.site.register(Categorical)
+admin.site.register(ContetnLearn)
 
 # Register your models here.

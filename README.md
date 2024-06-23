@@ -3,7 +3,7 @@
 Справочник пространства имён проекта<br>
 https://docs.google.com/spreadsheets/d/1zxatDJ5MitSU15L_71qKW-9NtgkCsKYvWGAuu94PJ90/edit?usp=sharing<br><br>
 Параметры суперпользователя <br>
-&nbsp;&nbsp;&nbsp;&nbsp;http://127.0.0.1:8000/CMS/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;http://127.0.0.1:8000/cms_admin/<br>
 &nbsp;&nbsp;&nbsp;&nbsp;login: aand<br>
 &nbsp;&nbsp;&nbsp;&nbsp;password: QWERty1234!<br>
 <br>
