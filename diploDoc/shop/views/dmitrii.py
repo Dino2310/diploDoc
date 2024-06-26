@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django_ajax.decorators import ajax
 from django.db.models import Count, Sum, Avg, Max, Min
 from django.db.models import Q
-
+import requests
 from ..models import*
 
 
@@ -214,3 +214,9 @@ def about(request):
 
 def url(request):
     SubUser.objects.filter(user = User.object.get(username = 'aand')).update(url_home = request.GET.get('url'))
+
+
+def bot (request):
+    url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    data = request
+    requests.post(url, json=data)
