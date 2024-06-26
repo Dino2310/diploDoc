@@ -35,7 +35,9 @@
                 <div class="column  has-text-centered">
                     <div class="content">
                         Статус:<br>
-                        {{ i.status }}
+                        <tag class="tag {{i.get_status_style}}">
+                            {{i.status}}
+                        </tag>
                     </div>
                 </div>
                   <div class="column has-text-centered">
