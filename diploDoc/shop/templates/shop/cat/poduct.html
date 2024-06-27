@@ -38,10 +38,57 @@
                         </div>
                     </div>
                     <div class="t754__price-wrapper  " >
+                        <div>тип устройства</div>
+                        {% if cat.buttons  %}
                         <div class="t754__price t754__price-item t-name t-name_xs">
                             <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >{{prod.categorical_set.relay}} </div>
+                                field="li_price__1497456130776" >Кнопка </div>
                         </div>
+                        {% endif %}
+                        {% if cat.sensors  %}
+                        <div class="t754__price t754__price-item t-name t-name_xs">
+                            <div class="t754__price-value js-product-price notranslate" translate="off"
+                                field="li_price__1497456130776" >датчик </div>
+                        </div>
+                        {% endif %}
+                        {% if cat.panels_management  %}
+                        <div class="t754__price t754__price-item t-name t-name_xs">
+                            <div class="t754__price-value js-product-price notranslate" translate="off"
+                                field="li_price__1497456130776" >Панель управления </div>
+                        </div>
+                        {% endif %}
+                        {% if cat.controllers_management  %}
+                        <div class="t754__price t754__price-item t-name t-name_xs">
+                            <div class="t754__price-value js-product-price notranslate" translate="off"
+                                field="li_price__1497456130776" >Локалььный контроллер </div>
+                        </div>
+                        {% endif %}
+                        {% if cat.relay  %}
+                        <div class="t754__price t754__price-item t-name t-name_xs">
+                            <div class="t754__price-value js-product-price notranslate" translate="off"
+                                field="li_price__1497456130776" >Релейная сборка </div>
+                        </div>
+                        {% endif %}
+                        <div>Интерфейс</div>
+                        {% if cat.RS485  %}
+                        <div class="t754__price t754__price-item t-name t-name_xs">
+                            <div class="t754__price-value js-product-price notranslate" translate="off"
+                                field="li_price__1497456130776" >RS485 </div>
+                        </div>
+                        {% endif %}
+                        {% if cat.Wi_Fi  %}
+                        <div class="t754__price t754__price-item t-name t-name_xs">
+                            <div class="t754__price-value js-product-price notranslate" translate="off"
+                                field="li_price__1497456130776" >Wi_Fi </div>
+                        </div>
+                        {% endif %}
+                        {% if cat.TWI  %}
+                        <div class="t754__price t754__price-item t-name t-name_xs">
+                            <div class="t754__price-value js-product-price notranslate" translate="off"
+                                field="li_price__1497456130776" >TWI </div>
+                        </div>
+                        {% endif %}
+                        
                     </div>
                     <div class="t754__price-wrapper  " style="margin-top: 10em;" >
                         <div class="t754__price t754__price-item t-name t-name_xs">
