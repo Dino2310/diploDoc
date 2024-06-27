@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% load index %}
+{% block bulma %}
+        <link rel="stylesheet" href="{% static 'bulma.min.css' %}">
+        {% endblock %}
 {% block contetnt %}
 
 <div style="margin-top: 200px;">

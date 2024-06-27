@@ -101,9 +101,10 @@ def prod(request):
 
     
     contetn = {
-        'prod': Product.objects.filter(id = c_id)[0],
+        'prod': (prod := Product.objects.filter(id = c_id)[0]),
         "counter": counter,
-        'sum':summ(request)
+        'sum':summ(request),
+        'cat':Categorical.objects.get(prod = prod)
 
     }
     return {'res' : render(request, 'shop/cat/poduct.html', contetn),
