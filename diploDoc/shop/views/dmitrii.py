@@ -229,9 +229,8 @@ def bot (request):
 
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
-    mess = answer
-    chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    requests.get(chat).json()
+    mess = update_id+1 != answer.get('update_id')
+
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
         #     name = res.get('from').get('first_name')
@@ -254,9 +253,11 @@ def bot (request):
         #     mess = answer
         #     requests.get(chat).json()
 
-        # update_id = answer.get('update_id')
+    update_id = answer.get('update_id')
             
     # else: 
     #     mess = 'повторное сообщение'
     #     requests.get(chat).json()
+    chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+    requests.get(chat).json()
     return index(request)
