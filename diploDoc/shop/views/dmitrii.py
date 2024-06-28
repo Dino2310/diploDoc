@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django_ajax.decorators import ajax
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.db.models import Count, Sum, Avg, Max, Min
 from django.db.models import Q
 import requests
 from ..models import*
+from django.views.decorators.csrf import csrf_exempt
 
 
 cat_lib = {
@@ -217,7 +220,17 @@ def url(request):
     SubUser.objects.filter(user = User.object.get(username = 'aand')).update(url_home = request.GET.get('url'))
 
 
+@csrf_exempt
 def bot (request):
+    token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
+    chat_id = '900298846'
+    
+    url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение{request.keys()} "
+    requests.get(url).json()
+    
+    
     url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    data = request
-    requests.post(url, json=data)
+    r = requests.post(url, data=request)
+    url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение{r.status_code} "
+    # requests.get(url).json()
+    return index(request)

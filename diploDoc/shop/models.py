@@ -131,9 +131,10 @@ class Order(models.Model):
         status_object = {
             'is-light': ['created', 'assembling', 'delivering'],
             'is-success': ['arrived', 'received'],
-            'is-danger': ['cancelled', 'returned']
+            'is-danger': ['cancelled', 'returned', 'finish']
         }
         return [key for key in status_object.keys() if self.status in status_object[key]][0]
+    
 
 
 class ReservProduct(models.Model):
