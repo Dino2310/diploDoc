@@ -236,11 +236,11 @@ def bot (request):
         # if url: url = url[0].url
         url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
         text = res.get('text')
-        if text == '/start':
+        if text.decode('utf-8') == '/start':
             r = requests.post(url, data='/start')
     elif (res := answer.get("callback_query")):
         answer = res.get('chat_instance').get('date').split(',')
-        if answer[0] == 'btn': 
+        if answer[0].decode('utf-8') == 'btn': 
             r = requests.post(url, data=answer[1])
     
     # url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
