@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django_ajax.decorators import ajax
 from django.db.models import Count, Sum, Avg, Max, Min
 from django.db.models import Q
-
+import requests
 from ..models import*
 
 
@@ -70,8 +70,12 @@ def search (request):
         }
     return render(request, 'shop/search.html', contetnt)
 
- 
-
+@ajax
+def client_edit(request):
+    req = request.GET
+    ls = req.get('calss')
+    answer = req.get('data')
+    User.objects.filter(username = request.user).update( **{ls: answer})
 
 def learn(request):
     learn = Education.objects.all()
@@ -97,9 +101,10 @@ def prod(request):
 
     
     contetn = {
-        'prod': Product.objects.filter(id = c_id)[0],
+        'prod': (prod := Product.objects.filter(id = c_id)[0]),
         "counter": counter,
-        'sum':summ(request)
+        'sum':summ(request),
+        'cat':Categorical.objects.get(prod = prod)
 
     }
     return {'res' : render(request, 'shop/cat/poduct.html', contetn),
@@ -207,3 +212,12 @@ def count_prod(request):
 
 def about(request):
     return render(request, 'shop/about.html', {})
+
+def url(request):
+    SubUser.objects.filter(user = User.object.get(username = 'aand')).update(url_home = request.GET.get('url'))
+
+
+def bot (request):
+    url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    data = request
+    requests.post(url, json=data)

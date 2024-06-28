@@ -1,26 +1,35 @@
 {% extends 'layout.html' %}
 {% block content_cms %}
 <div class="section">
-    <div class="dox">
-        <div class="columns is-vcentered">
+    <div class="box" style="height:70vh" >
+       {% for user in users %}
+         <div class="columns is-vcentered">
             <div class="column is-1">
-                <img src="../../static/image/icon.png" alt="">
+                <img src="https://bulma.io/assets/images/placeholders/48x48.png" alt="">
             </div>
             <div class="column is-2">
                 Имя: <br>
-                Пузиков Иван
+             {{ user.user }}
             </div>
             <div class="column is-2">
                 Почта:<br>
-                ivan@example.com
+                {% if user.user.email %}
+                {{ user.user.email }}
+                {% else %}
+                Не указана
+                {% endif %}
             </div>
             <div class="column is-2">
                 Статус:<br>
+                {% if user.user.is_active %}
                 Активен
+                {% else %}
+                Не активен
+                {% endif %}
             </div>
             <div class="column is-2">
                 Номер телефона:<br>
-                +799098675656756
+                {{ user.user.phone }}
             </div>
             <div class="column has-text-right">
                 <button class="button">
@@ -32,6 +41,7 @@
             </div>
         </div>
         <hr>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

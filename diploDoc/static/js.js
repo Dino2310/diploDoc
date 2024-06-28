@@ -14,7 +14,28 @@ $('.t754__parent').css(
     }
 )
 
-
+function change_class (ls){
+    
+    if (!$('input.'+ls).hasClass('btn_bsk')){
+        let answer = $('.'+ls+':not(.btn_bsk)').val()
+        $.ajax({
+            url: '/client_edit',
+            type: "GET",
+            data: {'calss':ls,
+                'data':answer
+            },
+    
+            success: function (data) {
+                $('.'+ls+":not(.btn_bsk)").html(answer)
+            },
+            error: function (s) {
+                console.log('err');
+            }
+        })
+    
+    }
+    $('.'+ls).toggleClass('btn_bsk')
+    }
 
 setInterval(()=>{  // проверяет формированность страницы категории,  чтобы запустить формирование полей зарпосов
     if($('.js-store-parts-switcher').length){
@@ -220,7 +241,7 @@ function bascet(fn, prod, user){/* функция обработки корзи�
 
 
 
-setTimeout(()=>{ // инициализация фистров на старице категории
+setTimeout(()=>{ // инициализация фильтров на старице категории
         $('#sort').on('change', select)
         $('input[name= "min"]').on('change', select)
         $('input[name= "max"]').on('change', select)

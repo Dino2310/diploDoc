@@ -1,4 +1,4 @@
-
+﻿
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -9,7 +9,7 @@ public_html*
 passenger_wsgi.py
 # C extensions
 *.so
-*.onetoc2
+.onetoc2
 .env
 v/
 vl/
@@ -66,8 +66,8 @@ cover/
 *.log
 local_settings.py
 *.slite3
- db.sqlite3
- db.sqlite3-journal
+db.sqlite3
+db.sqlite3-journal
 
 # Flask stuff:
 instance/
