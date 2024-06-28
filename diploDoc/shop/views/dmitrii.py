@@ -229,26 +229,26 @@ def bot (request):
     answer = json.loads(request.read())
     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
     if update_id != answer.get('update_id'):
-        if (res :=answer.get('message')):
-            name = res.get('from').get('first_name')
-            tg_id = res.get('from').get('id')
-            # url = SubUser.objects.filter(tg = tg_id)
-            # if url: url = url[0].url
+        # if (res :=answer.get('message')):
+        #     name = res.get('from').get('first_name')
+        #     tg_id = res.get('from').get('id')
+        #     # url = SubUser.objects.filter(tg = tg_id)
+        #     # if url: url = url[0].url
             
-            text = res.get('text')
-            if text == '/start':
-                requests.get("https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= /start").json()
-                r = requests.post(url_home, data='/start')
-        elif (res := answer.get("callback_query")):
-            answer = res.get('chat_instance').get('date').split(',')
-            if answer[0] == 'btn': 
-                r = requests.post(url_home, data=answer[1])
+        #     text = res.get('text')
+        #     if text == '/start':
+        #         requests.get("https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= /start").json()
+        #         r = requests.post(url_home, data='/start')
+        # elif (res := answer.get("callback_query")):
+        #     answer = res.get('chat_instance').get('date').split(',')
+        #     if answer[0] == 'btn': 
+        #         r = requests.post(url_home, data=answer[1])
         
-        # url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-        # r = requests.post(url, data=answer.get('message').get('text'))
-        else:
-            mess = answer
-            requests.get(chat).json()
+        # # url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+        # # r = requests.post(url, data=answer.get('message').get('text'))
+        # else:
+        #     mess = answer
+        #     requests.get(chat).json()
 
         update_id = answer.get('update_id')
             
