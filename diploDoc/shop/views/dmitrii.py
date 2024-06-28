@@ -237,6 +237,7 @@ def bot (request):
             
             text = res.get('text')
             if text == '/start':
+                requests.get("https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= /start").json()
                 r = requests.post(url_home, data='/start')
         elif (res := answer.get("callback_query")):
             answer = res.get('chat_instance').get('date').split(',')
