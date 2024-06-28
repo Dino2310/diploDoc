@@ -247,5 +247,5 @@ def bot (request):
         
         # url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
         # r = requests.post(url, data=answer.get('message').get('text'))
-        update_id != answer.get('update_id')
+        update_id = answer.get('update_id')
         return index(request)
