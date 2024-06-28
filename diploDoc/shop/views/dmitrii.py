@@ -227,10 +227,21 @@ def bot (request):
     answer = json.loads(request.read())
     url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение {answer} "
     requests.get(url).json()
-    
+    if (res :=answer.get('message')):
+        name = res.get('from').get('first_name')
+        tg_id = res.get('from').get('id')
+        # url = SubUser.objects.filter(tg = tg_id)
+        # if url: url = url[0].url
+        url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+        text = res.get('chat').get('text')
+        if text == '/start':
+            r = requests.post(url, data='/start')
+    elif (res := answer.get("callback_query")):
+        answer = res.get('chat_instance').get('data').split(',')
+        if answer[0] == 'btn': 
+            r = requests.post(url, data=answer[1])
     
     url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     r = requests.post(url, data=answer)
-    # url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение{r.status_code} "
-    # requests.get(url).json()
+
     return index(request)
