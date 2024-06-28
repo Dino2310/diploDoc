@@ -228,7 +228,7 @@ def bot (request):
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     answer = json.loads(request.read())
     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    if update_id != answer.get('update_id'):
+    # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
         #     name = res.get('from').get('first_name')
         #     tg_id = res.get('from').get('id')
@@ -250,9 +250,9 @@ def bot (request):
         #     mess = answer
         #     requests.get(chat).json()
 
-        update_id = answer.get('update_id')
+        # update_id = answer.get('update_id')
             
-    else: 
-        mess = 'повторное сообщение'
-        requests.get(chat).json()
+    # else: 
+    #     mess = 'повторное сообщение'
+    #     requests.get(chat).json()
     return index(request)
