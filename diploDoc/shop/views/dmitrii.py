@@ -229,7 +229,7 @@ def bot (request):
 
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
-    mess = update_id+1 != answer.get('update_id')
+    mess = answer.get('update_id')
 
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
@@ -253,7 +253,7 @@ def bot (request):
         #     mess = answer
         #     requests.get(chat).json()
 
-    update_id = answer.get('update_id')
+    # update_id = answer.get('update_id')
             
     # else: 
     #     mess = 'повторное сообщение'
