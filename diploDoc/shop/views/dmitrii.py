@@ -226,7 +226,6 @@ def bot (request):
     chat_id = '900298846'
     answer = json.loads(request.read())
     url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение {answer} "
-    answer = json.loads(request.read())
     url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение {answer.get('message').get('chat').get('text')} "
     requests.get(url).json()
     if (res :=answer.get('message')):
