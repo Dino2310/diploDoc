@@ -1,7 +1,14 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+<<<<<<< HEAD
 from shop.models import *
 from shop.forms import *
+=======
+
+from .forms import ProductForm
+from shop.models import Product
+
+>>>>>>> origin/Aleksandr
 
 def products(request):
     filter = request.GET.get('filter')
