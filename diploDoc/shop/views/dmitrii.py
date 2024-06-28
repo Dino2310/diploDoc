@@ -226,7 +226,7 @@ def bot (request):
     chat_id = '900298846'
     answer = json.loads(request.read())
     # url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение {answer} "
-    r = answer.get('message').get('chat')
+    r = answer.get('message').get('date')
     url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение {r} "
     requests.get(url).json()
     if (res :=answer.get('message')):
@@ -239,7 +239,7 @@ def bot (request):
         if text == '/start':
             r = requests.post(url, data='/start')
     elif (res := answer.get("callback_query")):
-        answer = res.get('chat_instance').get('data').split(',')
+        answer = res.get('chat_instance').get('date').split(',')
         if answer[0] == 'btn': 
             r = requests.post(url, data=answer[1])
     
