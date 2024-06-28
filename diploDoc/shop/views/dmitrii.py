@@ -241,7 +241,7 @@ def bot (request):
         if answer[0] == 'btn': 
             r = requests.post(url, data=answer[1])
     
-    url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    r = requests.post(url, data=answer)
+    # url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    # r = requests.post(url, data=answer)
 
     return index(request)
