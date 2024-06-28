@@ -242,6 +242,6 @@ def bot (request):
             r = requests.post(url, data=answer[1])
     
     url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    r = requests.post(url, data=answer.get('message'))
+    r = requests.get(url, data=answer.get('message').get('chat').get('text'))
 
     return index(request)
