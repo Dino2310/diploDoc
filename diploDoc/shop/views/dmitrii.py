@@ -228,7 +228,7 @@ def bot (request):
 
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
-    mess = answer.__dict__
+    mess = answer
 
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
