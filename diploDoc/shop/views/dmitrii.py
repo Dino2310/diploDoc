@@ -8,6 +8,7 @@ import requests, json
 from ..models import*
 from django.views.decorators.csrf import csrf_exempt
 
+update_id = 0
 
 cat_lib = {
     'all' : ['buttons','sensors', 'panels_management', 'controllers_management', 'relay'],
@@ -224,25 +225,27 @@ def url(request):
 def bot (request):
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
-    answer = json.loads(request.read())
-    url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение {answer} "
-    requests.get(url).json()
-    if (res :=answer.get('message')):
-        name = res.get('from').get('first_name')
-        tg_id = res.get('from').get('id')
-        # url = SubUser.objects.filter(tg = tg_id)
-        # if url: url = url[0].url
-        url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-        text = res.get('text')
-        if text == '/start':
-            r = requests.post(url, data='/start')
-    elif (res := answer.get("callback_query")):
-        answer = res.get('chat_instance').get('date').split(',')
-        if answer[0].decode('utf-8') == 'btn': 
-            url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-            r = requests.post(url, data=answer[1])
     
-    # url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    # r = requests.post(url, data=answer.get('message').get('text'))
-
-    return index(request)
+    answer = json.loads(request.read())
+    # url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение {answer} "
+    # requests.get(url).json()
+    if update_id != answer.get('update_id'):
+        if (res :=answer.get('message')):
+            name = res.get('from').get('first_name')
+            tg_id = res.get('from').get('id')
+            # url = SubUser.objects.filter(tg = tg_id)
+            # if url: url = url[0].url
+            url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+            text = res.get('text')
+            if text == '/start':
+                r = requests.post(url, data='/start')
+        elif (res := answer.get("callback_query")):
+            answer = res.get('chat_instance').get('date').split(',')
+            if answer[0].decode('utf-8') == 'btn': 
+                url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+                r = requests.post(url, data=answer[1])
+        
+        # url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+        # r = requests.post(url, data=answer.get('message').get('text'))
+        update_id != answer.get('update_id')
+        return index(request)
