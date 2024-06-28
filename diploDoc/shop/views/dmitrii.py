@@ -235,7 +235,7 @@ def bot (request):
         # url = SubUser.objects.filter(tg = tg_id)
         # if url: url = url[0].url
         url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-        text = res.get('chat').get('text')
+        text = res.get('text')
         if text == '/start':
             r = requests.post(url, data='/start')
     elif (res := answer.get("callback_query")):
@@ -243,7 +243,7 @@ def bot (request):
         if answer[0] == 'btn': 
             r = requests.post(url, data=answer[1])
     
-    url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    r = requests.post(url, data=answer.get('message').get('text'))
+    # url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    # r = requests.post(url, data=answer.get('message').get('text'))
 
     return index(request)
