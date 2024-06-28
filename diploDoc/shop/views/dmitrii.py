@@ -224,13 +224,13 @@ def url(request):
 def bot (request):
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
-    
-    url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение{ json.loads(request.read()) } "
+    answer = json.loads(request.read())
+    url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение {answer} "
     requests.get(url).json()
     
     
     url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    r = requests.post(url, data=json.loads(request.read()))
+    r = requests.post(url, data=answer)
     # url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение{r.status_code} "
     # requests.get(url).json()
     return index(request)
