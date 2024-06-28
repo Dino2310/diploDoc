@@ -234,7 +234,7 @@ def bot (request):
         # if url: url = url[0].url
         url = "https://hagfish-star-strangely.ngrok-free.app/bot/"
         text = res.get('text')
-        if text.decode('utf-8') == '/start':
+        if text == '/start':
             r = requests.post(url, data='/start')
     elif (res := answer.get("callback_query")):
         answer = res.get('chat_instance').get('date').split(',')
