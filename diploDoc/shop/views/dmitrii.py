@@ -20,7 +20,7 @@ cat_lib = {
 
 def summ(request):
     if request.user.is_authenticated:
-        if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))):
+        if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))):
             return sum([i.quantity for i in ReservProduct.objects.filter(order = ord[0])])
         return 0
     else:
@@ -32,7 +32,7 @@ def index(request):
     prod = Product.objects.filter( quantity__gt = 0)
     count = dict([(i.id,0) for i in Product.objects.all()])
     if (request.user.is_authenticated):
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 count[i.product.id] = i.quantity
@@ -95,7 +95,7 @@ def prod(request):
     c_id = request.GET.get('id')
     counter = 0
     if request.user.is_authenticated:
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 counter = i.quantity
@@ -127,7 +127,7 @@ def ajax_ansvwer(request):
 
     prod = dict([(i.id,0) for i in Product.objects.all()])
     if request.user.is_authenticated:
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 prod[i.product.id] = i.quantity
@@ -182,7 +182,7 @@ def count_prod(request):
 
     else: 
         product = Product.objects.get(id = request.GET.get('id'))
-        orders = Order.objects.filter(Q(user = request.user) & Q(status = 'assembling'))
+        orders = Order.objects.filter(Q(user = request.user) & Q(status = 'created'))
         if len(orders) == 0:
             ord = Order.objects.create(user = request.user)
             ord.save()
