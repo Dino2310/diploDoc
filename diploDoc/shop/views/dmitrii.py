@@ -225,7 +225,7 @@ def bot (request):
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
     
-    url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение{request.__dict__} "
+    url = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= пришло сообщение{request.json()} "
     requests.get(url).json()
     
     
