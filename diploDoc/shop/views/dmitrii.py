@@ -223,12 +223,12 @@ def url(request):
 
 @csrf_exempt
 def bot (request):
-    token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
-    chat_id = '900298846'
-    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    # token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
+    # chat_id = '900298846'
+    # url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     answer = json.loads(request.read())
     mess = ''
-    chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+    # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
         #     name = res.get('from').get('first_name')
