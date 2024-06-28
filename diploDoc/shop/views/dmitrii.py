@@ -230,6 +230,7 @@ def bot (request):
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
     mess = answer.get('update_id')
+    mass = mass != update_id
 
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
