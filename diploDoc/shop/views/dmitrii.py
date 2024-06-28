@@ -228,6 +228,7 @@ def bot (request):
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     answer = json.loads(request.read())
     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= повтор сообщения"
+    requests.get(chat).json()
     if update_id != answer.get('update_id'):
         if (res :=answer.get('message')):
             name = res.get('from').get('first_name')
