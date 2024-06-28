@@ -8,7 +8,6 @@ import requests, json
 from ..models import*
 from django.views.decorators.csrf import csrf_exempt
 
-update_id = 0
 
 cat_lib = {
     'all' : ['buttons','sensors', 'panels_management', 'controllers_management', 'relay'],
@@ -229,8 +228,7 @@ def bot (request):
 
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
-    mess = answer.get('update_id')
-    mass = mass != update_id
+    mess = answer.__dict__
 
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
