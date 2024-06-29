@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.db.models import Count, Sum, Avg, Max, Min
 from django.db.models import Q
-from ..shop.views import *
+from ..shop import views
 import requests, json
 from shop.models import*
 from environs import Env
@@ -45,5 +45,5 @@ def bot (request):
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
         requests.get(chat)
 
-    return index(request)
-    return Response({"Status Code":'201'})
+    return views.index(request)
+    # return Response({"Status Code":'201'})
