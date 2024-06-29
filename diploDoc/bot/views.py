@@ -32,7 +32,7 @@ def bot (request):
         chat_id = answer.get('callback_query').get('from').get('id')
         name =  answer.get('callback_query').get('from').get('first_name')
         mess = str(mess_text)+','+str(name)+','+ str(chat_id)
-
+    requests.post(url_home, data=mess_text)
     if mess_text == '/start':
         pass
         # reply_markup = {'inline_keyboard': 
