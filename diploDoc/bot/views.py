@@ -20,7 +20,8 @@ def bot (request):
     url_bot = 'https://api.telegram.org/bot'
     answer = json.loads(request.read())
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    requests.post(f'{url_bot}{token}/sendMessage', data=answer)
+    chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {answer}"
+    requests.get(chat)
     # if 'message' in answer:
     #     # name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
     #     # chat_id = answer.get('message').get('chat').get('id')
