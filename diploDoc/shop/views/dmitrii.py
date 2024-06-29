@@ -235,6 +235,8 @@ def bot (request):
 
     else: 
         mess_callb_date = answer.get("callback_query").get('chat')
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess_callb_date}"
+        requests.get(chat)
         mess_callb_all = answer.get("callback_query")
         mess_callb_data = answer.get("callback_query").get('data')
         mess = mess_callb_data
