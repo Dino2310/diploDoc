@@ -228,9 +228,9 @@ def bot (request):
 
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
-    mess_text_date = answer.get('message').get('chat') # Тут выцепляются данные пользователя отправившего сообщение
-    mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-    mess_callb_date = answer.get("callback_query").get('chat')
+    # mess_text_date = answer.get('message').get('chat') # Тут выцепляются данные пользователя отправившего сообщение
+    # mess_text = answer.get('message').get('text')  # Это текст самого сообщения
+    # mess_callb_date = answer.get("callback_query").get('chat')
     mess_callb_all = answer.get("callback_query")
     mess = mess_callb_all
 
