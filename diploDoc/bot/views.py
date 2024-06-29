@@ -37,12 +37,12 @@ def bot (request):
         name =  answer.get('callback_query').get('from').get('first_name')
         mess = str(mess_callb_data)+','+str(name)+','+ str(chat_id)
 
-    # if mess_text == '/start':
-    #     reply_markup = {'inline_keyboard': [
-    #                         [{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
-    #                         {'text': 'Отправиться домой', 'callback_data': 'home'}]]}
-    #     data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
-    #     requests.get(f'{url_bot}{token}/sendMessage', data=data)
+    if mess_text == '/start':
+        reply_markup = {'inline_keyboard': [
+                            [{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
+                            {'text': 'Отправиться домой', 'callback_data': 'home'}]]}
+        data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
+        requests.get(f'{url_bot}{token}/sendMessage', data=data)
         
     
 
