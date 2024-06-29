@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django_ajax.decorators import ajax
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.db.models import Count, Sum, Avg, Max, Min
 from django.db.models import Q
-
+import requests, json
 from ..models import*
+from django.views.decorators.csrf import csrf_exempt
 
 
 cat_lib = {
@@ -13,9 +16,11 @@ cat_lib = {
     'relay' :['relay']
 }
 
+
+
 def summ(request):
     if request.user.is_authenticated:
-        if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))):
+        if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))):
             return sum([i.quantity for i in ReservProduct.objects.filter(order = ord[0])])
         return 0
     else:
@@ -27,7 +32,7 @@ def index(request):
     prod = Product.objects.filter( quantity__gt = 0)
     count = dict([(i.id,0) for i in Product.objects.all()])
     if (request.user.is_authenticated):
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 count[i.product.id] = i.quantity
@@ -46,9 +51,7 @@ def index(request):
     }
     return render(request, 'shop/index.html', content)
 
-def search(request):
-    if request.method == "POST":
-        return index(request)
+
 
 
 def category(request):
@@ -61,25 +64,38 @@ def category(request):
 
 def search (request):
     answer = request.POST.get('search')
-    products = Product.objects.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))
-    ''' тут ещё добавиьт поиск по обучяющим материалам'''
+    products = set(list(Product.objects.filter(Q(**{'name__icontains':answer})|Q(**{'description__icontains':answer}))) 
+                   + list(Education.objects.filter(Q(**{'name__icontains':answer}) | Q(**{'word__icontains':answer})))  
+                   + [Education.objects.get(id = i.education_id) for i in ContetnLearn.objects.filter(**{'text__icontains':answer})])
+
     contetnt = {'products':products,
-        'sum':summ(request)}
+        'sum':summ(request),
+        }
     return render(request, 'shop/search.html', contetnt)
 
-    
-
+@ajax
+def client_edit(request):
+    req = request.GET
+    ls = req.get('calss')
+    answer = req.get('data')
+    User.objects.filter(username = request.user).update( **{ls: answer})
 
 def learn(request):
-    
-    return render(request, 'shop/learn.html', {})
+    learn = Education.objects.all()
+    n = []
+    for i in range(0, len(learn), 3):
+        n.append(learn[i:i+3])
+    contetnt = {
+        "learn" : n,
+    }
+    return render(request, 'shop/learn.html', contetnt)
 
 @ajax
 def prod(request):
     c_id = request.GET.get('id')
     counter = 0
     if request.user.is_authenticated:
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 counter = i.quantity
@@ -88,9 +104,10 @@ def prod(request):
 
     
     contetn = {
-        'prod': Product.objects.filter(id = c_id)[0],
+        'prod': (prod := Product.objects.filter(id = c_id)[0]),
         "counter": counter,
-        'sum':summ(request)
+        'sum':summ(request),
+        'cat':Categorical.objects.get(prod = prod)
 
     }
     return {'res' : render(request, 'shop/cat/poduct.html', contetn),
@@ -110,7 +127,7 @@ def ajax_ansvwer(request):
 
     prod = dict([(i.id,0) for i in Product.objects.all()])
     if request.user.is_authenticated:
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 prod[i.product.id] = i.quantity
@@ -165,7 +182,7 @@ def count_prod(request):
 
     else: 
         product = Product.objects.get(id = request.GET.get('id'))
-        orders = Order.objects.filter(Q(user = request.user) & Q(status = 'assembling'))
+        orders = Order.objects.filter(Q(user = request.user) & Q(status = 'created'))
         if len(orders) == 0:
             ord = Order.objects.create(user = request.user)
             ord.save()
@@ -198,3 +215,37 @@ def count_prod(request):
 
 def about(request):
     return render(request, 'shop/about.html', {})
+
+def url(request):
+    SubUser.objects.filter(user = User.object.get(username = 'aand')).update(url_home = request.GET.get('url'))
+
+
+@csrf_exempt
+def bot (request):
+    answer = json.loads(request.read())
+    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    
+
+    token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
+    chat_id = '900298846'
+    if 'message' in answer:
+        mess_text_date = answer.get('message').get('chat') # Тут выцепляются данные пользователя отправившего сообщение
+        mess_text = answer.get('message').get('text')  # Это текст самого сообщения
+        mess = mess_text
+
+    else: 
+        mess_callb_date = answer.get("callback_query").get('chat')
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess_callb_date}"
+        requests.get(chat)
+        mess_callb_all = answer.get("callback_query")
+        mess_callb_data = answer.get("callback_query").get('data')
+        mess = mess_callb_data
+    if mess == '/start':
+        requests.post(url_home, data=mess)
+
+    elif mess.startswith('btn'):
+        requests.post(url_home, data=mess)
+    
+    # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+    # requests.get(chat)
+    return index(request)

@@ -1,27 +1,29 @@
 {% extends 'layout.html' %}
-{% block content %}
-<div class="section ">
+{% block content_cms %}
+<div class="section" style="height:70vh">
     <button class="button is-medium px-6 is-warning">
         Добавить учебный материал
     </button>
-    <div class="columns is-centered mt-6">
+    <div class="columns is-centered mt-2">
         <div class="column">
             <div class="box">
                 <div class="block">
+                    {% for i in meterials %}
                     <div class="columns is-vcentered">
                         <div class="column is-1">
-                            <img src="../../static/image/icon.png" alt="">
+                            <img src="{{i.image.url}}" alt="">
                         </div>
                         <div class="column is-3">
-                            <div class="title is-4">Название материала</div>
+                            <div class="title is-4">{{i.name}}</div>
                             <div class="subtitle">
-                                Описание с БД
+                                {{i.attributes}}
                             </div>
                         </div>
                         <div class="column has-text-right">
                             <button class="button is-info">Изменить</button>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
