@@ -232,7 +232,7 @@ def bot (request):
         # mess_text_date = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
         # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess_text_date}"
         # requests.get(chat)
-        chat_id = answer.get('message').get('chat')
+        chat_id = answer.get('message').get('chat').get('id')
         mess = chat_id
         # mess_text = answer.get('message').get('text')  # Это текст самого сообщения
         # mess = mess_text+','+mess_text_date+ ','+ chat_id
@@ -242,7 +242,7 @@ def bot (request):
 
         # mess_callb_all = answer.get("callback_query")
         # mess_callb_data = answer.get("callback_query").get('data')
-        chat_id = answer.get('callback_query').get('chat')
+        chat_id = answer.get('callback_query')
         mess = chat_id
     #     mess = mess_callb_data+','+ chat_id
     # if mess.startswith('/start'):
