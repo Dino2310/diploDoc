@@ -242,7 +242,7 @@ def bot (request):
         requests.post(url_home, data=mess)
 
     elif mess.startswith('btn'):
-        requests.post(url_home, data=mess.decode('utf-8').split(',')[1])
+        requests.post(url_home, data=mess)
     
 
     # if update_id != answer.get('update_id'):
