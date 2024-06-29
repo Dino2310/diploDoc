@@ -46,15 +46,15 @@ def bot (request):
         
     
 
-    # elif mess.startswith('btn'):
-    #     r = requests.post(url_home, data=mess)
-    # elif mess.startswith('home'):
-    #     r = requests.post(url_home, data=mess)
-    # else:
-    #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    #     requests.get(chat)
-    # if r.status_code != 200:
-    #     mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
-    #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    #     requests.get(chat)
+    elif mess.startswith('btn'):
+        r = requests.post(url_home, data=mess)
+    elif mess.startswith('home'):
+        r = requests.post(url_home, data=mess)
+    else:
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+        requests.get(chat)
+    if r.status_code != 200:
+        mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+        requests.get(chat)
     return HttpResponse("True", status = 201)
