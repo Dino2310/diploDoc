@@ -241,7 +241,7 @@ def bot (request):
 
         # mess_callb_all = answer.get("callback_query")
         # mess_callb_data = answer.get("callback_query").get('data')
-        chat_id = answer.get('message').get('chat').get('id')
+        chat_id = answer.get('callback_query').get('chat').get('id')
         mess = chat_id
     #     mess = mess_callb_data+','+ chat_id
     # if mess.startswith('/start'):
