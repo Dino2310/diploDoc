@@ -232,7 +232,7 @@ def bot (request):
         mess_text_date = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
         chat_id = answer.get('message').get('chat').get('id')
         mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-        mess = mess_text +','+mess_text_date #+ ','+ chat_id
+        mess = mess_text +','+mess_text_date + ','+ chat_id
 
     else: 
      
@@ -245,7 +245,7 @@ def bot (request):
     elif mess.startswith('btn'):
         r = requests.post(url_home, data=mess)
     if r.status_code != 200:
-        mess = "извините, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
+        mess = f"извините, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
         requests.get(chat)
     return index(request)
