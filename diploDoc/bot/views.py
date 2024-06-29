@@ -43,9 +43,9 @@ def bot (request):
                             {'text': 'Отправиться домой', 'callback_data': 'home'}]]}
         data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
         requests.get(f'{url_bot}{token}/sendMessage', data=data)
-        return HttpResponse(status = 201)
+        return HttpResponse(status = 200)
     
-    
+
     elif mess.startswith('btn'):
         r = requests.post(url_home, data=mess)
     elif mess.startswith('home'):
