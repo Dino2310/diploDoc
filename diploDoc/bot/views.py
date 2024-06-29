@@ -34,6 +34,7 @@ def bot (request):
         mess = str(mess_text)+','+str(name)+','+ str(chat_id)
 
     if mess_text == '/start':
+        pass
         # reply_markup = {'inline_keyboard': 
         #                     [[{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
         #                     {'text': 'Отправиться домой', 'callback_data': 'home'}]
