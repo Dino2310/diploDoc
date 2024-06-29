@@ -237,6 +237,9 @@ def bot (request):
         mess_callb_all = answer.get("callback_query")
         mess_callb_data = answer.get("callback_query").get('data')
         mess = mess_callb_data
+
+    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    requests.post(url_home, data=mess)
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
         #     name = res.get('from').get('first_name')
