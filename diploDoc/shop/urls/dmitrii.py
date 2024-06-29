@@ -14,7 +14,6 @@ urlpatterns = [
     path('detail/<str:slug>', views.detail, name='detail'),
     path('client_edit/', views.client_edit, name='client_edit'),
     path('url/', views.url, name = 'deviceid'),
-    path('bot/', views.bot),
     path('client/', views.client, name= 'client')
 
     ]

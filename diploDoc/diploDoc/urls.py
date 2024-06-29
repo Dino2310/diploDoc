@@ -25,6 +25,7 @@ urlpatterns = [
     path('users/', include(('users.urls', 'users'), namespace='users')),
     # path('training', include(('training.urls', 'training'), namespace= 'training' )),
     path('cms/', include(('cms.urls', 'cms'), namespace='cms')),
+    path('bot/', include(('bot.urls', 'bot'), namespace='bot')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
