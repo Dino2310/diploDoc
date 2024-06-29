@@ -20,7 +20,7 @@ def bot (request):
     url_bot = 'https://api.telegram.org/bot'
     answer = json.loads(request.read())
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    
+    requests.post(f'{url_bot}{token}/sendMessage', data=answer)
     # if 'message' in answer:
     #     # name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
     #     # chat_id = answer.get('message').get('chat').get('id')
@@ -32,7 +32,7 @@ def bot (request):
     #     # chat_id = answer.get('callback_query').get('from').get('id')
     #     # name =  answer.get('callback_query').get('from').get('first_name')
     #     # mess = str(mess_text)+','+str(name)+','+ str(chat_id)
-    requests.post(f'{url_bot}{token}/sendMessage', data=answer)
+    
     # if mess_text == '/start':
         # reply_markup = {'inline_keyboard': 
         #                     [[{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
@@ -54,4 +54,4 @@ def bot (request):
     #     mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
     #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
     #     requests.get(chat)
-    return HttpResponse(True, status = 201)
+    # return HttpResponse(True, status = 201)
