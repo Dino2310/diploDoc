@@ -8,6 +8,9 @@ import requests, json
 from shop.models import*
 from django.views.decorators.csrf import csrf_exempt
 
+env: Env = Env()
+env.read_env()
+
 
 @csrf_exempt
 def bot (request):
@@ -15,7 +18,7 @@ def bot (request):
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     
 
-    token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
+    token = env("TOKEN_BOT")
 
 
     if 'message' in answer:
@@ -38,4 +41,4 @@ def bot (request):
         mess = f"извините, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
         requests.get(chat)
-    return redirect('shop:index')
+    return Response({"Status Code":'201'})
