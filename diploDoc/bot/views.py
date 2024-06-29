@@ -34,12 +34,12 @@ def bot (request):
         mess = str(mess_text)+','+str(name)+','+ str(chat_id)
 
     if mess_text == '/start':
-        reply_markup = {'inline_keyboard': 
-                            [[{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
-                            {'text': 'Отправиться домой', 'callback_data': 'home'}]
-                            ]}
-        data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
-        requests.post(f'{url_bot}{token}/sendMessage', data=data)
+        # reply_markup = {'inline_keyboard': 
+        #                     [[{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
+        #                     {'text': 'Отправиться домой', 'callback_data': 'home'}]
+        #                     ]}
+        # data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
+        # requests.post(f'{url_bot}{token}/sendMessage', data=data)
         
     
 
