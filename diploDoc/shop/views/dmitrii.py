@@ -229,10 +229,11 @@ def bot (request):
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     # chat_id = '900298846'
     if 'message' in answer:
-        mess_text_date = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
+        # mess_text_date = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
         # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess_text_date}"
         # requests.get(chat)
         chat_id = answer.get('message').get('chat')
+        mess = chat_id
         # mess_text = answer.get('message').get('text')  # Это текст самого сообщения
         # mess = mess_text+','+mess_text_date+ ','+ chat_id
 
