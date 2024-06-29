@@ -238,7 +238,7 @@ def bot (request):
     else:  
         mess_callb_data = answer.get("callback_query").get('data')
         chat_id = answer.get('callback_query').get('from').get('id')
-        mess = str(mess_callb_data) #+','+ chat_id
+        mess = str(mess_callb_data)+','+ str(chat_id)
 
     if mess.startswith('/start'):
         r = requests.post(url_home, data=mess)
