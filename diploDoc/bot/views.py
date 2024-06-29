@@ -1,5 +1,5 @@
 from django_ajax.decorators import ajax
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.db.models import Count, Sum, Avg, Max, Min
@@ -45,5 +45,6 @@ def bot (request):
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
         requests.get(chat)
 
-    return index(request)
+    return HttpResponse(status = 201)
+    # return index(request)
     # return Response({"Status Code":'201'})
