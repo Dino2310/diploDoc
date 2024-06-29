@@ -42,7 +42,7 @@ def bot (request):
                             [{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
                             {'text': 'Отправиться домой', 'callback_data': 'home'}]]}
         data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
-        requests.post(f'{url_bot}{token}/sendMessage', data=data)
+        requests.get(f'{url_bot}{token}/sendMessage', data=data)
 
     elif mess.startswith('btn'):
         r = requests.post(url_home, data=mess)
