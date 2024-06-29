@@ -17,46 +17,46 @@ env.read_env()
 
 @csrf_exempt
 def bot (request):
-    HttpResponse("True", status = 201)
-    url_bot = 'https://api.telegram.org/bot'
-    answer = json.loads(request.read())
-    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    # HttpResponse("True", status = 201)
+    # url_bot = 'https://api.telegram.org/bot'
+    # answer = json.loads(request.read())
+    # url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     
 
-    token = env("TOKEN_BOT")
+    # token = env("TOKEN_BOT")
 
 
-    if 'message' in answer:
-        name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
-        chat_id = answer.get('message').get('chat').get('id')
-        mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-        mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
+    # if 'message' in answer:
+    #     name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
+    #     chat_id = answer.get('message').get('chat').get('id')
+    #     mess_text = answer.get('message').get('text')  # Это текст самого сообщения
+    #     mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
 
-    else:  
-        mess_callb_data = answer.get("callback_query").get('data')
-        chat_id = answer.get('callback_query').get('from').get('id')
-        name =  answer.get('callback_query').get('from').get('first_name')
-        mess = str(mess_callb_data)+','+str(name)+','+ str(chat_id)
+    # else:  
+    #     mess_callb_data = answer.get("callback_query").get('data')
+    #     chat_id = answer.get('callback_query').get('from').get('id')
+    #     name =  answer.get('callback_query').get('from').get('first_name')
+    #     mess = str(mess_callb_data)+','+str(name)+','+ str(chat_id)
 
-    if mess_text == '/start':
-        reply_markup = {'inline_keyboard': [
-                            [{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
-                            {'text': 'Отправиться домой', 'callback_data': 'home'}]]}
-        data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
-        requests.get(f'{url_bot}{token}/sendMessage', data=data)
+    # if mess_text == '/start':
+    #     reply_markup = {'inline_keyboard': [
+    #                         [{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
+    #                         {'text': 'Отправиться домой', 'callback_data': 'home'}]]}
+    #     data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
+    #     requests.get(f'{url_bot}{token}/sendMessage', data=data)
         
     
 
-    elif mess.startswith('btn'):
-        r = requests.post(url_home, data=mess)
-    elif mess.startswith('home'):
-        r = requests.post(url_home, data=mess)
-    else:
-        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-        requests.get(chat)
-    if r.status_code != 200:
-        mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
-        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-        requests.get(chat)
+    # elif mess.startswith('btn'):
+    #     r = requests.post(url_home, data=mess)
+    # elif mess.startswith('home'):
+    #     r = requests.post(url_home, data=mess)
+    # else:
+    #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+    #     requests.get(chat)
+    # if r.status_code != 200:
+    #     mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
+    #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+    #     requests.get(chat)
     return requests.post("https://httpbin.org/post")
     return HttpResponse("True", status = 201)
