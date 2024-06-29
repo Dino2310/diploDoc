@@ -241,7 +241,7 @@ def bot (request):
         mess_callb_all = answer.get("callback_query")
         mess_callb_data = answer.get("callback_query").get('data')
         mess = mess_callb_data
-    if mess == '/start':
+    if mess.startswith('/start'):
         requests.post(url_home, data=mess)
 
     elif mess.startswith('btn'):
