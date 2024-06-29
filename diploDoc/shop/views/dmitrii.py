@@ -242,11 +242,12 @@ def bot (request):
         mess_callb_data = answer.get("callback_query").get('data')
         mess = mess_callb_data
     if mess.startswith('/start'):
-        requests.post(url_home, data=mess)
+        r = requests.post(url_home, data=mess)
 
     elif mess.startswith('btn'):
-        requests.post(url_home, data=mess)
-    
-    # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    # requests.get(chat)
+        r = requests.post(url_home, data=mess)
+    if r.status_code != 200:
+        mess = "извините, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+        requests.get(chat)
     return index(request)
