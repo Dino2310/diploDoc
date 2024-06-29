@@ -58,4 +58,4 @@ def bot (request):
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
         requests.get(chat)
 
-    return HttpResponse("True")
+    return HttpResponse("True", status = 201)
