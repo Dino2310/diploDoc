@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'users',
     'shop',
     'training',
-    'cms'
-
+    'cms',
+    'bot'
 ]
 
 MIDDLEWARE = [
