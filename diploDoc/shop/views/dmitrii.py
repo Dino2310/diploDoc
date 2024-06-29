@@ -223,8 +223,8 @@ def url(request):
 @csrf_exempt
 def bot (request):
     answer = json.loads(request.read())
-    # url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    # requests.post(url_home, data=answer)
+    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    
 
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
@@ -232,14 +232,19 @@ def bot (request):
         mess_text_date = answer.get('message').get('chat') # Тут выцепляются данные пользователя отправившего сообщение
         mess_text = answer.get('message').get('text')  # Это текст самого сообщения
         mess = mess_text
+
     else: 
         mess_callb_date = answer.get("callback_query").get('chat')
         mess_callb_all = answer.get("callback_query")
         mess_callb_data = answer.get("callback_query").get('data')
         mess = mess_callb_data
+    if mess == '/start':
+        requests.post(url_home, data=mess)
 
-    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    mess = mess + str(requests.post(url_home, data=mess).status_code)
+    elif mess.startswith('btn'):
+        requests.post(url_home, data=mess.decode('utf-8').split(',')[1])
+    
+
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
         #     name = res.get('from').get('first_name')
