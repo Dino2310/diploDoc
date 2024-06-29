@@ -231,7 +231,7 @@ def bot (request):
     mess_text_date = answer.get('message').get('chat') # Тут выцепляются данные пользователя отправившего сообщение
     mess_text = answer.get('message').get('text')  # Это текст самого сообщения
     mess_callb_date = answer.get("callback_query").get('chat')
-    mess_callb_all = answer.get("callback_query").get('chat')
+    mess_callb_all = answer.get("callback_query")
     mess = mess_callb_all
 
     # if update_id != answer.get('update_id'):
