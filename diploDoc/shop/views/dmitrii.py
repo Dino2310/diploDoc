@@ -262,5 +262,5 @@ def bot (request):
     #     mess = 'повторное сообщение'
     #     requests.get(chat).json()
     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    requests.get(chat).json()
+    requests.get(chat)
     return index(request)
