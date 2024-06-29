@@ -48,6 +48,8 @@ def bot (request):
         r = requests.post(url_home, data=mess)
     elif mess.startswith('home'):
         r = requests.post(url_home, data=mess)
+    chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {r}"
+    requests.get(chat)
     # else:
     #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
     #     requests.get(chat)
