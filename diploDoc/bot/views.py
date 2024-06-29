@@ -28,11 +28,11 @@ def bot (request):
         mess_text = answer.get('message').get('text')  # Это текст самого сообщения
         mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
 
-    # else:  
-    #     mess_text = answer.get("callback_query").get('data')
-    #     # chat_id = answer.get('callback_query').get('from').get('id')
-    #     # name =  answer.get('callback_query').get('from').get('first_name')
-    #     # mess = str(mess_text)+','+str(name)+','+ str(chat_id)
+    else:  
+        mess_text = answer.get("callback_query").get('data')
+        chat_id = answer.get('callback_query').get('from').get('id')
+        name =  answer.get('callback_query').get('from').get('first_name')
+        mess = str(mess_text)+','+str(name)+','+ str(chat_id)
     
     # if mess_text == '/start':
         # reply_markup = {'inline_keyboard': 
