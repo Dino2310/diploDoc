@@ -229,29 +229,23 @@ def bot (request):
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     # chat_id = '900298846'
     if 'message' in answer:
-        # mess_text_date = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
-        # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess_text_date}"
-        # requests.get(chat)
+        mess_text_date = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
         chat_id = answer.get('message').get('chat').get('id')
-        mess = chat_id
-        # mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-        # mess = mess_text+','+mess_text_date+ ','+ chat_id
+        mess_text = answer.get('message').get('text')  # Это текст самого сообщения
+        mess = mess_text+','+mess_text_date+ ','+ chat_id
 
     else: 
-        # mess_callb_date = answer.get("callback_query").get('chat')
-
-        # mess_callb_all = answer.get("callback_query")
-        # mess_callb_data = answer.get("callback_query").get('data')
+     
+        mess_callb_data = answer.get("callback_query").get('data')
         chat_id = answer.get('callback_query').get('from').get('id')
-        mess = chat_id
-    #     mess = mess_callb_data+','+ chat_id
-    # if mess.startswith('/start'):
-    #     r = requests.post(url_home, data=mess)
+        mess = mess_callb_data+','+ chat_id
+    if mess.startswith('/start'):
+        r = requests.post(url_home, data=mess)
 
-    # elif mess.startswith('btn'):
-    #     r = requests.post(url_home, data=mess)
-    # if r.status_code != 200:
-        # mess = "извините, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
-    chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {mess}"
-    requests.get(chat)
+    elif mess.startswith('btn'):
+        r = requests.post(url_home, data=mess)
+    if r.status_code != 200:
+        mess = "извините, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {mess}"
+        requests.get(chat)
     return index(request)
