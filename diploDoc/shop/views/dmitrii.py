@@ -227,18 +227,19 @@ def bot (request):
     
 
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
-    # chat_id = '900298846'
+
+
     if 'message' in answer:
         mess_text_date = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
         chat_id = answer.get('message').get('chat').get('id')
         mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-        mess = mess_text +','+mess_text_date + ','+ chat_id
+        mess = str(mess_text) +','+str(mess_text_date) + ','+ str(chat_id)
 
-    else: 
-     
+    else:  
         mess_callb_data = answer.get("callback_query").get('data')
         chat_id = answer.get('callback_query').get('from').get('id')
-        mess = mess_callb_data #+','+ chat_id
+        mess = str(mess_callb_data) #+','+ chat_id
+
     if mess.startswith('/start'):
         r = requests.post(url_home, data=mess)
 
