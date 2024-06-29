@@ -23,7 +23,7 @@ def register(request):
         else:
             reservProduct_create(Order.objects.create(user_id = instance.id), request)   
            
-    return redirect('shop:index')
+    # return redirect('shop:index')
     return render(request, 'register.html', {'form': form})
 
 
