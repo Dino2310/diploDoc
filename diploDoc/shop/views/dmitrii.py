@@ -232,7 +232,7 @@ def bot (request):
         mess_text_date = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
         chat_id = answer.get('message').get('chat').get('id')
         mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-        mess = mess_text #+','+mess_text_date+ ','+ chat_id
+        mess = mess_text +','+mess_text_date #+ ','+ chat_id
 
     else: 
      
