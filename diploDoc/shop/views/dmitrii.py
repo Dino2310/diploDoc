@@ -239,7 +239,7 @@ def bot (request):
         mess = mess_callb_data
 
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    mess = mess + requests.post(url_home, data=mess).status_code
+    mess = mess + str(requests.post(url_home, data=mess).status_code)
     # if update_id != answer.get('update_id'):
         # if (res :=answer.get('message')):
         #     name = res.get('from').get('first_name')
