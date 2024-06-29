@@ -43,7 +43,9 @@ def bot (request):
                             {'text': 'Отправиться домой', 'callback_data': 'home'}]]}
         data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
         requests.get(f'{url_bot}{token}/sendMessage', data=data)
-
+        return HttpResponse(status = 201)
+    
+    
     elif mess.startswith('btn'):
         r = requests.post(url_home, data=mess)
     elif mess.startswith('home'):
@@ -53,6 +55,6 @@ def bot (request):
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
         requests.get(chat)
 
-    # return HttpResponse(status = 201)
+    # 
     return index(request)
     # return Response({"Status Code":'201'})
