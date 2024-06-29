@@ -17,6 +17,7 @@ env.read_env()
 
 @csrf_exempt
 def bot (request):
+    HttpResponse("True", status = 201)
     url_bot = 'https://api.telegram.org/bot'
     answer = json.loads(request.read())
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
