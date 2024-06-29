@@ -6,6 +6,8 @@ from django.db.models import Count, Sum, Avg, Max, Min
 from django.db.models import Q
 import requests, json
 from shop.models import*
+from environs import Env
+
 from django.views.decorators.csrf import csrf_exempt
 
 env: Env = Env()
