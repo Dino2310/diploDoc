@@ -38,23 +38,24 @@ def bot (request):
         mess = str(mess_callb_data)+','+str(name)+','+ str(chat_id)
 
     if mess_text == '/start':
-        reply_markup = {'inline_keyboard': [
+        reply_markup = {'inline_keyboard': 
                             [{'text': 'Перейти за покупками', 'url': 't.me/ghghguihtuh_bot/elicta'},
-                            {'text': 'Отправиться домой', 'callback_data': 'home'}]]}
+                            {'text': 'Отправиться домой', 'callback_data': 'home'}]
+                            }
         data = {'chat_id': chat_id, 'text': 'Привет, '+name , 'reply_markup': json.dumps(reply_markup)}
-        # requests.post(f'{url_bot}{token}/sendMessage', data=data)
+        requests.post(f'{url_bot}{token}/sendMessage', data=data)
         
     
 
-    # elif mess.startswith('btn'):
-    #     r = requests.post(url_home, data=mess)
-    # elif mess.startswith('home'):
-    #     r = requests.post(url_home, data=mess)
+    elif mess.startswith('btn'):
+        r = requests.post(url_home, data=mess)
+    elif mess.startswith('home'):
+        r = requests.post(url_home, data=mess)
     else:
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
         requests.get(chat)
-    # if r.status_code != 200:
-    #     mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
-    #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    #     requests.get(chat)
+    if r.status_code != 200:
+        mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+        requests.get(chat)
     return HttpResponse(True, status = 201)
