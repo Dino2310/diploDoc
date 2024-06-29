@@ -223,8 +223,8 @@ def url(request):
 @csrf_exempt
 def bot (request):
     answer = json.loads(request.read())
-    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    requests.post(url_home, data=answer)
+    # url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    # requests.post(url_home, data=answer)
 
     token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
     chat_id = '900298846'
