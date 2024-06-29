@@ -20,8 +20,8 @@ def bot (request):
     url_bot = 'https://api.telegram.org/bot'
     answer = json.loads(request.read())
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
-    chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {answer}"
-    requests.get(chat)
+    # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {answer}"
+    # requests.get(chat)
     if 'message' in answer:
         name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
         chat_id = answer.get('message').get('chat').get('id')
@@ -48,11 +48,11 @@ def bot (request):
         r = requests.post(url_home, data=mess)
     elif mess.startswith('home'):
         r = requests.post(url_home, data=mess)
+    else:
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+        r = requests.get(chat)
     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {r}"
     requests.get(chat)
-    # else:
-    #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    #     requests.get(chat)
     # if r.status_code != 200:
     #     mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
     #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
