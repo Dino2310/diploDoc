@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django_ajax.decorators import ajax
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.db.models import Count, Sum, Avg, Max, Min
 from django.db.models import Q
-
+import requests, json
 from ..models import*
+from django.views.decorators.csrf import csrf_exempt
 
 
 cat_lib = {
@@ -17,7 +20,7 @@ cat_lib = {
 
 def summ(request):
     if request.user.is_authenticated:
-        if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))):
+        if ( ord := Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))):
             return sum([i.quantity for i in ReservProduct.objects.filter(order = ord[0])])
         return 0
     else:
@@ -29,7 +32,7 @@ def index(request):
     prod = Product.objects.filter( quantity__gt = 0)
     count = dict([(i.id,0) for i in Product.objects.all()])
     if (request.user.is_authenticated):
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 count[i.product.id] = i.quantity
@@ -92,7 +95,7 @@ def prod(request):
     c_id = request.GET.get('id')
     counter = 0
     if request.user.is_authenticated:
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 counter = i.quantity
@@ -101,9 +104,10 @@ def prod(request):
 
     
     contetn = {
-        'prod': Product.objects.filter(id = c_id)[0],
+        'prod': (prod := Product.objects.filter(id = c_id)[0]),
         "counter": counter,
-        'sum':summ(request)
+        'sum':summ(request),
+        'cat':Categorical.objects.get(prod = prod)
 
     }
     return {'res' : render(request, 'shop/cat/poduct.html', contetn),
@@ -123,7 +127,7 @@ def ajax_ansvwer(request):
 
     prod = dict([(i.id,0) for i in Product.objects.all()])
     if request.user.is_authenticated:
-        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'assembling'))
+        заказ = Order.objects.filter(Q(user__username = request.user) & Q(status = 'created'))
         if заказ:
             for i in ReservProduct.objects.filter(order = заказ[0]):
                 prod[i.product.id] = i.quantity
@@ -178,7 +182,7 @@ def count_prod(request):
 
     else: 
         product = Product.objects.get(id = request.GET.get('id'))
-        orders = Order.objects.filter(Q(user = request.user) & Q(status = 'assembling'))
+        orders = Order.objects.filter(Q(user = request.user) & Q(status = 'created'))
         if len(orders) == 0:
             ord = Order.objects.create(user = request.user)
             ord.save()
@@ -214,3 +218,5 @@ def about(request):
 
 def url(request):
     SubUser.objects.filter(user = User.object.get(username = 'aand')).update(url_home = request.GET.get('url'))
+
+

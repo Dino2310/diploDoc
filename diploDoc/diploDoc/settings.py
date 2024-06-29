@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'users',
     'shop',
     'training',
-    'cms'
+    'rest_framework',
+    'cms',
+    'bot'
 
 ]
 
