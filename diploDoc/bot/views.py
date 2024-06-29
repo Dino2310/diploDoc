@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 env: Env = Env()
 env.read_env()
-
+token = env("TOKEN_BOT")
 
 @csrf_exempt
 def bot (request):
@@ -21,10 +21,6 @@ def bot (request):
     answer = json.loads(request.read())
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     
-
-    token = env("TOKEN_BOT")
-
-
     if 'message' in answer:
         name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
         chat_id = answer.get('message').get('chat').get('id')
@@ -32,10 +28,10 @@ def bot (request):
         mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
 
     else:  
-        mess_callb_data = answer.get("callback_query").get('data')
+        mess_text = answer.get("callback_query").get('data')
         chat_id = answer.get('callback_query').get('from').get('id')
         name =  answer.get('callback_query').get('from').get('first_name')
-        mess = str(mess_callb_data)+','+str(name)+','+ str(chat_id)
+        mess = str(mess_text)+','+str(name)+','+ str(chat_id)
 
     if mess_text == '/start':
         reply_markup = {'inline_keyboard': 
