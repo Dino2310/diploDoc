@@ -22,11 +22,11 @@ def bot (request):
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {answer}"
     requests.get(chat)
-    # if 'message' in answer:
-    #     # name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
-    #     # chat_id = answer.get('message').get('chat').get('id')
-    #     mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-    #     # mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
+    if 'message' in answer:
+        name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
+        chat_id = answer.get('message').get('chat').get('id')
+        mess_text = answer.get('message').get('text')  # Это текст самого сообщения
+        mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
 
     # else:  
     #     mess_text = answer.get("callback_query").get('data')
