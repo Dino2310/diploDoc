@@ -17,20 +17,19 @@ env.read_env()
 
 @csrf_exempt
 def bot (request):
-    # HttpResponse("True", status = 201)
-    # url_bot = 'https://api.telegram.org/bot'
-    # answer = json.loads(request.read())
-    # url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    url_bot = 'https://api.telegram.org/bot'
+    answer = json.loads(request.read())
+    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     
 
-    # token = env("TOKEN_BOT")
+    token = env("TOKEN_BOT")
 
 
-    # if 'message' in answer:
-    #     name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
-    #     chat_id = answer.get('message').get('chat').get('id')
-    #     mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-    #     mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
+    if 'message' in answer:
+        name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
+        chat_id = answer.get('message').get('chat').get('id')
+        mess_text = answer.get('message').get('text')  # Это текст самого сообщения
+        mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
 
     # else:  
     #     mess_callb_data = answer.get("callback_query").get('data')
