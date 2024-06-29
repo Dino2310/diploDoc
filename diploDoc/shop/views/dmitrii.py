@@ -233,7 +233,7 @@ def bot (request):
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess_text_date}"
         requests.get(chat)
         mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-        mess = mess_text
+        mess = mess_text+','+mess_text_date
 
     else: 
         mess_callb_date = answer.get("callback_query").get('chat')
