@@ -54,4 +54,4 @@ def bot (request):
     #     mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
     #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
     #     requests.get(chat)
-    # return HttpResponse(True, status = 201)
+    return HttpResponse(True, status = 201)
