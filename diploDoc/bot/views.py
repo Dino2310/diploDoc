@@ -51,10 +51,10 @@ def bot (request):
     else:
         chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
         r = requests.get(chat)
-    chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {r}"
-    requests.get(chat)
-    # if r.status_code != 200:
-    #     mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
-    #     chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
-    #     requests.get(chat)
+    # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id=900298846&text= {r}"
+    # requests.get(chat)
+    if r.status_code != 200:
+        mess = f"извините, {name}, но в данный момент Ваше устройсвто отключено или не имеет доступа в интрнет"
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+        requests.get(chat)
     return HttpResponse(True, status = 201)
