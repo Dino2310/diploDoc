@@ -4,16 +4,17 @@
 
 {% block contetnt %}
 
-<div class = 'trainingMaterial' style='scrollbar-width: thin; scrollbar-color: rgb(100, 98, 98) white; margin-top: 120px;'>
-    <h1>hello world</h1>
-    <p>{{learn.name}}</p>
-    <img src="{{learn.image.url}}"  style="width: auto; height: 12em;" alt="">
+<div class='trainingMaterial'
+    style='scrollbar-width: thin; scrollbar-color: rgb(100, 98, 98) white; margin-top: 120px;'>
+
+    <p class="detail_title">{{learn.name}}</p>
+    <img class="detail_image-1" src="{{learn.image.url}}" alt="">
     {% for i in trainingMaterial %}
-    {% if i.text %}
-    <p>{{i.text}}</p>
-    {% else %}
-    <img style="width: auto; height: 40em;" src="{{i.image.url}}" alt="">
-    {% endif %}
+        {% if i.text %}
+            <p style="font-size: 25px; text-indent: 40px;margin-bottom: 70px;">{{i.text}}</p>
+        {% else %}
+            <img class="detail_image-2" src="{{i.image.url}}" alt="">
+        {% endif %}
     {% endfor %}
 </div>
 {% endblock %}
