@@ -22,16 +22,16 @@ def bot (request):
     url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
     
     if 'message' in answer:
-        name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
-        chat_id = answer.get('message').get('chat').get('id')
+        # name = answer.get('message').get('chat').get('first_name') # Тут выцепляются данные пользователя отправившего сообщение
+        # chat_id = answer.get('message').get('chat').get('id')
         mess_text = answer.get('message').get('text')  # Это текст самого сообщения
-        mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
+        # mess = str(mess_text) +','+str(name) + ','+ str(chat_id)
 
     else:  
         mess_text = answer.get("callback_query").get('data')
-        chat_id = answer.get('callback_query').get('from').get('id')
-        name =  answer.get('callback_query').get('from').get('first_name')
-        mess = str(mess_text)+','+str(name)+','+ str(chat_id)
+        # chat_id = answer.get('callback_query').get('from').get('id')
+        # name =  answer.get('callback_query').get('from').get('first_name')
+        # mess = str(mess_text)+','+str(name)+','+ str(chat_id)
     requests.post(url_bot, data=mess_text)
     if mess_text == '/start':
         pass
