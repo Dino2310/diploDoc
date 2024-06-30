@@ -220,3 +220,32 @@ def url(request):
     SubUser.objects.filter(user = User.object.get(username = 'aand')).update(url_home = request.GET.get('url'))
 
 
+@csrf_exempt
+def bot (request):
+    answer = json.loads(request.read())
+    url_home = "https://hagfish-star-strangely.ngrok-free.app/bot/"
+    
+
+    token = '7175352991:AAEsJ7VRKrzzsu6qy79kuSJkeVakLM2yrkE'
+    chat_id = '900298846'
+    if 'message' in answer:
+        mess_text_date = answer.get('message').get('chat') # Тут выцепляются данные пользователя отправившего сообщение
+        mess_text = answer.get('message').get('text')  # Это текст самого сообщения
+        mess = mess_text
+
+    else: 
+        mess_callb_date = answer.get("callback_query").get('chat')
+        chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess_callb_date}"
+        requests.get(chat)
+        mess_callb_all = answer.get("callback_query")
+        mess_callb_data = answer.get("callback_query").get('data')
+        mess = mess_callb_data
+    if mess == '/start':
+        requests.post(url_home, data=mess)
+
+    elif mess.startswith('btn'):
+        requests.post(url_home, data=mess)
+    
+    # chat  = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text= {mess}"
+    # requests.get(chat)
+    return index(request)

@@ -1,129 +1,234 @@
-<div class="t-popup t-popup_show"
-    style="background-color: rgb(255, 255, 255); display: block; z-index: -1; position: fixed; left: 0;top: 0;">
-    <div class="t-popup__close" style="background-color: rgb(255, 255, 255); right: 37px;">
-        <div class="t-popup__close-wrapper"><svg role="presentation"
-                class="t-popup__close-icon t-popup__close-icon_cross" width="23px" height="23px" viewBox="0 0 23 23"
-                version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g stroke="none" stroke-width="1" fill="#000000" fill-rule="evenodd">
-                    <rect
-                        transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
-                        x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
-                    <rect
-                        transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
-                        x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
-                </g>
-            </svg></div>
-    </div>
-    <div class="t754__close-text-wrapper" style="right: 1589px;">
-    </div>
-    <div class="t-popup__container t-popup__container-static t-popup__container-animated"
-        style="background-color:#ffffff;">
-        <div id="t754__product-1497456130776" class="t754__product-full js-product" style=""
-            data-product-lid="1497456130776">
-            <div class="t754__container " style="display: flex;">
-                <div class="t754__col_left t-col t754__mobile-custom-gallery"><img style="height: 35em; width: auto; max-height: 35em; "
-                        class="" src="{{prod.image.url}}"
-                        data-zoom-target="0" data-zoomable="yes" data-img-zoom-url="{{prod.image.url}}">
-                </div>
-                <div class="t754__wrapper t754__col_right t-col t-col_6 t-align_left ">
-                    <div class="t754__title-wrapper">
-                        <div class="t754__title t-name t-name_xl js-product-name" style="text-align: center; font-size: 40px;">{{prod.name}}</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="t-popup t-popup_show"
+        style="background-color: rgb(152, 143, 143); display: block; z-index: -1; position: fixed; left: 0;top: 0;">
+        <div class="t-popup__close" style="background-color: rgb(216, 207, 207); right: 37px; border-radius: 20%">
+            <div class="t-popup__close-wrapper"><svg role="presentation"
+                    class="t-popup__close-icon t-popup__close-icon_cross" width="23px" height="23px" viewBox="0 0 23 23"
+                    version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="1" fill="#000000" fill-rule="evenodd">
+                        <rect
+                            transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                            x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        <rect
+                            transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                            x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                    </g>
+                    <style>
+                        .none {
+                            margin: 20px;
+                            position: relative;
+                            display: flex;
+                            justify-content: center;
+                            height: 112px;
+                        }    
+                        .none {
+                            width: 100px;
+                            height: 100px;
+                            position: absolute;
+                            background-image: radial-gradient(#FFF, #BFE2FF);
+                            border-radius: 50%;
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            border: 6px solid #337AB7;
+                            cursor: pointer;
+                        }
+                        .t-popup__close > span {
+                            background-color: #337AB7;
+                            display: block;
+                            height: 12px;
+                            border-radius: 6px;
+                            position: relative;
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            position: absolute;
+                            top: 50%;
+                            margin-top: -6px;
+                            left: 18px;
+                            width: 64px;
+                        }
+                        .t-popup__close > span span {
+                            display: block;
+                            background-color: #215b8c;
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 6px;
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                        }
+                        .none > span.left {
+                            transform: rotate(45deg);
+                            transform-origin: center;
+                        }
+                        .none > span.left .circle-left {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            margin-left: 0;
+                        }
+                        .none div > span.left .circle-right {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            margin-left: 52px;
+                        }
+                        .none div > span.right {
+                            transform: rotate(-45deg);
+                            transform-origin: center;
+                        }
+                        .none div > span.right .circle-left {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            margin-left: 0;
+                        }
+                        .none div > span.right .circle-right {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            margin-left: 52px;
+                        }
+                        .none div:hover > span {
+                            background-color: #215b8c;
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                        }
+                        .none div:hover > span span {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            background-color: #337AB7;
+                        }
+                        .none div:hover > span.left .circle-left {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            margin-left: 52px;
+                        }
+                        .none div:hover > span.left .circle-right {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            margin-left: 0;
+                        }
+                        .none div:hover > span.right .circle-left {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            margin-left: 52px;
+                        }
+                        .none div:hover > span.right .circle-right {
+                            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            margin-left: 0;
+                        }
+                    </style>
+                </svg></div>
+        </div>
+        <div class="t754__close-text-wrapper" style="right: 1589px;">
+        </div>
+        <div class="t-popup__container t-popup__container-static t-popup__container-animated"
+            style="background-color:#ffffff; border-radius: 3%">
+            <div id="t754__product-1497456130776" class="t754__product-full js-product" style=""
+                data-product-lid="1497456130776">
+                <div class="t754__container " style="display: flex;">
+                    <div class="t754__col_left t-col t754__mobile-custom-gallery"><img style="height: 35em; width: auto; max-height: 35em; "
+                            class="" src="{{prod.image.url}}"
+                            data-zoom-target="0" data-zoomable="yes" data-img-zoom-url="{{prod.image.url}}">
                     </div>
-                    <div class=".t754__uptitle " style="text-align: center; font-size: 25px;">
-                        <div class=".t754__uptitle ">{{prod.description}} 
+                    <div class="t754__wrapper t754__col_right t-col t-col_6 t-align_left ">
+                        <div class="t754__title-wrapper">
+                            <div class="t754__title t-name t-name_xl js-product-name" style="text-align: center; font-size: 40px;">{{prod.name}}</div>
                         </div>
-                    </div>
-                    <div class=".t754__uptitle " style="text-align: center; font-size: 25px;margin-top: 4em;">
-                        <div class=".t754__uptitle ">Характиристики
+                        <div class=".t754__uptitle " style="text-align: center; font-size: 25px;">
+                            <div class=".t754__uptitle ">{{prod.description}} 
+                            </div>
                         </div>
-                    </div>
-                    <div class="t754__price-wrapper  " >
-                        <div>тип устройства</div>
-                        {% if cat.buttons  %}
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >Кнопка </div>
+                        <div class=".t754__uptitle " style="text-align: center; font-size: 25px;margin-top: 4em;">
+                            <div class=".t754__uptitle ">Характиристики
+                                
+                            </div>
                         </div>
-                        {% endif %}
-                        {% if cat.sensors  %}
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >датчик </div>
+                        <div class="t754__price-wrapper  " >
+                            
+                            <div>Тип устройства</div>
+                            {% if cat.buttons  %}
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >Кнопка </div>
+                            </div>
+                            {% endif %}
+                            {% if cat.sensors  %}
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >Датчик </div>
+                            </div>
+                            {% endif %}
+                            {% if cat.panels_management  %}
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >Панель управления </div>
+                            </div>
+                            {% endif %}
+                            {% if cat.controllers_management  %}
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >Локалььный контроллер </div>
+                            </div>
+                            {% endif %}
+                            {% if cat.relay  %}
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >Релейная сборка </div>
+                            </div>
+                            {% endif %}
+
+                            <div>Интерфейс</div>
+                            {% if cat.RS485  %}
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >RS485 </div>
+                            </div>
+                            {% endif %}
+                            {% if cat.Wi_Fi  %}
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >Wi-Fi </div>
+                            </div>
+                            {% endif %}
+                            {% if cat.TWI  %}
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >TWI </div>
+                            </div>
+                            {% endif %}
+                            
                         </div>
-                        {% endif %}
-                        {% if cat.panels_management  %}
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >Панель управления </div>
+                        <div class="t754__price-wrapper  " style="margin-top: 10em;" >
+                            <div class="t754__price t754__price-item t-name t-name_xs">
+                                <div class="t754__price-value js-product-price notranslate" translate="off"
+                                    field="li_price__1497456130776" >{{prod.price}} </div>
+                                <div class="t754__price-currency">р.</div>
+                            </div>
                         </div>
-                        {% endif %}
-                        {% if cat.controllers_management  %}
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >Локалььный контроллер </div>
-                        </div>
-                        {% endif %}
-                        {% if cat.relay  %}
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >Релейная сборка </div>
-                        </div>
-                        {% endif %}
-                        <div>Интерфейс</div>
-                        {% if cat.RS485  %}
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >RS485 </div>
-                        </div>
-                        {% endif %}
-                        {% if cat.Wi_Fi  %}
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >Wi_Fi </div>
-                        </div>
-                        {% endif %}
-                        {% if cat.TWI  %}
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >TWI </div>
-                        </div>
-                        {% endif %}
+                                <div class="t754__buttons t1002__btns-wrapper t1002__btns-wrapper_center">
+                                    <span class="t754__btn t-btn t-btn_sm"
+                                        style="color:black;padding: 0; background-color:#0af5dd;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;font-family:Arial; ">
+                                        <table role="presentation" style="width:100%; height:100%;">
+                                            <tr id="btn{{prod.id}}">
+                                                <td class="button_bascet {% if not counter %} btn_bsk {% endif %}"
+                                                    onclick="bascet(0, {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
+                                                    -</td>
+                                                <td 
+                                                    class='{% if  not counter  %} btn_bsk {% endif %} counts{{prod.id}}' style="width: 40px;"
+                                                    onchange=" bascet('N', {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
+                                                    {{counter}}</td>
+                                                <td class="button_bascet {% if not counter  %} btn_bsk {% endif %}"
+                                                    onclick="bascet(1, {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
+                                                    +</td>
+
+                                                <td  class='{% if  counter %} btn_bsk {% endif %} counts{{prod.id}}'
+                                                    style="width: 40px;"
+                                                    onclick="cart({{prod.id}},{% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
+                                                    В корзину</td>
+
+                                            </tr>
+                                        </table>
+                                    </span>
+                                </div>
                         
                     </div>
-                    <div class="t754__price-wrapper  " style="margin-top: 10em;" >
-                        <div class="t754__price t754__price-item t-name t-name_xs">
-                            <div class="t754__price-value js-product-price notranslate" translate="off"
-                                field="li_price__1497456130776" >{{prod.price}} </div>
-                            <div class="t754__price-currency">р.</div>
-                        </div>
-                    </div>
-                            <div class="t754__buttons t1002__btns-wrapper t1002__btns-wrapper_center">
-                                <span class="t754__btn t-btn t-btn_sm"
-                                    style="color:black;padding: 0; background-color:#0af5dd;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;font-family:Arial; ">
-                                    <table role="presentation" style="width:100%; height:100%;">
-                                        <tr id="btn{{prod.id}}">
-                                            <td class="button_bascet {% if not counter %} btn_bsk {% endif %}"
-                                                onclick="bascet(0, {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
-                                                -</td>
-                                            <td 
-                                                class='{% if  not counter  %} btn_bsk {% endif %} counts{{prod.id}}' style="width: 40px;"
-                                                onchange=" bascet('N', {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
-                                                {{counter}}</td>
-                                            <td class="button_bascet {% if not counter  %} btn_bsk {% endif %}"
-                                                onclick="bascet(1, {{prod.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
-                                                +</td>
-
-                                            <td  class='{% if  counter %} btn_bsk {% endif %} counts{{prod.id}}'
-                                                style="width: 40px;"
-                                                onclick="cart({{prod.id}},{% if user.username %} '{{user.username}}' {% else %} false {% endif %})">
-                                                В корзину</td>
-
-                                        </tr>
-                                    </table>
-                                </span>
-                            </div>
-                    
-                </div>
-            </div><!--.prod-full-->
+                </div><!--.prod-full-->
+            </div>
         </div>
-    </div>
+    </div> 
+</body>
+</html>

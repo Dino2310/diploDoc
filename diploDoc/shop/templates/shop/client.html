@@ -6,22 +6,101 @@
         {% endblock %}
 {% block contetnt %}
 
-<div style="margin-top: 200px;">
-    <div>личные данные
+
+<!-- <div style="margin-top: 200px;">
+    <div>Личные данные
         <div>{{user.url_home}}</div>
-        <div class = "first_name"> имя {{user.first_name}}</div> 
+        <div class = "first_name"> Имя {{user.first_name}}</div> 
         <input type="text" value="{{user.first_name}}" class = "first_name btn_bsk">
-        <button onclick="change_class('first_name')">изменить</button>
-        <div class="second_name"> фамилия{{user.second_name}}</div>        <input type="text" value="{{user.second_name}}" class = "second_name btn_bsk">
-        <button onclick="change_class('second_name')">изменить</button>
-        <div class = 'email'>email {{user.email}}</div> <input type="email" value="{{user.email}}" class = "email btn_bsk">
-        <button onclick="change_class('email')">изменить</button>
+        <button onclick="change_class('first_name')">Изменить</button>
+        <div class="second_name"> Фамилия{{user.second_name}}</div>        <input type="text" value="{{user.second_name}}" class = "second_name btn_bsk">
+        <button onclick="change_class('second_name')">Изменить</button>
+        <div class = 'email'>Email {{user.email}}</div> <input type="email" value="{{user.email}}" class = "email btn_bsk">
+        <button onclick="change_class('email')">Изменить</button>
         <div class="username">{{user.username}}</div>         <input type="text" value="{{user.username}}" class = "username     btn_bsk">
-        <button onclick="change_class('username')">изменить</button> <br>
+        <button onclick="change_class('username')">Изменить</button> <br>
         <img class = "image" src="{{user.image.url}}" alt=""> <input type="file" class = "image btn_bsk" ><button onclick="change_class('image')">изменить</button> 
         <div class="phone">{{user.phone}}</div>         <input type="text" value="{{user.phone}}" class = "phone     btn_bsk">
-        <button onclick="change_class('phone')">изменить</button> <br>
+        <button onclick="change_class('phone')">Изменить</button> <br>
+    </div> -->
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src=""><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div>{{user.url_home}}</div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        
+                        <h4 class="text-right">Личные данные</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Имя {{user.first_name}}</label><input type="text" class="form-control" placeholder="Ваше имя" value="{{user.first_name}}" class = "first_name btn_bsk"></div>
+                        <div class="col-md-6"><label class="labels">Фамилия {{user.second_name}}</label><input type="text" class="form-control" value="{{user.second_name}}" placeholder="Ваша фамилия" class = "second_name btn_bsk"></div>
+                        <div class="col-md-6"><label class="labels">Дата рождения </label><input type="date" class="form-control" value="" placeholder="" class = ""></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Телефон {{user.phone}}</label><input type="text" class="form-control" placeholder="Номер телефона" value=""></div>
+                        <div class="col-md-12"><label class="labels">Адрес</label><input type="text" class="form-control" placeholder="Ваш адрес" value=""></div>
+                        <div class="col-md-12"><label class="labels">Email {{user.email}}</label><input type="email" class="form-control" placeholder="Эл. почта" value="{{user.email}}" class = "username btn_bsk"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Страна</label><input type="text" class="form-control" placeholder="Страна" value=""></div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Сохранить</button></div>
+                </div>
+            </div>
+        </div>
     </div>
+    </div>
+    </div>
+    <style>
+        body {
+            background: rgb(23, 55, 80)
+        }
+        
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #222665
+        }
+        
+        .profile-button {
+            background: rgb(44, 39, 120);
+            box-shadow: none;
+            border: none
+        }
+        
+        .profile-button:hover {
+            background: #1e456a;
+        }
+        
+        .profile-button:focus {
+            background: #1e456a;
+            box-shadow: none
+        }
+        
+        .profile-button:active {
+            background: #1e456a;
+            box-shadow: none
+        }
+        
+        .back:hover {
+            color: #1e456a;
+            cursor: pointer
+        }
+        
+        .labels {
+            font-size: 11px
+        }
+        
+        .add-experience:hover {
+            background: #225fa1;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #22626f
+        }
+    </style>
     <div>Заказы
         {% for i in ord %}
         <div>
@@ -30,7 +109,7 @@
         {% endfor %}
     </div>
     <div>
-        Адреса Достакви
+        Адреса достакви
 
         {% for i in delivery %}
         <div>
@@ -40,5 +119,50 @@
         <button>Добавить адрес доставки</button>
     </div>
 </div>
+<style>
+    body {
+        background: rgb(34, 99, 124)
+    }
 
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: rgb(99, 39, 120);
+        box-shadow: none;
+        border: none
+    }
+
+    .profile-button:hover {
+        background: #682773
+    }
+
+    .profile-button:focus {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .profile-button:active {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .back:hover {
+        color: #682773;
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 11px
+    }
+
+    .add-experience:hover {
+        background: #BA68C8;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #BA68C8
+    }
+</style>
 {% endblock %}
