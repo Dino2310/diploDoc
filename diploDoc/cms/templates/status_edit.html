@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content_cms %}
+<div class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-5 has-text-centered">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    <button class="button is-success">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

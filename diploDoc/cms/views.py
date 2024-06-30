@@ -2,9 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from shop.models import *
 from shop.forms import *
-
-
-
+from .forms import ProductForm,StatusForm
 
 
 def products(request):
@@ -60,3 +58,14 @@ def archive_product(request, pk):
         product.status = 'open'
     product.save()
     return redirect('cms:products')
+def add_education_material(request):
+    return render(request,'add_education_material.html')
+def status_edit(request,pk):
+    product = Product.objects.get(pk=pk)
+    form = StatusForm(request.POST or None, instance=product)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        isinstance.status  = request.POST('status')
+        instance.save()
+        return redirect('cms:orders')
+    return  render(request,'status_edit.html',{'form':form})

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content_cms %}
+<div class="section">
+    <div class="container">
+        <div class="columns is-centered is-vcentered">
+            <div class="column is-5">
+                <form action="">
+                    <div class="field">
+                        <div class="file">
+                            <label class="file-label">
+                                <input class="file-input" type="file"/>
+                                <span class="file-cta">
+                                  <span class="file-label"> Выберите обложку</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <textarea class="textarea"placeholder="Введите название учебного материала" ></textarea>
+                    </div>
+                    <div class="field">
+                        <textarea class="textarea"placeholder="Введите описание" ></textarea>
+                    </div>
+                    <div class="field">
+                        <div class="is-flex is-justify-content-space-between">
+                            <div>
+                                <button class="button">Добавить тексотовое поле </button>
+                            </div>
+                            <div>
+                                <button class="button">Добавить изображение </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons is-centered mt-6">
+                        <button class="button is-success px-6">Сохранить</button>
+                        <a href="{% url 'cms:ed_materials' %}" class="button is-danger px-6">Отмена</>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
