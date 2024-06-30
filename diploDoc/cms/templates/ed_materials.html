@@ -1,9 +1,10 @@
 {% extends 'layout.html' %}
+
 {% block content_cms %}
 <div class="section" style="height:70vh">
     <a href="{% url 'cms:add_education_material' %}" class="button is-medium px-6 is-warning">
         Добавить учебный материал
-    </>
+    </a>
     {% if materials %}
     <div class="columns is-centered mt-2">
         <div class="column">
