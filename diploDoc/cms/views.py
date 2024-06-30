@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
-
+from django.shortcuts import render,redirect
+from django.http import HttpResponse
+from shop.models import *
 from shop.forms import *
 from .forms import ProductForm,StatusForm
 

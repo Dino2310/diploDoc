@@ -112,7 +112,7 @@ class Order(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name="Дата добавления"
                             )
     status = models.TextField(
-        max_length=255, blank=True, null=True, choices=ORDER_STATUS, default='assembling', verbose_name='Статус заказа'
+        max_length=255, blank=True, null=True, choices=ORDER_STATUS, default='created', verbose_name='Статус заказа'
     )
     paid = models.TextField(
         default="SBP", verbose_name='Способ оплаты', blank=True, null=True
@@ -131,9 +131,10 @@ class Order(models.Model):
         status_object = {
             'is-light': ['created', 'assembling', 'delivering'],
             'is-success': ['arrived', 'received'],
-            'is-danger': ['cancelled', 'returned']
+            'is-danger': ['cancelled', 'returned', 'finish']
         }
         return [key for key in status_object.keys() if self.status in status_object[key]][0]
+    
 
 
 class ReservProduct(models.Model):
