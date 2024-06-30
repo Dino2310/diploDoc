@@ -4,7 +4,8 @@
     <div class="container">
         <div class="columns is-centered is-vcentered">
             <div class="column is-5">
-                <form enctype="multipart/form-data">
+                <form enctype="multipart/form-data" onsubmit="formLern(event)" method="post">
+                    {% csrf_token %}
                     <div class="field">
                         <div class="file">
                             <label class="file-label">

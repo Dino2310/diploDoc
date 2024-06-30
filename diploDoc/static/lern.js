@@ -28,35 +28,33 @@ function learn(type){
 
 
 function saveform(){
-    const formData = new FormData(document.querySelector('form'));
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/savelern/');
-    xhr.send(formData)
 
 
-    // data = { 'slug' : $("#slug").val(),
-    //         'name' : $("#name").val(),
-    //         'attributes' : $("#attributes").val(),
-    //         'title' : $("#title").files,
-    //         'titleF' : $("#title").val(),}
+
+    data = { 'slug' : $("#slug").val(),
+            'name' : $("#name").val(),
+            'attributes' : $("#attributes").val(),
+            'title' : $("#title").files,
+            'titleF' : $("#title").val(),
+            }
     
-    // for(; count-1; count--){
-    //     if (list[count] == text){
-    //     data[String(count)] = $(`#${count}`).val()}
-    //     else{ data[String(count)] = $(`#${count}`).files}
-    //     console.log(data)
-    // }
-    // $.ajax({
-    //     url: '/savelern/',
-    //     type: "POST",
-    //     data: data,
+    for(; count-1; count--){
+        if (list[count] == text){
+        data[String(count)] = $(`#${count}`).val()}
+        else{ data[String(count)] = $(`#${count}`).files}
+        console.log(data)
+    }
+    $.ajax({
+        url: '/savelern/',
+        type: "POST",
+        data: data,
 
-    //     success: function (data) {
-    //         console.log("отправлено")
-    //     },
-    //     error: function (s) {
-    //         console.log('err');
-    //     }
-    // })
+        success: function (data) {
+            console.log("отправлено")
+        },
+        error: function (s) {
+            console.log('err');
+        }
+    })
     
 }
