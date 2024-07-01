@@ -35,10 +35,15 @@ def ed_materials(request):
 
 def add_product(request):
     form = ProductForm(request.POST or None, request.FILES or None)
+    cat_form = CatForm(request.POST or None)
+
     if form.is_valid():
-        form.save()
+        add_prod = CatForm(dict([(elem, True) for elem in set(cat_form.fields)&set(request.POST)])).save(commit=False)
+        add_prod.prod = form.save()
+        add_prod.save()
+
         return redirect('cms:products')
-    return render(request, 'product_form.html', {'form': form})
+    return render(request, 'product_form.html', {'form': form, 'cat_form':cat_form})
 
 
 def edit_product(request, pk):

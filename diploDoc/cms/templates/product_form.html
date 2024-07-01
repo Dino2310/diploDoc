@@ -14,6 +14,18 @@
                                 </div>
                             </div>
                         {% endfor %}
+                        <br>
+                        <div>Категории</div>
+                        {% for field in cat_form %}
+                        <div class="field">
+                            <div class="control">
+                                {{field}} - {{field.name}}
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                            
                         <button class="button is-success px-6">Отправить</button>
                     </form>
                 </div>
