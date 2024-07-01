@@ -196,3 +196,4 @@ class Categorical(models.Model):
     panels_management = models.BooleanField(blank=True, default=False)
     controllers_management = models.BooleanField(blank=True, default=False)
     relay = models.BooleanField(blank=True, default=False)
+

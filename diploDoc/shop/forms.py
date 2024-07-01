@@ -159,3 +159,10 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields =['title','description','quantity','price','image']
+
+
+class CatForm(forms.ModelForm):
+    
+    class Meta:
+        model = Categorical
+        fields =['RS485','Wi_Fi','TWI','buttons','sensors', 'panels_management','controllers_management','relay']
