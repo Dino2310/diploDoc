@@ -9,10 +9,18 @@
 
     <div id="navbarBasicExample" class="navbar-menu container">
         <div class="navbar-start">
-            <a class="navbar-item{% if request.path == '/cms/products/' %} is-active{% endif %}" href="{% url 'cms:products' %}" >products</a>
-            <a class="navbar-item{% if request.path == '/cms/orders/' %} is-active{% endif %}" href="{% url 'cms:orders' %}">orders</a>
-             <a class="navbar-item{% if request.path == '/cms/customers/' %} is-active{% endif %}" href="{% url 'cms:customers' %}">customers</a>
-            <a class="navbar-item{% if request.path == '/cms/ed_materials/' %} is-active{% endif %}" href="{% url 'cms:ed_materials' %}">education materials</a>
+            <a class="navbar-item{% if request.path == '/cms/products/' %} is-active{% endif %}"
+               href="{% url 'cms:products' %}">Продукты</a>
+            <a class="navbar-item{% if request.path == '/cms/orders/' %} is-active{% endif %}"
+               href="{% url 'cms:orders' %}">Заказы</a>
+            <a class="navbar-item{% if request.path == '/cms/customers/' %} is-active{% endif %}"
+               href="{% url 'cms:customers' %}">Клиенты</a>
+            <a class="navbar-item{% if request.path == '/cms/ed_materials/' %} is-active{% endif %}"
+               href="{% url 'cms:ed_materials' %}">Учебные материалы</a>
+            <a class="navbar-item{% if request.path == '/cms/advertisements/' %} is-active {% endif %}"
+               href="{% url 'cms:advertisements' %}">Реклама</a>
+
+
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
             <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
