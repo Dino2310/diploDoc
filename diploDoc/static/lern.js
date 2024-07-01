@@ -9,15 +9,15 @@ let list = ['start']
 function learn(type){
     count++
     let img_in = `<div class="field">
-            <div class="file">
-                <label class="file-label">
-                    <input id = "${count}" class="file-input" type="file"/>
-                    <span class="file-cta">
-                        <span class="file-label"> Выберите фото</span>
-                    </span>
-                </label>
-            </div>
-        </div>`
+                    <div class="file">
+                        <label class="file-label">
+                            <input id = "${count}" class="file-input" type="file"/>
+                            <span class="file-cta">
+                                <span class="file-label"> Выберите фото</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>`
 
     let text_in = ` <div class="field">
                     <textarea id = "${count}" class="textarea"placeholder="Введите текст" ></textarea>
