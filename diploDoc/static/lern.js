@@ -1,12 +1,13 @@
 // addlearn - класс куда необходимо добавить поле для материала
 
 function formLern(e){e.preventDefault()}
-let count = 1
+let count = 0
 let list = ['start']
 
 
 
 function learn(type){
+    count++
     let img_in = `<div class="field">
             <div class="file">
                 <label class="file-label">
@@ -22,35 +23,37 @@ function learn(type){
                     <textarea id = "${count}" class="textarea"placeholder="Введите текст" ></textarea>
                 </div>`
     $('.addlearn').append(type == 'text'?text_in:img_in)
-    list.append[type]
-    count++
+    list.push(type)
+    
 }
 
 
 function saveform(){
 
-
-
-    data = { 'slug' : $("#slug").val(),
-            'name' : $("#name").val(),
-            'attributes' : $("#attributes").val(),
-            'title' : $("#title").files,
-            'titleF' : $("#title").val(),
-            }
-    
-    for(; count-1; count--){
-        if (list[count] == text){
-        data[String(count)] = $(`#${count}`).val()}
-        else{ data[String(count)] = $(`#${count}`).files}
-        console.log(data)
+    let formData = new FormData();
+		formData.append( 'title' , $("#title")[0].files[0]);
+        formData.append('slug' , $("#slug").val())
+        formData.append('name' , $("#name").val())
+        formData.append('attributes' , $("#attributes").val())
+        formData.append('list' , list)
+    for(; count; count--){
+        if (list[count] == 'text'){
+            formData.append(String(count) , $(`#${count}`).val())
+        }
+        else{ formData.append(String(count) , $(`#${count}`)[0].files[0])}
     }
+
     $.ajax({
         url: '/savelern/',
         type: "POST",
-        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        data:  formData,
+        dataType : 'json',
 
         success: function (data) {
-            console.log("отправлено")
+            window.location.href = '/cms/ed_materials/'
         },
         error: function (s) {
             console.log('err');
