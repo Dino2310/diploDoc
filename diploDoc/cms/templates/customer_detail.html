@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+
+{% block content_cms %}
+<div class="section">
+    <div class="container">
+
+        <div class="box " style="min-height:50vh; overflow-y:scroll;">
+            <div class="title">
+                Клиент №{{customer.pk}}
+            </div>
+            <table class="table is-striped is-fullwidth is-hoverable is-bordered">
+                <tbody>
+                <tr>
+                    <td>Фото</td>
+                    <td>
+                        <figure class="image is-48x48">
+                            <img src="https://bulma.io/assets/images/placeholders/48x48.png" alt="">
+                        </figure>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>{{customer.user.username}}</td>
+                </tr>
+
+
+                <tr>
+                    <td>Имя</td>
+                    <td>
+                        {% if customer.user.first_name %}
+                        {{customer.user.first_name}}
+                        {% else %}
+                        Не указано
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>фамилия</td>
+                    <td>
+                        {% if customer.user.last_name %}
+                        {{customer.user.last_name}}
+                        {% else %}
+                        Не указано
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>{% if customer.url %}
+                        {{customer.url}}
+                        {% else %}
+                        Не указано
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Описание</td>
+                    <td>{% if customer.attributes %}
+                        {{customer.attributes}}
+                        {% else %}
+                        Не указано
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL Home</td>
+                    <td>{% if customer.url_home %}
+                        {{customer.url_home}}
+                        {% else %}
+                        Не указано
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Адрес</td>
+                    <td>{% if customer.delivery_address %}
+                        {{customer.delivery_address}}
+                        {% else %}
+                        Не указано
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Номер телефона</td>
+                    <td>{% if customer.phone %}
+                        {{customer.phone}}
+                        {% else %}
+                        Не указано
+                        {% endif %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

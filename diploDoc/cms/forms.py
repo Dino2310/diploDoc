@@ -1,6 +1,6 @@
 from django import forms
 
-from shop.models import Product,ORDER_STATUS,Order
+from shop.models import Product, ORDER_STATUS, Order
 
 
 class ProductForm(forms.ModelForm):
@@ -18,13 +18,12 @@ class ProductForm(forms.ModelForm):
     )))
     image = forms.FileField(required=False)
 
-
     class Meta:
         model = Product
-        fields =['name','description','quantity','price','image']
+        fields = ['name', 'description', 'quantity', 'price', 'image']
+
 
 class StatusForm(forms.ModelForm):
-    status = forms.ChoiceField(choices=ORDER_STATUS)
     class Meta:
         model = Order
-        fields=['status']
+        fields = ['status']
