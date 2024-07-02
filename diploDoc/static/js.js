@@ -90,8 +90,6 @@ function prod(id_prod){ // формирует модальнео окно тов
 }
 
 
-
-
 function reloadcat(search, interface, sort, price_max, price_min, type_dev) {// обработка и применения фильтров на старнице категории в питоне вызывает ф-ию ajax_ansvwer приложения shop
     let cat = $('.t951__sidebar-wrapper').children()
     $.ajax({
