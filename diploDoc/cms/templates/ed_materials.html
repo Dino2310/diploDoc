@@ -1,14 +1,16 @@
 {% extends 'layout.html' %}
+
 {% block content_cms %}
 <div class="section" style="height:70vh">
-    <button class="button is-medium px-6 is-warning">
+    <a href="{% url 'cms:add_education_material' %}" class="button is-medium px-6 is-warning">
         Добавить учебный материал
-    </button>
+    </a>
+    {% if educations %}
     <div class="columns is-centered mt-2">
         <div class="column">
             <div class="box">
                 <div class="block">
-                    {% for i in meterials %}
+                    {% for i in educations %}
                     <div class="columns is-vcentered">
                         <div class="column is-1">
                             <img src="{{i.image.url}}" alt="">
@@ -28,6 +30,13 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="section is-large">
+        <div class="container has-text-centered">
+            <div class="title"> Пока нет материалов</div>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}

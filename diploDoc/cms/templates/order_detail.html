@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block content_cms %}
+<div class="section">
+    <div class="container">
+
+        <div class="box " style="min-height:50vh; overflow-y:scroll;">
+            <div class="title">
+                Заказ №{{order.pk}}
+            </div>
+            <table class="table is-striped is-fullwidth is-hoverable is-bordered">
+                <tbody>
+                <tr>
+                    <td>Имя</td>
+                    <td>{{order.user.username}}</td>
+                </tr>
+                 <tr>
+                    <td>Статус заказа</td>
+                    <td>{{order.paid}}</td>
+                </tr>
+
+                 <tr>
+                    <td>Адрес доставки</td>
+                    <td>
+                        {% if order.deliveryAddress %}
+                        {{order.deliveryAddress}}
+                        {% else %}
+                        Не указано
+                        {% endif %}
+                    </td>
+                </tr>
+                 <tr>
+                    <td>Заказанные товары</td>
+                    <td>
+                    {% for product in order.reservproduct_set.all %} {{product.product.name}},{% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Сумма заказа</td>
+                    <td>  {{ order.total_sum }} p</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

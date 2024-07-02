@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
+{% load index %}
 
 {% block content_cms %}
     <div class="section">
         <div class="container">
             <div class="columns is-centered is-vcentered">
                 <div class="column is-7">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" >
                         {% csrf_token %}
                         {% for field in form %}
                             <div class="field">
@@ -14,6 +15,16 @@
                                 </div>
                             </div>
                         {% endfor %}
+                        <br>
+                        <div>Категории</div>
+                        {% for field in cat_form %}
+                        <div class="field cat ">
+                            <div class="control {{field.name}}"  > 
+                                {{field}} - {{field.name}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
                         <button class="button is-success px-6">Отправить</button>
                     </form>
                 </div>

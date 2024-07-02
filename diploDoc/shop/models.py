@@ -176,6 +176,9 @@ class Education(models.Model):
         max_length=200, unique=True, blank=True, null=True, verbose_name='URL'
     )
 
+    def  attributes_get(self):
+        return (' ').join(self.attributes.split()[:25])+'...'
+
 
 class ContetnLearn(models.Model):
     image = models.ImageField(
@@ -196,3 +199,4 @@ class Categorical(models.Model):
     panels_management = models.BooleanField(blank=True, default=False)
     controllers_management = models.BooleanField(blank=True, default=False)
     relay = models.BooleanField(blank=True, default=False)
+

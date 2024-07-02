@@ -219,4 +219,10 @@ def about(request):
 def url(request):
     SubUser.objects.filter(user = User.object.get(username = 'aand')).update(url_home = request.GET.get('url'))
 
+@ajax
+def cat(request):
+    c = request.GET.get
+    print(100*'1')
+    return {'ret' :Categorical(name = c('name'), prod = c('id'))}
+
 
