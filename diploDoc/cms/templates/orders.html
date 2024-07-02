@@ -8,30 +8,15 @@
                 <div class="column is-1">
                     <img src="https://www.tiffincurry.ca/wp-content/uploads/2021/02/default-product.png" alt="">
                 </div>
-                <div class="column is-3">
+                <div class="column">
                     <div class="subtitle"> {{i.deliveryaddress}}</div>
                     <div class="subtitle">
                         {% for j in i.reservproduct_set.all %} {{j.product.name}},{% endfor %}
                     </div>
                 </div>
-                <div class="column has-text-centered">
-                    <div class="content">
-                        Кол-во:<br>
-                        {{ i.reservproduct_set.count }}
-                    </div>
-                </div>
-                <div class="column is-2 has-text-centered">
-                    <div class="content">
-                        Общая стоимость:<br>
-                        {{ i.total_sum }} p
-                    </div>
-                </div>
-                 <div class="column  has-text-centered">
-                    <div class="content">
-                        Способ оплаты:<br>
-                        {{ i.paid }}
-                    </div>
-                </div>
+
+
+
                 <div class="column  has-text-centered">
                     <div class="content">
                         Статус:<br>
@@ -40,12 +25,16 @@
                         </tag>
                     </div>
                 </div>
-                  <div class="column has-text-centered">
-                      <a href="{% url 'cms:status_edit' i.pk %}" class="button px-6 is-warning">
-                          Изменить статус
-                      </a>
-                  </div>
-
+                <div class="column has-text-centered">
+                    <a href="{% url 'cms:status_edit' i.pk %}" class="button px-6 is-warning">
+                        Изменить статус
+                    </a>
+                </div>
+                <div class="column has-text-centered">
+                    <a href="{% url 'cms:order_detail' i.pk %}" class="button is-info">
+                        Подробнее
+                    </a>
+                </div>
             </div>
             {% endfor %}
         </div>

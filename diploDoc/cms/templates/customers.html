@@ -29,15 +29,12 @@
             </div>
             <div class="column is-2">
                 Номер телефона:<br>
-                {{ user.user.phone }}
+                {{ user.phone }}
             </div>
             <div class="column has-text-right">
-                <button class="button">
-                    <ion-icon name="trash"></ion-icon>
-                </button>
-                <button class="button">
-                    <ion-icon name="create"></ion-icon>
-                </button>
+                 <a href="{% url 'cms:customer_detail' user.pk %}" class="button is-info">
+                    Подробнее
+                </a>
             </div>
         </div>
         <hr>

@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content_cms %}
+<div class="section">
+    <a class="button my-2 is-warning" href="{% url 'cms:advertisement_create' %}">Добавить рекламу</a>
+    <div class="box" style="height:70vh">
+        {% for ad in ads %}
+        <div class="columns is-vcentered">
+            <div class="column is-1">
+                <img src="{{ad.image.url}}" alt="">
+            </div>
+            <div class="column ">
+                Описание: <br>
+                {{ ad.attributes }}
+            </div>
+            <div class="column">
+                Длительность:<br>
+                {{ad.finished}}
+            </div>
+            <div class="column">
+                URL:<br>
+                {{ad.slug}}
+            </div>
+           <div class="column is-1 has-text-right">
+                 <a href="{% url 'cms:advertisement_update' ad.pk %}" class="button is-info">
+                    Изменить
+                </a>
+            </div>
+             <div class="column is-1 has-text-right">
+                 <form action="{% url 'cms:advertisement_delete' ad.pk %}" method="post">
+                     {% csrf_token %}
+                     <button class="button is-danger">Удалить</button>
+                 </form>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
