@@ -37,6 +37,6 @@ jobs:
         command: |
             cd elicta7e.beget.tech;
             git checkout main;
-            git pull origin main
+            #git pull origin main
             git merge origin/main --no-commit --no-ff
             touch tmp/restart.txt;
