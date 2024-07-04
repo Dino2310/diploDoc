@@ -1,10 +1,15 @@
 {% extends "base.html" %}
+
+
+
 {% load static %}
 {% load index %}
 {% block bulma %}
-        <link rel="stylesheet" href="{% static 'bulma.min.css' %}">
-        {% endblock %}
+<link rel="stylesheet" href="{% static 'bulma.min.css' %}">
+{% endblock %}
+
 {% block contetnt %}
+
 
 <div style="margin-top: 70px; background-color: rgb(51, 51, 51);  height: 84vh; padding-top: 50px; display: flex; justify-content: space-around;" class = 'client' >
     <div><ul style="display: inline">
@@ -28,27 +33,46 @@
         <img class = "image" src="{{user.image.url}}" alt=""> <input type="file" class = "image btn_bsk lk" style="font-size: 15px; color: rgb(15, 171, 223); text-decoration: double;" ><button onclick="change_class('image')">изменить</button> 
         <div class="phone">{{user.phone}}</div>         <input type="text" value="{{user.phone}}" class = "phone  lk   btn_bsk">
         
+
         <button onclick="change_class('phone')">изменить</button> <br>
     </div>
-        <div>Заказы
-            {% for i in ord %}
-            <div>
-                {{i}} {% if i.status == 'assembling' %} <button>Пепрейти к оформлению </button> {% else %} <button>Подобнее</button>{% endif %}
-            </div>
-            {% endfor %}
-        </div>
+    <div>Заказы
+        {% for i in ord %}
         <div>
-            Адреса Достакви
-    
-            {% for i in delivery %}
-            <div>
-                {{i}}
-            </div>
-            {% endfor %}
-            <button>Добавить адрес доставки</button>
+            {{i}} {% if i.status == 'assembling' %} <button>Пепрейти к оформлению </button> {% else %}
+            <button>Подобнее</button>{% endif %}
         </div>
-    
+        {% endfor %}
+    </div>
+    <div>
+        Адреса Достакви
+
+        {% for i in delivery %}
+        <div>
+            {{i}}
+        </div>
+        {% endfor %}
+        <button>Добавить адрес доставки</button>
     </div>
 
+</div>
 
+<a href="https://hagfish-star-strangely.ngrok-free.app/" target="_blank"
+    style="position: fixed; right: 10vh; bottom: 10vw">
+    <div
+        style=" display: inline-block; height: 100px; width: 100px; background-color: rgba(255, 255, 0, 0.288); clip-path: polygon(50% 0%, 100% 57%, 75% 57%, 75% 100%, 25% 100%, 24% 56%, 0 56%);">
+
+        <div style='justify-content: center; margin-top: 60px;'>
+            <div style="display: flex; justify-content: center;">
+                <div class="window"></div>
+                <div class="window"></div>
+            </div>
+
+            <div style="display: flex; justify-content: center;">
+                <div class="window"></div>
+                <div class="window"></div>
+            </div>
+        </div>
+    </div>
+</a>
 {% endblock %}

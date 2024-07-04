@@ -19,6 +19,15 @@
     color: darkgray
 }
 
+.window {
+    display: flex !important;
+    justify-content: center !important;
+    margin: 2px !important;
+    background-color: rgb(51, 51, 51) !important;
+    height: 10px !important;
+    width: 10px !important;
+
+}
 .lk{
     
     height: 25px !important; 
