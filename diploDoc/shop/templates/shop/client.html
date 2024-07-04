@@ -10,39 +10,29 @@
 
 {% block contetnt %}
 
-<div style="margin-top: 70px; background-color: rgb(51, 51, 51);  height: 84vh; padding-top: 50px; display: flex; justify-content: space-around;"
-    class='client'>
 
-
-    <div>
-        <ul style="display: inline">
-            <li>Корзина</li>
-            <li>Адреса достваки</li>
-            <li>Акрхив заказов</li>
-        </ul>
-    </div>
-    <div
-        style="border: 1px solid black;  border-radius: 10px ; margin-left: auto; margin-right: auto; background-color: azure; padding-left: 20px; padding-right: 20px; width: 25vw; align-items: center;">
-        личные данные
-
+<div style="margin-top: 70px; background-color: rgb(51, 51, 51);  height: 84vh; padding-top: 50px; display: flex; justify-content: space-around;" class = 'client' >
+    <div><ul style="display: inline">
+        <li>Корзина</li>
+        <li>Адреса достваки</li>
+        <li>Акрхив заказов</li>
+    </ul></div>
+    <div style="border: 3px solid rgb(73, 191, 230);  border-radius: 10px; box-shadow: 0 0 40px #c5c5c5; margin-left: auto; margin-right: auto; background-color: azure; padding-left: 20px; padding-right: 20px; width: 25vw; align-items: center; text-align: center; font-size: 18px;">Личные данные
         <!-- <p class="lk">{{user.url_home}}</p> -->
         <br>
-        <div class="first_name lk" style="text-align: center;">{% if user.first_name %} {{user.first_name}} {% else %}
-            Введите имя {% endif %}</div>
-        <input type="text" value="{{user.first_name}}" class="first_name btn_bsk lk">
-        <button onclick="change_class('first_name')" style="display: block;" class=" button">изменить</button>
-        <div class="second_name lk"> фамилия{{user.second_name}}</div>
-        <input type="text" value="{{user.second_name}}" class="second_name btn_bsk lk">
-        <button onclick="change_class('second_name')" style="display: block;" class="button">изменить</button>
-        <div class='email lk'>email {{user.email}}</div> <input type="email" value="{{user.email}}"
-            class="email btn_bsk lk">
-        <button onclick="change_class('email')" style="display: block;" class=" button">изменить</button>
-        <div class="username lk">{{user.username}}</div> <input type="text" value="{{user.username}}"
-            class="username  lk   btn_bsk">
-        <button onclick="change_class('username')" style="display: block;" class="button">изменить</button> <br>
-        <img class="image" src="{{user.image.url}}" alt=""> <input type="file" class="image btn_bsk lk"><button
-            onclick="change_class('image')">изменить</button>
-        <div class="phone">{{user.phone}}</div> <input type="text" value="{{user.phone}}" class="phone  lk   btn_bsk">
+        <div class = "first_name lk" style="text-align: center;" >{% if user.first_name  %} {{user.first_name}} {% else %} Введите имя {% endif %}</div> 
+        <input type="text" value="{{user.first_name}}" class = "first_name btn_bsk lk">
+        <button onclick="change_class('first_name')" style="display: block; background-color: rgb(73, 191, 230);" class=" button">изменить</button>
+        <div class="second_name lk" style="text-align: center;"> Введите фамилию{{user.second_name}}</div>  
+              <input type="text" value="{{user.second_name}}" class = "second_name btn_bsk lk">
+        <button onclick="change_class('second_name')"  style="display: block; background-color: rgb(73, 191, 230);" class="button">изменить</button>
+        <div class = 'email lk'>email {{user.email}}</div> <input type="email" value="{{user.email}}" class = "email btn_bsk lk">
+        <button onclick="change_class('email')" style="display: block; background-color: rgb(73, 191, 230);"  class=" button">изменить</button>
+        <div class="username lk">{{user.username}}</div>         <input type="text" value="{{user.username}}" class = "username  lk   btn_bsk">
+        <button onclick="change_class('username')" style="display: block; background-color: rgb(73, 191, 230);" class="button">изменить</button> <br>
+        <img class = "image" src="{{user.image.url}}" alt=""> <input type="file" class = "image btn_bsk lk" style="font-size: 15px; color: rgb(15, 171, 223); text-decoration: double;" ><button onclick="change_class('image')">изменить</button> 
+        <div class="phone">{{user.phone}}</div>         <input type="text" value="{{user.phone}}" class = "phone  lk   btn_bsk">
+        
 
         <button onclick="change_class('phone')">изменить</button> <br>
     </div>
