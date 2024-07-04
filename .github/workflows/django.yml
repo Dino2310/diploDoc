@@ -36,11 +36,12 @@ jobs:
         user: ${{secrets.USERNAME}}
         command: |
             cd elicta7e.beget.tech;
+            git pull origin  main;
             git fetch;
             git checkout main;
             git merge main;
             git add .;
             git commit -m 'autosave';
             git merge main;
-            git pull origin  main;
+            
             touch tmp/restart.txt;
