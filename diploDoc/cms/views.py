@@ -47,12 +47,14 @@ def add_product(request):
 def edit_product(request, pk):
     product = Product.objects.get(pk=pk)
     form = ProductForm(request.POST or None, request.FILES or None, instance=product)
-    cat_form = CatForm(request.POST or None)
-    if form.is_valid():
-        add_prod = CatForm(dict([(elem, True) for elem in set(cat_form.fields)&set(request.POST)])).save(commit=False)
-        add_prod.prod = form.save()
-        add_prod.save()
-        return redirect('cms:products')
+    cat_form = CatForm(request.POST , instance = product)
+    print(cat_form.__dict__)
+    print(form.__dict__)
+    # if form.is_valid():
+    #     add_prod = CatForm(dict([(elem, True) for elem in set(cat_form.fields)&set(request.POST)])).save(commit=False)
+    #     add_prod.prod = form.save()
+    #     add_prod.save()
+    #     return redirect('cms:products')
     return render(request, 'product_form.html', {'form': form, 'cat_form':cat_form, 'prod': pk})
 
 

@@ -177,7 +177,7 @@ class Education(models.Model):
     )
 
     def  attributes_get(self):
-        return (' ').join(self.attributes.split()[:25])+'...'
+        return (' ').join(self.attributes[:100].split()[:-1])+'...'
 
 
 class ContetnLearn(models.Model):
