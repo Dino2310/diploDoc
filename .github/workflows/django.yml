@@ -37,9 +37,9 @@ jobs:
         command: |
             cd elicta7e.beget.tech;
             git checkout main;
-            #git pull origin main
-            git add .
-            git commit -m 'autosave'
-            git merge origin/main --no-commit --no-ff
-            git pull origin main
+            git merge origin/main;
+            git add .;
+            git commit -m 'autosave';
+            git merge origin/main;
+            git pull origin main;
             touch tmp/restart.txt;
