@@ -1,0 +1,965 @@
+{% load static %}
+{% load index %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <!-- 
+    strt -->
+
+    <!-- <link rel="stylesheet"
+        href="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49061893.min.css?t=1716483041"
+        type="text/css" media="all" onerror="this.loaderr='y';" /> -->
+
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-blocks-page49061893.min.css' %}" type="text/css" media="all"
+        onerror="this.loaderr='y';" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% if 'cms' in request.path|split_url:'/' or 'users' in request.path|split_url:'/' %}
+    <link rel="stylesheet" href="{% static 'bulma.min.css' %}">
+    {% endif %}
+    <!-- stop -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:300,600'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--metatextblock-->
+    <title>SweetHome</title>
+    <meta name="description" content="Магазин умных товаров" />
+
+    <meta property="og:title" content="SweetHome" />
+    <meta property="og:description" content="Магазин умных товаров" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{% static 'image/icon.png' %}" />
+
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="shortcut icon" href="{% static 'image/icon.png' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- <link rel="dns-prefetch" href="https://ws.tildacdn.com"> -->
+    <script src="{% static 'tilda/js/tilda-fallback-1.0.min.js' %}" async charset="utf-8"></script>
+
+    <script src="{% static 'tilda/css/tilda-blocks-page49061893.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-blocks-page49064109.min.css' %}" type="text/css" media="all"
+        onerror="this.loaderr='y';" />
+    <!-- <link rel="stylesheet"
+        href="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49064109.min.css?t=1716483053"
+        type="text/css" media="all" onerror="this.loaderr='y';" />
+    <script src="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49064109.min.js?t=1716483053"
+        charset="utf-8" async onerror="this.loaderr='y';"></script> -->
+    <!-- <script src="https://static.tildacdn.com/ws/project9598093/tilda-blocks-page49061893.min.js?t=1716483041"
+        charset="utf-8" async onerror="this.loaderr='y';"></script> -->
+    <script src="{% static 'tilda/js/tilda-blocks-page49061893.min' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-grid-3.0.min.css' %}" type="text/css" media="all"
+        onerror="this.loaderr='y';" />
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-forms-1.0.min.css' %}" type="text/css" media="all"
+        onerror="this.loaderr='y';" />
+
+    {% block bulma %}
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-cart-1.0.min.css' %}" type="text/css" media="all"
+        onerror="this.loaderr='y';" />
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-catalog-filters-1.0.min.css' %}" type="text/css" media="all"
+        onerror="this.loaderr='y';" />
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-slds-1.4.min.css' %}" type="text/css" media="print"
+        onload="this.media='all';" onerror="this.loaderr='y';" /><noscript>
+        <link rel="stylesheet" href="{% static 'tilda/css/tilda-slds-1.4.min.css' %}" type="text/css" media="all" />
+    </noscript>
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-popup-1.1.min.css' %}" type="text/css" media="print"
+        onload="this.media='all';" onerror="this.loaderr='y';" /><noscript>
+        <link rel="stylesheet" href="{% static 'tilda/css/tilda-popup-1.1.min.css' %}" type="text/css" media="all" />
+    </noscript>
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-catalog-1.1.min.css' %}" type="text/css" media="print"
+        onload="this.media='all';" onerror="this.loaderr='y';" /><noscript>
+        <link rel="stylesheet" href="{% static 'tilda/css/tilda-catalog-1.1.min.css' %}" type="text/css" media="all" />
+    </noscript>
+    <link rel="stylesheet" href="{% static 'tilda/css/tilda-zoom-2.0.min.css' %}" type="text/css" media="print"
+        onload="this.media='all';" onerror="this.loaderr='y';" /><noscript>
+        <link rel="stylesheet" href="{% static 'tilda/css/tilda-zoom-2.0.min.css' %}" type="text/css" media="all" />
+    </noscript>
+    <link rel="stylesheet" href="{% static 'tilda/css/fonts-tildasans.css' %}" type="text/css" media="all"
+        onerror="this.loaderr='y';" />
+
+
+    <script nomodule src="{% static 'tilda/js/tilda-polyfill-1.0.min.js' %}" charset="utf-8"></script>
+    <script
+        type="text/javascript">function t_onReady(func) {
+                if (document.readyState != 'loading') {
+                    func();
+                } else {
+                    document.addEventListener('DOMContentLoaded', func);
+                }
+            }
+            function t_onFuncLoad(funcName, okFunc, time) {
+                if (typeof window[funcName] === 'function') {
+                    okFunc();
+                } else {
+                    setTimeout(function () {
+                        t_onFuncLoad(funcName, okFunc, time);
+                    }, (time || 100));
+                }
+            } function t_throttle(fn, threshhold, scope) { return function () { fn.apply(scope || this, arguments); }; }</script>
+    <script src="{% static 'tilda/js/tilda-scripts-3.0.min.js' %}" charset="utf-8" defer
+        onerror="this.loaderr='y';"></script>
+
+    <script src="{% static 'tilda/js/lazyload-1.3.min.export.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-menu-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-forms-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-cart-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-slds-1.4.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/hammer.min.js' %}" charset="utf-8" async onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-products-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-forms-payments-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-catalog-1.1.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-zoom-2.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-catalog-filters-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-skiplink-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-events-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+
+    <script nomodule src="{% static 'tilda/js/tilda-polyfill-1.0.min.js' %}" charset="utf-8"></script>
+    <script type="text/javascript">function t_onReady(func) {
+            if (document.readyState != 'loading') {
+                func();
+            } else {
+                document.addEventListener('DOMContentLoaded', func);
+            }
+        }
+        function t_onFuncLoad(funcName, okFunc, time) {
+            if (typeof window[funcName] === 'function') {
+                okFunc();
+            } else {
+                setTimeout(function () {
+                    t_onFuncLoad(funcName, okFunc, time);
+                }, (time || 100));
+            }
+        }</script>
+    <script src="{% static 'tilda/js/tilda-scripts-3.0.min.js' %}" charset="utf-8" defer
+        onerror="this.loaderr='y';"></script>
+
+    <script src="{% static 'tilda/js/lazyload-1.3.min.export.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-animation-2.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-menu-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-cover-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-cards-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-skiplink-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script src="{% static 'tilda/js/tilda-events-1.0.min.js' %}" charset="utf-8" async
+        onerror="this.loaderr='y';"></script>
+    <script type="text/javascript">window.dataLayer = window.dataLayer || [];</script>
+    <script type="text/javascript">(function () {
+            if ((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(navigator.userAgent)) === false && typeof (sessionStorage) != 'undefined' && sessionStorage.getItem('visited') !== 'y' && document.visibilityState) {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = '@media screen and (min-width: 980px) {.t-records {opacity: 0;}.t-records_animated {-webkit-transition: opacity ease-in-out .2s;-moz-transition: opacity ease-in-out .2s;-o-transition: opacity ease-in-out .2s;transition: opacity ease-in-out .2s;}.t-records.t-records_visible {opacity: 1;}}';
+                document.getElementsByTagName('head')[0].appendChild(style);
+                function t_setvisRecs() {
+                    var alr = document.querySelectorAll('.t-records');
+                    Array.prototype.forEach.call(alr, function (el) {
+                        el.classList.add("t-records_animated");
+                    });
+                    setTimeout(function () {
+                        Array.prototype.forEach.call(alr, function (el) {
+                            el.classList.add("t-records_visible");
+                        });
+                        sessionStorage.setItem("visited", "y");
+                    }, 400);
+                }
+                document.addEventListener('DOMContentLoaded', t_setvisRecs);
+            }
+        })();</script>
+    <script type="text/javascript">window.dataLayer = window.dataLayer || [];</script>
+    <script type="text/javascript">(function () {
+            if ((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(navigator.userAgent)) === false && typeof (sessionStorage) != 'undefined' && sessionStorage.getItem('visited') !== 'y' && document.visibilityState) {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = '@media screen and (min-width: 980px) {.t-records {opacity: 0;}.t-records_animated {-webkit-transition: opacity ease-in-out .2s;-moz-transition: opacity ease-in-out .2s;-o-transition: opacity ease-in-out .2s;transition: opacity ease-in-out .2s;}.t-records.t-records_visible {opacity: 1;}}';
+                document.getElementsByTagName('head')[0].appendChild(style);
+                function t_setvisRecs() {
+                    var alr = document.querySelectorAll('.t-records');
+                    Array.prototype.forEach.call(alr, function (el) {
+                        el.classList.add("t-records_animated");
+                    });
+                    setTimeout(function () {
+                        Array.prototype.forEach.call(alr, function (el) {
+                            el.classList.add("t-records_visible");
+                        });
+                        sessionStorage.setItem("visited", "y");
+                    }, 400);
+                }
+                document.addEventListener('DOMContentLoaded', t_setvisRecs);
+            }
+        })();</script>
+</head>
+
+<body class="t-body "><!--allrecords-->
+    <div id="allrecords" class="t-records">
+        <div id="rec749301449" class="r t-rec t-rec_pt_0 t-rec_pb_0"
+            style="padding-top:0px;padding-bottom:0px;background-color:#292929; "><!-- T456 -->
+            <div id="nav749301449marker"></div>
+            <div class="tmenu-mobile">
+                <div class="tmenu-mobile__container">
+                    <div class="tmenu-mobile__text t-name t-name_md" field="menu_mob_title">IoT System Home</div><button
+                        type="button" class="t-menuburger t-menuburger_first " aria-label="Навигационное меню"
+                        aria-expanded="false"><span style="background-color:#fff;"></span><span
+                            style="background-color:#fff;"></span><span style="background-color:#fff;"></span><span
+                            style="background-color:#fff;"></span></button>
+                    <script>function t_menuburger_init(recid) {
+                            var rec = document.querySelector('#rec' + recid);
+                            if (!rec) return;
+                            var burger = rec.querySelector('.t-menuburger');
+                            if (!burger) return;
+                            var isSecondStyle = burger.classList.contains('t-menuburger_second');
+                            if (isSecondStyle && !window.isMobile && !('ontouchend' in document)) {
+                                burger.addEventListener('mouseenter', function () {
+                                    if (burger.classList.contains('t-menuburger-opened')) return;
+                                    burger.classList.remove('t-menuburger-unhovered');
+                                    burger.classList.add('t-menuburger-hovered');
+                                });
+                                burger.addEventListener('mouseleave', function () {
+                                    if (burger.classList.contains('t-menuburger-opened')) return;
+                                    burger.classList.remove('t-menuburger-hovered');
+                                    burger.classList.add('t-menuburger-unhovered');
+                                    setTimeout(function () {
+                                        burger.classList.remove('t-menuburger-unhovered');
+                                    }, 300);
+                                });
+                            }
+                            burger.addEventListener('click', function () {
+                                if (!burger.closest('.tmenu-mobile') &&
+                                    !burger.closest('.t450__burger_container') &&
+                                    !burger.closest('.t466__container') &&
+                                    !burger.closest('.t204__burger') &&
+                                    !burger.closest('.t199__js__menu-toggler')) {
+                                    burger.classList.toggle('t-menuburger-opened');
+                                    burger.classList.remove('t-menuburger-unhovered');
+                                }
+                            });
+                            var menu = rec.querySelector('[data-menu="yes"]');
+                            if (!menu) return;
+                            var menuLinks = menu.querySelectorAll('.t-menu__link-item');
+                            var submenuClassList = ['t978__menu-link_hook', 't978__tm-link', 't966__tm-link', 't794__tm-link', 't-menusub__target-link'];
+                            Array.prototype.forEach.call(menuLinks, function (link) {
+                                link.addEventListener('click', function () {
+                                    var isSubmenuHook = submenuClassList.some(function (submenuClass) {
+                                        return link.classList.contains(submenuClass);
+                                    });
+                                    if (isSubmenuHook) return;
+                                    burger.classList.remove('t-menuburger-opened');
+                                });
+                            });
+                            menu.addEventListener('clickedAnchorInTooltipMenu', function () {
+                                burger.classList.remove('t-menuburger-opened');
+                            });
+                        }
+                        t_onReady(function () {
+                            t_onFuncLoad('t_menuburger_init', function () { t_menuburger_init('749301449'); });
+                        });</script>
+                    <style>
+                        .t-menuburger {
+                            position: relative;
+                            flex-shrink: 0;
+                            width: 28px;
+                            height: 20px;
+                            padding: 0;
+                            border: none;
+                            background-color: transparent;
+                            outline: none;
+                            -webkit-transform: rotate(0deg);
+                            transform: rotate(0deg);
+                            transition: transform .5s ease-in-out;
+                            cursor: pointer;
+                            z-index: 999;
+                        }
+
+                        /*---menu burger lines---*/
+                        .t-menuburger span {
+                            display: block;
+                            position: absolute;
+                            width: 100%;
+                            opacity: 1;
+                            left: 0;
+                            -webkit-transform: rotate(0deg);
+                            transform: rotate(0deg);
+                            transition: .25s ease-in-out;
+                            height: 3px;
+                            background-color: #000;
+                        }
+
+                        .t-menuburger span:nth-child(1) {
+                            top: 0px;
+                        }
+
+                        .t-menuburger span:nth-child(2),
+                        .t-menuburger span:nth-child(3) {
+                            top: 8px;
+                        }
+
+                        .t-menuburger span:nth-child(4) {
+                            top: 16px;
+                        }
+
+                        /*menu burger big*/
+                        .t-menuburger__big {
+                            width: 42px;
+                            height: 32px;
+                        }
+
+                        .t-menuburger__big span {
+                            height: 5px;
+                        }
+
+                        .t-menuburger__big span:nth-child(2),
+                        .t-menuburger__big span:nth-child(3) {
+                            top: 13px;
+                        }
+
+                        .t-menuburger__big span:nth-child(4) {
+                            top: 26px;
+                        }
+
+                        /*menu burger small*/
+                        .t-menuburger__small {
+                            width: 22px;
+                            height: 14px;
+                        }
+
+                        .t-menuburger__small span {
+                            height: 2px;
+                        }
+
+                        .t-menuburger__small span:nth-child(2),
+                        .t-menuburger__small span:nth-child(3) {
+                            top: 6px;
+                        }
+
+                        .t-menuburger__small span:nth-child(4) {
+                            top: 12px;
+                        }
+
+                        /*menu burger opened*/
+                        .t-menuburger-opened span:nth-child(1) {
+                            top: 8px;
+                            width: 0%;
+                            left: 50%;
+                        }
+
+                        .t-menuburger-opened span:nth-child(2) {
+                            -webkit-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                        }
+
+                        .t-menuburger-opened span:nth-child(3) {
+                            -webkit-transform: rotate(-45deg);
+                            transform: rotate(-45deg);
+                        }
+
+                        .t-menuburger-opened span:nth-child(4) {
+                            top: 8px;
+                            width: 0%;
+                            left: 50%;
+                        }
+
+                        .t-menuburger-opened.t-menuburger__big span:nth-child(1) {
+                            top: 6px;
+                        }
+
+                        .t-menuburger-opened.t-menuburger__big span:nth-child(4) {
+                            top: 18px;
+                        }
+
+                        .t-menuburger-opened.t-menuburger__small span:nth-child(1),
+                        .t-menuburger-opened.t-menuburger__small span:nth-child(4) {
+                            top: 6px;
+                        }
+
+                        /*---menu burger first style---*/
+                        @media (hover),
+                        (min-width:0\0) {
+                            .t-menuburger_first:hover span:nth-child(1) {
+                                transform: translateY(1px);
+                            }
+
+                            .t-menuburger_first:hover span:nth-child(4) {
+                                transform: translateY(-1px);
+                            }
+
+                            .t-menuburger_first.t-menuburger__big:hover span:nth-child(1) {
+                                transform: translateY(3px);
+                            }
+
+                            .t-menuburger_first.t-menuburger__big:hover span:nth-child(4) {
+                                transform: translateY(-3px);
+                            }
+                        }
+
+                        /*---menu burger second style---*/
+                        .t-menuburger_second span:nth-child(2),
+                        .t-menuburger_second span:nth-child(3) {
+                            width: 80%;
+                            left: 20%;
+                            right: 0;
+                        }
+
+                        @media (hover),
+                        (min-width:0\0) {
+
+                            .t-menuburger_second.t-menuburger-hovered span:nth-child(2),
+                            .t-menuburger_second.t-menuburger-hovered span:nth-child(3) {
+                                animation: t-menuburger-anim 0.3s ease-out normal forwards;
+                            }
+
+                            .t-menuburger_second.t-menuburger-unhovered span:nth-child(2),
+                            .t-menuburger_second.t-menuburger-unhovered span:nth-child(3) {
+                                animation: t-menuburger-anim2 0.3s ease-out normal forwards;
+                            }
+                        }
+
+                        .t-menuburger_second.t-menuburger-opened span:nth-child(2),
+                        .t-menuburger_second.t-menuburger-opened span:nth-child(3) {
+                            left: 0;
+                            right: 0;
+                            width: 100% !important;
+                        }
+
+                        /*---menu burger third style---*/
+                        .t-menuburger_third span:nth-child(4) {
+                            width: 70%;
+                            left: unset;
+                            right: 0;
+                        }
+
+                        @media (hover),
+                        (min-width:0\0) {
+                            .t-menuburger_third:not(.t-menuburger-opened):hover span:nth-child(4) {
+                                width: 100%;
+                            }
+                        }
+
+                        .t-menuburger_third.t-menuburger-opened span:nth-child(4) {
+                            width: 0 !important;
+                            right: 50%;
+                        }
+
+                        /*---menu burger fourth style---*/
+                        .t-menuburger_fourth {
+                            height: 12px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger__small {
+                            height: 8px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger__big {
+                            height: 18px;
+                        }
+
+                        .t-menuburger_fourth span:nth-child(2),
+                        .t-menuburger_fourth span:nth-child(3) {
+                            top: 4px;
+                            opacity: 0;
+                        }
+
+                        .t-menuburger_fourth span:nth-child(4) {
+                            top: 8px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger__small span:nth-child(2),
+                        .t-menuburger_fourth.t-menuburger__small span:nth-child(3) {
+                            top: 3px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger__small span:nth-child(4) {
+                            top: 6px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger__small span:nth-child(2),
+                        .t-menuburger_fourth.t-menuburger__small span:nth-child(3) {
+                            top: 3px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger__small span:nth-child(4) {
+                            top: 6px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger__big span:nth-child(2),
+                        .t-menuburger_fourth.t-menuburger__big span:nth-child(3) {
+                            top: 6px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger__big span:nth-child(4) {
+                            top: 12px;
+                        }
+
+                        @media (hover),
+                        (min-width:0\0) {
+                            .t-menuburger_fourth:not(.t-menuburger-opened):hover span:nth-child(1) {
+                                transform: translateY(1px);
+                            }
+
+                            .t-menuburger_fourth:not(.t-menuburger-opened):hover span:nth-child(4) {
+                                transform: translateY(-1px);
+                            }
+
+                            .t-menuburger_fourth.t-menuburger__big:not(.t-menuburger-opened):hover span:nth-child(1) {
+                                transform: translateY(3px);
+                            }
+
+                            .t-menuburger_fourth.t-menuburger__big:not(.t-menuburger-opened):hover span:nth-child(4) {
+                                transform: translateY(-3px);
+                            }
+                        }
+
+                        .t-menuburger_fourth.t-menuburger-opened span:nth-child(1),
+                        .t-menuburger_fourth.t-menuburger-opened span:nth-child(4) {
+                            top: 4px;
+                        }
+
+                        .t-menuburger_fourth.t-menuburger-opened span:nth-child(2),
+                        .t-menuburger_fourth.t-menuburger-opened span:nth-child(3) {
+                            opacity: 1;
+                        }
+
+                        /*---menu burger animations---*/
+                        @keyframes t-menuburger-anim {
+                            0% {
+                                width: 80%;
+                                left: 20%;
+                                right: 0;
+                            }
+
+                            50% {
+                                width: 100%;
+                                left: 0;
+                                right: 0;
+                            }
+
+                            100% {
+                                width: 80%;
+                                left: 0;
+                                right: 20%;
+                            }
+                        }
+
+                        @keyframes t-menuburger-anim2 {
+                            0% {
+                                width: 80%;
+                                left: 0;
+                            }
+
+                            50% {
+                                width: 100%;
+                                right: 0;
+                                left: 0;
+                            }
+
+                            100% {
+                                width: 80%;
+                                left: 20%;
+                                right: 0;
+                            }
+                        }
+                    </style>
+                </div>
+            </div>
+            <style>
+                .tmenu-mobile {
+                    background-color: #111;
+                    display: none;
+                    width: 100%;
+                    top: 0;
+                    z-index: 990;
+                }
+
+                .tmenu-mobile_positionfixed {
+                    position: fixed;
+                }
+
+                .tmenu-mobile__text {
+                    color: #fff;
+                }
+
+                .tmenu-mobile__container {
+                    min-height: 64px;
+                    padding: 20px;
+                    position: relative;
+                    box-sizing: border-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-align-items: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    -webkit-justify-content: space-between;
+                    -ms-flex-pack: justify;
+                    justify-content: space-between;
+                }
+
+                .tmenu-mobile__list {
+                    display: block;
+                }
+
+                .tmenu-mobile__burgerlogo {
+                    display: inline-block;
+                    font-size: 24px;
+                    font-weight: 400;
+                    white-space: nowrap;
+                    vertical-align: middle;
+                }
+
+                .tmenu-mobile__imglogo {
+                    height: auto;
+                    display: block;
+                    max-width: 300px !important;
+                    box-sizing: border-box;
+                    padding: 0;
+                    margin: 0 auto;
+                }
+
+                @media screen and (max-width: 980px) {
+                    .tmenu-mobile__menucontent_hidden {
+                        display: none;
+                        height: 100%;
+                    }
+
+                    .tmenu-mobile {
+                        display: block;
+                    }
+                }
+
+                @media screen and (max-width: 980px) {
+                    #rec749301449 .t-menuburger {
+                        -webkit-order: 1;
+                        -ms-flex-order: 1;
+                        order: 1;
+                    }
+                }
+            </style>
+            <style>
+                #rec749301449 .tmenu-mobile__burgerlogo a {
+                    color: #ffffff;
+                }
+            </style>
+            <style>
+                #rec749301449 .tmenu-mobile__burgerlogo__title {
+                    color: #ffffff;
+                }
+            </style>
+            <div id="nav749301449" class="t456 t456__positionfixed tmenu-mobile__menucontent_hidden"
+                style="background-color: rgba(28,32,31,1); ">
+                <div class="t456__maincontainer ">
+                    <div class="t456__leftwrapper" style="min-width:100px;width:100px;">
+                        <div class="t456__logowrapper" style="display: block;"><a href="{% url 'shop:index' %}"><img
+                                    class="t456__imglogo t456__imglogomobile" src="{% static 'image/logo.jpg' %}"
+                                    imgfield="img" style="max-width: 80%; width: 100%;" alt="IoT Home"></a></div>
+                    </div>
+                    <nav class="t456__rightwrapper t456__menualign_right">
+                        <ul role="list" class="t456__list t-menu__list">
+                            <li class="t456__list_item" style="padding:0 15px 0 0;">
+                                <form action="{% url 'shop:search' %}" method="post">
+                                    {% csrf_token %}
+                                    <input class="t-menu__link-item" name='search' type="text" multiple>
+                                </form>
+                            </li>
+                            <li class="t456__list_item" style="padding:0 15px;"><a class="t-menu__link-item"
+                                    href="{% url 'shop:category' %}" data-menu-submenu-hook=""
+                                    data-menu-item-number="2">Категории</a></li>
+                            <li class="t456__list_item" style="padding:0 15px;"><a class="t-menu__link-item"
+                                    href="{% url 'shop:learn' %}" data-menu-submenu-hook=""
+                                    data-menu-item-number="3">Обучение</a>
+                            </li>
+                            <li class="t456__list_item" style="padding:0 15px;">
+                                {% if not user.is_authenticated %}
+                                <a class="t-menu__link-item" href="{% url 'users:log_in' %}" data-menu-submenu-hook=""
+                                    data-menu-item-number="4">Войти</a>
+                                {% else %}
+                                {% if user.is_staff %}
+                                <a class="t-menu__link-item" href="{% url 'cms:products' %}" data-menu-submenu-hook=""
+                                    data-menu-item-number="4">CMS</a>
+                                {% else %}
+                                <a class="t-menu__link-item" href="{% url 'shop:client' %}" data-menu-submenu-hook=""
+                                    data-menu-item-number="4">Корзина</a>
+                                {% endif %}
+                                {% endif %}
+                            </li>
+                            <li class="t456__list_item" style="padding:0 15px;"></li>
+                            {% if user.is_authenticated %}
+                            <a class="t-menu__link-item" href="{% url 'users:log_out' %}" data-menu-submenu-hook=""
+                                data-menu-item-number="4">Выйти</a>
+                            {% endif %}
+                            </li>
+                            <li class="t456__list_item" style="padding:0 0 0 15px;">
+                                <a class="t-menu__link-item" href="" data-menu-submenu-hook=""
+                                    data-menu-item-number="5">+123 678 901 23</a>
+
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <style>
+                @media screen and (max-width: 980px) {
+                    #rec749301449 .t456__leftcontainer {
+                        padding: 20px;
+                    }
+                }
+
+                @media screen and (max-width: 980px) {
+                    #rec749301449 .t456__imglogo {
+                        padding: 20px 0;
+                    }
+                }
+            </style>
+            <script type="text/javascript">t_onReady(function () {
+                    t_onFuncLoad('t_menu__highlightActiveLinks', function () {
+                        t_menu__highlightActiveLinks('.t456__list_item a');
+                    });
+                    t_onFuncLoad('t_menu__findAnchorLinks', function () {
+                        t_menu__findAnchorLinks('749301449', '.t456__list_item a');
+                    });
+                });
+                t_onReady(function () {
+                    t_onFuncLoad('t_menu__setBGcolor', function () {
+                        t_menu__setBGcolor('749301449', '.t456');
+                        window.addEventListener('resize', function () {
+                            t_menu__setBGcolor('749301449', '.t456');
+                        });
+                    });
+                    t_onFuncLoad('t_menu__interactFromKeyboard', function () {
+                        t_menu__interactFromKeyboard('749301449');
+                    });
+                });</script>
+            <script type="text/javascript">t_onReady(function () {
+                    t_onFuncLoad('t_menu__createMobileMenu', function () {
+                        t_menu__createMobileMenu('749301449', '.t456');
+                    });
+                });</script>
+            <style>
+                #rec749301449 .t-menu__link-item {
+                    -webkit-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                    transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                }
+
+                #rec749301449 .t-menu__link-item:not(.t-active):not(.tooltipstered):hover {
+                    color: #aa1c1c !important;
+                }
+
+                #rec749301449 .t-menu__link-item:not(.t-active):not(.tooltipstered):focus-visible {
+                    color: #aa1c1c !important;
+                }
+
+                @supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+
+                    #rec749301449 .t-menu__link-item,
+                    #rec749301449 .t-menu__link-item.t-active {
+                        opacity: 1 !important;
+                    }
+                }
+            </style>
+            <style>
+                #rec749301449 .t456__logowrapper a {
+                    color: #ffffff;
+                }
+
+                #rec749301449 a.t-menu__link-item {
+                    font-size: 24px;
+                    color: #0d9889;
+                    font-weight: 700;
+                    font-family: 'Arial';
+                }
+            </style>
+            <style>
+                #rec749301449 .t456__logo {
+                    color: #ffffff;
+                }
+            </style><!--[if IE 8]><style>#rec749301449 .t456 {
+filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D91c201f', endColorstr='#D91c201f');
+}</style><![endif]-->
+        </div>
+        {% block contetnt %}
+        {% endblock %}
+
+        <a {% if not user.is_authenticated %} href="{% url 'users:log_in' %}" {% else %} {% if user.is_staff %}
+            class='btn_bsk' {% else %} href="{% url 'shop:client' %}" {% endif %}{% endif %}>
+            <div class="t706__carticon-imgwrap {% if not sum %} btn_bsk {% endif %} "
+                style="border: 1px solid #0af5dd; position: fixed; right: 1em; bottom: 7em; {% if user.is_staff %} display: none; {% endif %}"><svg role="img"
+                    style="stroke:#ff8562;" class="t706__carticon-img" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 64 64">
+                    <path fill="none" stroke-width="2" stroke-miterlimit="10" d="M44 18h10v45H10V18h10z"></path>
+                    <path fill="none" stroke-width="2" stroke-miterlimit="10"
+                        d="M22 24V11c0-5.523 4.477-10 10-10s10 4.477 10 10v13"></path>
+                </svg>
+                <div class="t706__carticon-counter" style="color:#ffffff; right: 8px; bottom: 26px;">{{sum}}</div>
+        </a>
+    </div>
+
+    </div>
+    <div class="t706__carticon-wrapper">
+        <div id="rec749346415" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-bottom:0;background-color:#111111; "
+            data-animationappear="off" data-record-type="345" data-bg-color="#111111"><!-- T345 -->
+            <div class="t345" id="footer_749346415">
+                <div class="t345-wrapper" style="border-top: 1px solid;border-top-color: #292929;">
+                    <div class="t345-container t-container">
+                        <div class="t345-col t-col t-col_12">
+                            <div class="t345-content" style="height:8vh">
+                                <div class="t345-text__wrapper">
+                                    <div class="t345-text t-descr t-descr_xxs">
+                                        <div style="font-size: 20px;" data-customstyle="yes"><a
+                                                href="{% url 'shop:about' %}"
+                                                style="font-weight: 700; font-family: Arial; color: rgb(255, 255, 255); text-decoration: none"><strong>О
+                                                    нас</strong></a></div>
+                                    </div>
+                                </div>
+                                <div class="t345-socials">
+                                    <div class="t345-share ">
+                                        <script type="text/javascript" async="async"
+                                            src="{% static 'tilda/js/ya-share.js' %}" charset="utf-8"></script>
+
+                                    </div>
+                                    <div class="t-sociallinks">
+                                        <ul role="list" class="t-sociallinks__wrapper" aria-label="Соц. сети">
+                                            <!-- new soclinks -->
+                                            <li class="t-sociallinks__item t-sociallinks__item_telegram"><a
+                                                    target="_blank" rel="nofollow" aria-label="telegram" href="https://t.me/ghghguihtuh_bot"
+                                                    style="width: 30px; height: 30px;"><svg class="t-sociallinks__svg"
+                                                        role="presentation" width=30px height=30px viewBox="0 0 100 100"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z"
+                                                            fill="#ffffff" />
+                                                    </svg></a></li>&nbsp;<li
+                                                class="t-sociallinks__item t-sociallinks__item_whatsapp"><a
+                                                    target="_blank" rel="nofollow" aria-label="whatsapp"
+                                                    style="width: 30px; height: 30px;"><svg class="t-sociallinks__svg"
+                                                        role="presentation" width=30px height=30px viewBox="0 0 100 100"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100ZM69.7626 28.9928C64.6172 23.841 57.7739 21.0027 50.4832 21C35.4616 21 23.2346 33.2252 23.2292 48.2522C23.2274 53.0557 24.4823 57.7446 26.8668 61.8769L23 76L37.4477 72.2105C41.4282 74.3822 45.9107 75.5262 50.4714 75.528H50.4823C65.5029 75.528 77.7299 63.301 77.7363 48.2749C77.7408 40.9915 74.9089 34.1446 69.7626 28.9928ZM62.9086 53.9588C62.2274 53.6178 58.8799 51.9708 58.2551 51.7435C57.6313 51.5161 57.1766 51.4024 56.7228 52.0845C56.269 52.7666 54.964 54.2998 54.5666 54.7545C54.1692 55.2092 53.7718 55.2656 53.0915 54.9246C52.9802 54.8688 52.8283 54.803 52.6409 54.7217C51.6819 54.3057 49.7905 53.4855 47.6151 51.5443C45.5907 49.7382 44.2239 47.5084 43.8265 46.8272C43.4291 46.1452 43.7837 45.7769 44.1248 45.4376C44.3292 45.2338 44.564 44.9478 44.7987 44.662C44.9157 44.5194 45.0328 44.3768 45.146 44.2445C45.4345 43.9075 45.56 43.6516 45.7302 43.3049C45.7607 43.2427 45.7926 43.1776 45.8272 43.1087C46.0545 42.654 45.9409 42.2565 45.7708 41.9155C45.6572 41.6877 45.0118 40.1167 44.4265 38.6923C44.1355 37.984 43.8594 37.3119 43.671 36.8592C43.1828 35.687 42.6883 35.69 42.2913 35.6924C42.2386 35.6928 42.1876 35.6931 42.1386 35.6906C41.7421 35.6706 41.2874 35.667 40.8336 35.667C40.3798 35.667 39.6423 35.837 39.0175 36.5191C38.9773 36.5631 38.9323 36.6111 38.8834 36.6633C38.1738 37.4209 36.634 39.0648 36.634 42.2002C36.634 45.544 39.062 48.7748 39.4124 49.2411L39.415 49.2444C39.4371 49.274 39.4767 49.3309 39.5333 49.4121C40.3462 50.5782 44.6615 56.7691 51.0481 59.5271C52.6732 60.2291 53.9409 60.6475 54.9303 60.9612C56.5618 61.4796 58.046 61.4068 59.22 61.2313C60.5286 61.0358 63.2487 59.5844 63.8161 57.9938C64.3836 56.4033 64.3836 55.0392 64.2136 54.7554C64.0764 54.5258 63.7545 54.3701 63.2776 54.1395C63.1633 54.0843 63.0401 54.0247 62.9086 53.9588Z"
+                                                            fill="#ffffff" />
+                                                    </svg></a></li><!-- /new soclinks -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                #rec749346415 .t345-text {
+                    color: #ffffff;
+                }
+            </style>
+            <script>function checkSize_749346415() {
+                    var rec = document.querySelector('#footer_749346415');
+                    if (!rec) return;
+                    var textContentEl = rec.querySelector('.t345-text');
+                    var iconsContentEl = rec.querySelector('.t345-socials');
+                    if (!textContentEl || !iconsContentEl) return;
+                    var contentWidth = textContentEl.offsetWidth + iconsContentEl.offsetWidth;
+                    var container = rec.querySelector('.t345-container');
+                    var containerWidth = container.offsetWidth - 30;
+                    if (contentWidth > containerWidth && containerWidth > 0) {
+                        container.classList.add('t345-socials_block');
+                    }
+                    else {
+                        container.classList.remove('t345-socials_block');
+                    }
+                }
+                t_onReady(function () {
+                    t_onFuncLoad('checkSize_749346415', function () {
+                        checkSize_749346415();
+                        window.addEventListener('resize', t_throttle(function () { checkSize_749346415(); }));
+                        if (typeof jQuery !== 'undefined') {
+                            $('#rec749346415').bind('displayChanged', function () {
+                                checkSize_749346415();
+                            });
+                        } else {
+                            var rec = document.querySelector('#rec749346415');
+                            if (!rec) return;
+                            rec.addEventListener('displayChanged', function () {
+                                checkSize_749346415();
+                            });
+                        }
+                    });
+                });</script>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+        <script
+            src='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js'></script>
+
+        <script src="{% static 'js.js' %}" defer></script>
+        <script src="{% static 'lern.js' %}" defer></script>
+
+    </div>
+
+
+    </div>
+
+    <div id='parse' style="display: none;">
+        '''{"partuid":520502757011,"filter":"y","filters":{"sort":true,"search":true,"filters":[{"id":"471331","label":"Price","control":"range","type":"product","name":"price","min":"8","max":"552"},{"id":"471334","label":"Brand","control":"checkbox","type":"product","name":"brand","values":[{"value":"Elton","count":1},{"value":"GeekCook","count":3},{"value":"Immany","count":3},{"value":"Lettuce
+        Grow","count":1},{"value":"Makao","count":1},{"value":"Records","count":1}]},{"id":"471337","label":"Availability","control":"checkbox","type":"product","name":"quantity"}]},"total":12,"isElastic":true,"products":[{"uid":638907678241,"title":"Notebook","sku":"","text":"Light
+        blue speckled organizer for planning. The notebook contains 324 sheets and is made from thick paper featuring
+        soft cover with page holder and
+        bookmark.","mark":"Sale","quantity":"","portion":0,"unit":"PCE","single":"","price":"8.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3361-6231-4233-b638-636635383865\\\/bluebook.jpg\"},{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3033-3436-4436-a133-353432366366\\\/yellowbook.jpg\"},{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild6634-6166-4330-b466-313631653830\\\/greenbook.jpg\"}]","buttonlink":"","buttontarget":"","json_options":"[{\"title\":\"Color\",\"params\":{\"view\":\"select\",\"hasColor\":false,\"linkImage\":false},\"values\":[\"Green\",\"Yellow\",\"Blue\"]}]","sort":1000000,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-638907678241-notebook","pack_label":"lwh","pack_x":275,"pack_y":210,"pack_z":50,"pack_m":0,"partuids":"[661490731271]","brand":"Makao","externalid":"OMgO8nEBbDTLSD8lKHht","editions":[{"uid":"","externalid":"j5tajEOkb1X5aFu6ahJ6","sku":"","price":"8.00","priceold":"12.00","quantity":"200","img":"https:\/\/static.tildacdn.com\/tild6634-6166-4330-b466-313631653830\/greenbook.jpg","Color":"Green"},{"uid":"","externalid":"JMK04FVnSYxFVnXLK3A8","sku":"","price":"8.00","priceold":"12.00","quantity":"200","img":"https:\/\/static.tildacdn.com\/tild3033-3436-4436-a133-353432366366\/yellowbook.jpg","Color":"Yellow"},{"uid":"","externalid":"ZsELbeBlyXaUn7I7IIFP","sku":"","price":"8.00","priceold":"12.00","quantity":"200","img":"https:\/\/static.tildacdn.com\/tild3361-6231-4233-b638-636635383865\/bluebook.jpg","Color":"Blue"}],"characteristics":[{"title":"Material","value":"Paper"}]},{"uid":789838578271,"title":"White
+        Vase","sku":"","text":"Now it is possible to grow fresh farm produce at home without experience. No need to
+        waste lots of time or have plenty of space required for traditional
+        gardening.","mark":"","quantity":"10","portion":0,"unit":"PCE","single":"","price":"35.0000","priceold":"86","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3765-6334-4931-b962-666230373634\\\/vase.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1000300,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-789838578271-white-vase","pack_label":"lwh","pack_x":25,"pack_y":10,"pack_z":10,"pack_m":200,"partuids":"[105910355071,661490731271]","brand":"Lettuce
+        Grow","externalid":"aHhtl8Kkg7Jh6zdhUyLa","editions":[{"uid":"","price":"35.0000","priceold":"86","sku":"","quantity":"10","img":"https:\/\/static.tildacdn.com\/tild3765-6334-4931-b962-666230373634\/vase.png"}],"characteristics":[{"title":"Material","value":"Ceramics"}]},{"uid":526408008991,"title":"Rainbow
+        Time Clock","sku":"SKU0003","text":"Round shape wall clock. Rainbow resembles a loading sign. An excellent
+        solution for minimalistic and modern
+        interiors.","mark":"","quantity":"23","portion":0,"unit":"PCE","single":"","price":"316.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3662-3563-4639-b963-356636653831\\\/clock.jpg\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1000400,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-526408008991-rainbow-time-clock","pack_label":"lwh","pack_x":25,"pack_y":25,"pack_z":25,"pack_m":670,"partuids":"[797306692441,661490731271]","brand":"GeekCook","externalid":"776534181255","editions":[{"uid":"","price":"316.0000","priceold":"","sku":"SKU0003","quantity":"23","img":"https:\/\/static.tildacdn.com\/tild3662-3563-4639-b963-356636653831\/clock.jpg"}],"characteristics":[{"title":"Material","value":"Plastic"},{"title":"Material","value":"Glass"}]},{"uid":533700663881,"title":"Elton
+        Glasses","sku":"","text":"Round thin painted metal frame. The eyeglasses are very light with scratch-resistant
+        coating. With standard purchase, you get a choice of lenses from FeelAir. When ordering eyeglasses, you can
+        choose lenses from our catalog or order them
+        individually.","mark":"","quantity":"19","portion":0,"unit":"PCE","single":"","price":"218.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild6432-6437-4030-b833-346662343635\\\/konsepta-studio-DSW7.png\"},{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3163-3835-4565-a163-636466316361\\\/konsepta-studio-aa13.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1000500,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-533700663881-elton-glasses","pack_label":"lwh","pack_x":0,"pack_y":0,"pack_z":0,"pack_m":20,"partuids":"[105910355071,661490731271]","brand":"Elton","externalid":"abGjKutJvJDXrz9c4NZt","editions":[{"uid":"","price":"218.0000","priceold":"","sku":"","quantity":"19","img":"https:\/\/static.tildacdn.com\/tild6432-6437-4030-b833-346662343635\/konsepta-studio-DSW7.png"}],"characteristics":[{"title":"Material","value":"Glass"},{"title":"Material","value":"Plastic"}]},{"uid":187781071141,"title":"Clock
+        GeekCook","sku":"SKU0002","text":"Home decor wall clock. White clock face made from recycled plastic. This round
+        shape wall clock features classic style and perfectly fits into any home or
+        office.","mark":"","quantity":"30","portion":0,"unit":"PCE","single":"","price":"296.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3031-6236-4863-a331-656634363130\\\/ocean-ng-L0xOtAnv94Y.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1000600,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-187781071141-clock-geekcook","pack_label":"lwh","pack_x":25,"pack_y":25,"pack_z":25,"pack_m":540,"partuids":"[797306692441,661490731271]","brand":"GeekCook","externalid":"205285061796","editions":[{"uid":"","price":"296.0000","priceold":"","sku":"SKU0002","quantity":"30","img":"https:\/\/static.tildacdn.com\/tild3031-6236-4863-a331-656634363130\/ocean-ng-L0xOtAnv94Y.png"}],"characteristics":[{"title":"Material","value":"Plastic"},{"title":"Material","value":"Metal"}]},{"uid":389319746131,"title":"Multi
+        Clock","sku":"SKU0001","text":"White minimalist wall clock. Produced from eco and recycled materials. The clock
+        is made in the color of the exclusive Lighten
+        collection.","mark":"","quantity":"23","portion":0,"unit":"PCE","single":"","price":"378.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3965-3430-4631-b539-636365333239\\\/image.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1000700,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-389319746131-multi-clock","pack_label":"lwh","pack_x":25,"pack_y":25,"pack_z":25,"pack_m":489,"partuids":"[797306692441,661490731271]","brand":"GeekCook","externalid":"863983274147","editions":[{"uid":"","price":"378.0000","priceold":"","sku":"SKU0001","quantity":"23","img":"https:\/\/static.tildacdn.com\/tild3965-3430-4631-b539-636365333239\/image.png"}],"characteristics":[{"title":"Material","value":"Plastic"},{"title":"Material","value":"Glass"},{"title":"Material","value":"Metal"}]},{"uid":688974887291,"title":"Set
+        of Glasses","sku":"","text":"Set of transparent drinking glasses made from glass. Its classic shape and color
+        make the glass suitable for everyday use as well as for festive
+        parties.","mark":"","quantity":"180","portion":0,"unit":"PCE","single":"","price":"62.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild6234-6466-4239-a261-343235303633\\\/glasses.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1001700,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-688974887291-set-of-glasses","pack_label":"lwh","pack_x":0,"pack_y":0,"pack_z":0,"pack_m":0,"partuids":"[105910355071,661490731271]","brand":"Immany","externalid":"5Eu9g9DRfTtCskXUXea4","editions":[{"uid":"","price":"62.0000","priceold":"","sku":"","quantity":"180","img":"https:\/\/static.tildacdn.com\/tild6234-6466-4239-a261-343235303633\/glasses.png"}],"characteristics":[{"title":"Material","value":"Glass"}]},{"uid":941306380221,"title":"Sport
+        Cup CTRL","sku":"","text":"Sports nutrition shaker, 350 ml. Not suitable for microwave and
+        dishwasher.","mark":"","quantity":"20","portion":0,"unit":"PCE","single":"","price":"12.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3137-6363-4731-b637-383031353331\\\/ctrl.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1002700,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-941306380221-sport-cup-ctrl","pack_label":"lwh","pack_x":0,"pack_y":0,"pack_z":0,"pack_m":0,"partuids":"[661490731271]","externalid":"3ZbeJojUxCiN1cthv7Pe","editions":[{"uid":"","price":"12.0000","priceold":"","sku":"","quantity":"20","img":"https:\/\/static.tildacdn.com\/tild3137-6363-4731-b637-383031353331\/ctrl.png"}],"characteristics":[{"title":"Material","value":"Plastic"}]},{"uid":998300267391,"title":"B
+        & O Bleutooth Speaker","sku":"","text":"Sound system Bang & Olufsen Beosound A1. Waterproof bluetooth speaker
+        with a built-in mic for speakerphone and voice assistant.
+        ","mark":"","quantity":"14","portion":0,"unit":"PCE","single":"","price":"552.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3062-3232-4339-a135-616262616434\\\/B.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1003700,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-998300267391-b-amp-o-bleutooth-speaker","pack_label":"lwh","pack_x":15,"pack_y":15,"pack_z":15,"pack_m":210,"partuids":"[661490731271]","externalid":"dNAavvUitoOEZ7I5hI7p","editions":[{"uid":"","price":"552.0000","priceold":"","sku":"","quantity":"14","img":"https:\/\/static.tildacdn.com\/tild3062-3232-4339-a135-616262616434\/B.png"}],"characteristics":[{"title":"Material","value":"Plastic"},{"title":"Material","value":"Metal"}]},{"uid":614487735781,"title":"Glass
+        Teapot","sku":"","text":"Fireproof glass teapot, 550 ml. Brewing method: stainless steel strainer or French
+        press, teapot lid is made of light wood.
+        ","mark":"","quantity":"30","portion":0,"unit":"PCE","single":"","price":"80.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild3133-3937-4439-a466-316432636639\\\/teapot.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1004700,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-614487735781-glass-teapot","pack_label":"lwh","pack_x":21,"pack_y":15,"pack_z":15,"pack_m":30,"partuids":"[661490731271]","brand":"Immany","externalid":"H7As9Cl4jp6rGYJbKUSA","editions":[{"uid":"","price":"80.0000","priceold":"","sku":"","quantity":"30","img":"https:\/\/static.tildacdn.com\/tild3133-3937-4439-a466-316432636639\/teapot.png"}],"characteristics":[{"title":"Material","value":"Glass"},{"title":"Material","value":"Metal"}]},{"uid":634340008261,"title":"Wooden
+        Cutting Board","sku":"","text":"Wooden chopping board made from the solid wood of the cherry tree. Suitable for
+        decoration or
+        serving.","mark":"","quantity":"120","portion":0,"unit":"PCE","single":"","price":"120.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild6265-3661-4962-b936-613339623935\\\/mockup-graphics-9pHF.jpg\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1005700,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-634340008261-wooden-cutting-board","pack_label":"lwh","pack_x":29,"pack_y":17,"pack_z":3,"pack_m":540,"partuids":"[661490731271]","brand":"Immany","externalid":"9bbg9yvddbfDXuJZcHEI","editions":[{"uid":"","price":"120.0000","priceold":"","sku":"","quantity":"120","img":"https:\/\/static.tildacdn.com\/tild6265-3661-4962-b936-613339623935\/mockup-graphics-9pHF.jpg"}],"characteristics":[]},{"uid":340975181991,"title":"Vinyl","sku":"","text":"
+
+        Klark Kent - Don't Care vinyl. 1987.
+        ","mark":"","quantity":"3","portion":0,"unit":"PCE","single":"","price":"61.0000","priceold":"","descr":"","gallery":"[{\"img\":\"https:\\\/\\\/static.tildacdn.com\\\/tild6137-6465-4433-a136-356237316463\\\/Group_956.png\"}]","buttonlink":"","buttontarget":"","json_options":"","sort":1006700,"url":"http:\/\/project3322525.tilda.ws\/tproduct\/1-340975181991-vinyl","pack_label":"lwh","pack_x":0,"pack_y":0,"pack_z":0,"pack_m":0,"partuids":"[661490731271]","brand":"Records","externalid":"xoSjEbOAoGKoIJ0V4sXo","editions":[{"uid":"","price":"61.0000","priceold":"","sku":"","quantity":"3","img":"https:\/\/static.tildacdn.com\/tild6137-6465-4433-a136-356237316463\/Group_956.png"}],"characteristics":[]}],"slice":1,"partlinks":[],"parts":[{"uid":797306692441,"title":"Clock","recordid":0,"sort":1000200,"hideonpublic":""},{"uid":105910355071,"title":"Accessories","recordid":0,"sort":1000300,"hideonpublic":""},{"uid":661490731271,"title":"Home","recordid":0,"sort":1000400,"hideonpublic":""}],"options":[{"title":"Color","params":{"view":"select","hasColor":false,"linkImage":false},"values":[{"id":"3630760","value":"Blue"},{"id":"3630754","value":"Green"},{"id":"3630757","value":"Yellow"}]}]}''
+    </div>
+
+
+</body>
+
+</html>

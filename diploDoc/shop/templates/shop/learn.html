@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% load index %}
+{% block contetnt %}
+
+
+<div id="rec749336928" class="r t-rec t-rec_pt_0 t-rec_pb_75 "
+style="padding-top:0px;padding-bottom:75px;background-color:#333333; margin-top: 76px; " data-animationappear="off"
+data-record-type="1073" data-bg-color="#333333"><!-- t1073 -->
+<div class="t1073">
+    <div class="t-container t-card__container">
+        {% for i in learn %}
+        <div class="t1073__row">
+            {% for j in i %}
+            <div class="t1073__col t-card__col t-col t-col_4">
+                <div class="t1073__bgimg t-margin_auto t-bgimg" data-image-width="360"
+                    data-image-height="400" bgimgfield="li_img__3844859894940"
+                    data-original="{{j.image.url}}"
+                    style="background-image: url({{j.image.url}}); width: auto; height: 10em; margin-top: 1em;"
+                    itemscope itemtype="http://schema.org/ImageObject">
+                    <meta itemprop="image"
+                        content="{{j.image.url}}">
+                </div>
+                <div class="t1073__textwrapper t-align_left">
+                    <div class="t-card__title t-heading t-heading_xs" field="li_title__3844859894940">
+                        {{ j.name }}</div>
+
+                    <div class="t-card__descr t-descr t-descr_xs" field="li_descr__3844859894940">{{j.attributes_get}}<br /><br /></div><a  href="{% url 'shop:detail' j.slug %}"
+                        class="t-card__link">
+                        <div class="t-card__btn t-btn t-btn_sm"
+                            style="color:#ffffff;background-color:#eb633d;border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px;font-family:Arial;"
+                            data-buttonfieldset="li_button" data-lid="3844859894940">Подробнее</div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>t_onReady(function () {
+        t_onFuncLoad('t1073_setHeight', function () {
+            t1073_setHeight('749336928');
+        });
+    });</script>
+<style>
+    #rec749336928 .t-card__title {
+        color: #0d9889;
+        font-weight: 700;
+        font-family: 'Arial';
+    }
+
+    @media screen and (min-width: 480px) {
+        #rec749336928 .t-card__title {
+            font-size: 30px;
+        }
+    }
+
+    #rec749336928 .t-card__uptitle {
+        font-size: 26px;
+        color: #0d9889;
+        font-family: 'Arial';
+    }
+
+    #rec749336928 .t-card__descr {
+        font-size: 25px;
+        color: #0af5dd;
+        font-weight: 700;
+        font-family: 'Arial';
+    }
+</style>
+</div>
+
+
+{% endblock %}

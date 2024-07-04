@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content_cms %}
+<div class="section" style="height:70vh">
+    <a href="{% url 'cms:add_education_material' %}" class="button is-medium px-6 is-warning">
+        Добавить учебный материал
+    </a>
+    {% if educations %}
+    <div class="columns is-centered mt-2">
+        <div class="column">
+            <div class="box">
+                <div class="block">
+                    {% for i in educations %}
+                    <div class="columns is-vcentered">
+                        <div class="column is-1">
+                            <img src="{{i.image.url}}" alt="">
+                        </div>
+                        <div class="column is-3">
+                            <div class="title is-4">{{i.name}}</div>
+                            <div class="subtitle">
+                                {{i.attributes}}
+                            </div>
+                        </div>
+                        <div class="column has-text-right">
+                            <button class="button is-info">Изменить</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="section is-large">
+        <div class="container has-text-centered">
+            <div class="title"> Пока нет материалов</div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

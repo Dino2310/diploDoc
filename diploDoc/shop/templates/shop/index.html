@@ -1,0 +1,495 @@
+{% extends "base.html" %}
+{% load static %}
+{% load index %}
+
+{% block contetnt %}
+
+<div id='product_card' class = 'btn_bsk'></div>
+<div id="rec749598652" class="r t-rec t-rec_pt_135 t-rec_pb_15"
+    style="padding-top:100px;padding-bottom:15px;background-color:#333333; " data-record-type="43"
+    data-bg-color="#333333"><!-- T030 -->
+    <div class="t030">
+        <div class="t-container t-align_center">
+            <div class="t-col t-col_10 t-prefix_1">
+                <div class="t030__title t-title t-title_xxs" field="title">Умным может быть не только человек
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #rec749598652 .t030__title {
+            color: #0d9889;
+            font-weight: 700;
+            font-family: 'Arial';
+        }
+
+        @media screen and (min-width: 900px) {
+            #rec749598652 .t030__title {
+                font-size: 38px;
+            }
+        }
+    </style>
+</div>
+<div id="rec749306388" class="r t-rec t-rec_pt_0 t-rec_pb_0"
+    style="padding-top:0px;padding-bottom:0px;background-color:#333333; " data-animationappear="off"
+    data-record-type="670" data-bg-color="#333333"><!-- t670 -->
+    <div class="t670">
+        <div class="t-slds" style="visibility: hidden;">
+            <div class="t-container t-slds__main">
+                <ul class="t-slds__arrow_container t-slds__arrow_container-outside">
+                    <li class="t-slds__arrow_wrapper t-slds__arrow_wrapper-left" data-slide-direction="left">
+                        <button type="button" class="t-slds__arrow t-slds__arrow-left t-slds__arrow-withbg"
+                            aria-controls="carousel_749306388" aria-disabled="false" aria-label="Предыдущий слайд"
+                            style="width: 40px; height: 40px;background-color: rgba(10,245,221,1);">
+                            <div class="t-slds__arrow_body t-slds__arrow_body-left" style="width: 9px;"><svg
+                                    role="presentation" focusable="false" style="display: block" viewBox="0 0 9.3 17"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline fill="none" stroke="#000000" stroke-linejoin="butt" stroke-linecap="butt"
+                                        stroke-width="1" points="0.5,0.5 8.5,8.5 0.5,16.5" />
+                                </svg></div>
+                        </button>
+                    </li>
+                    <li class="t-slds__arrow_wrapper t-slds__arrow_wrapper-right" data-slide-direction="right">
+                        <button type="button" class="t-slds__arrow t-slds__arrow-right t-slds__arrow-withbg"
+                            aria-controls="carousel_749306388" aria-disabled="false" aria-label="Следующий слайд"
+                            style="width: 40px; height: 40px;background-color: rgba(10,245,221,1);">
+                            <div class="t-slds__arrow_body t-slds__arrow_body-right" style="width: 9px;"><svg
+                                    role="presentation" focusable="false" style="display: block" viewBox="0 0 9.3 17"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polyline fill="none" stroke="#000000" stroke-linejoin="butt" stroke-linecap="butt"
+                                        stroke-width="1" points="0.5,0.5 8.5,8.5 0.5,16.5" />
+                                </svg></div>
+                        </button>
+                    </li>
+                </ul>
+                <div class="t-slds__container t-width t-width_10 t-margin_auto">
+                    <div class="t-slds__items-wrapper t-slds__witharrows t-slds_animated-none" id="carousel_749306388"
+                        data-slider-transition="300" data-slider-with-cycle="true" data-slider-correct-height="true"
+                        data-auto-correct-mobile-width="false" data-slider-arrows-nearpic="yes"
+                        aria-roledescription="carousel" aria-live="off">
+                        {% for i in rAd %}
+                        <div class="t-slds__item 
+                        {% if i == 0 %}  t-slds__item_active {% endif %}" data-slide-index="{{i|add:'1'}}" role="group"
+                            aria-roledescription="slide" aria-hidden="false" aria-label="{{i|add:'1'}} из {{lenAd}}">
+                            <div class="t-width t-width_10 t-margin_auto" itemscope
+                                itemtype="http://schema.org/ImageObject">
+                                {% with a=ad|index:i %}
+                                <div class="t-slds__wrapper t-align_center">
+                                    <meta itemprop="image" content="{{ a.image.url }}">
+                                    <div class="t670__imgwrapper" bgimgfield="gi_img__{{i}}">
+                                        <div class="t-slds__bgimg t-bgimg" data-original="{{a.image.url}}"
+                                            style="background-image: url({{a.image.url}});">
+                                        </div>
+                                        <div class="t670__separator" data-slider-image-width="960"
+                                            data-slider-image-height="560"></div>
+                                    </div>
+                                </div>
+                                {% endwith %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <ul class="t-slds__bullet_wrapper">
+                    {% for i in rAd %}
+                    <li class="t-slds__bullet {% if i == 0 %} t-slds__bullet_active {% endif %}"
+                        data-slide-bullet-for="{{i|add:'1'}}"><button type="button" class="t-slds__bullet_body"
+                            aria-label="Перейти к слайду {{i|add:'1'}}" aria-current="true"
+                            style="background-color: #c7c7c7;"></button></li>
+                    {% endfor %}
+                </ul>
+                <div class="t-slds__caption__container"></div>
+            </div>
+        </div>
+    </div>
+    <script>t_onReady(function () {
+            setTimeout(function () {
+                t_onFuncLoad('t670_init', function () {
+                    t670_init('749306388');
+                });
+                t_onFuncLoad('t_sldsInit', function () {
+                    t_sldsInit('749306388');
+                });
+            }, 500);
+            var rec = document.querySelector('#rec749306388');
+            if (rec) {
+                var wrapper = rec.querySelector('.t670');
+                if (wrapper) {
+                    wrapper.addEventListener('displayChanged', function () {
+                        t_onFuncLoad('t_slds_updateSlider', function () {
+                            t_slds_updateSlider('749306388');
+                        });
+                        t_onFuncLoad('t_slds_positionArrows', function () {
+                            t_slds_positionArrows('749306388');
+                        });
+                    });
+                }
+            }
+        });</script>
+    <style>
+        #rec749306388 .t-slds__bullet_active .t-slds__bullet_body {
+            background-color: #222 !important;
+        }
+
+        #rec749306388 .t-slds__bullet:hover .t-slds__bullet_body {
+            background-color: #222 !important;
+        }
+    </style>
+    <style>
+        #rec749306388 .t-slds__descr {
+            color: #0af5dd;
+        }
+    </style>
+</div>
+
+<div id="rec749301459" class="r t-rec t-rec_pt_0 t-rec_pb_45"
+    style="padding-top:0px;padding-bottom:45px;background-color:#333333; " data-animationappear="off"
+    data-record-type="754" data-bg-color="#333333">
+    <!-- t754 --><!-- @classes: t-text t-text_xxs t-name t-name_xs t-name_md t-name_xl t-descr t-descr_xxs t-btn t-btn_xs t-btn_sm data-zoomable="yes" -->
+    <div class="t754" data-show-count="">
+        <div class="t754__scroll-icon-wrapper" style="mix-blend-mode: lighten;"><svg role="presentation"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 300" height="42" width="42">
+                <rect class="tooltip-horizontal-scroll-icon_card" x="480" width="200" height="200" rx="5"
+                    fill="rgba(255,255,255,0.2)"></rect>
+                <rect class="tooltip-horizontal-scroll-icon_card" y="0" width="200" height="200" rx="5"
+                    fill="rgba(255,255,255,0.2)"></rect>
+                <rect class="tooltip-horizontal-scroll-icon_card" x="240" width="200" height="200" rx="5"
+                    fill="rgba(255,255,255,0.2)"></rect>
+                <path class="tooltip-horizontal-scroll-icon_hand"
+                    d="M78.9579 285.7C78.9579 285.7 37.8579 212.5 20.5579 180.8C-2.44209 138.6 -6.2422 120.8 9.6579 112C19.5579 106.5 33.2579 108.8 41.6579 123.4L61.2579 154.6V32.3C61.2579 32.3 60.0579 0 83.0579 0C107.558 0 105.458 32.3 105.458 32.3V91.7C105.458 91.7 118.358 82.4 133.458 86.6C141.158 88.7 150.158 92.4 154.958 104.6C154.958 104.6 185.658 89.7 200.958 121.4C200.958 121.4 236.358 114.4 236.358 151.1C236.358 187.8 192.158 285.7 192.158 285.7H78.9579Z"
+                    fill="rgba(255,255,255,1)"></path>
+                <style>
+                    .tooltip-horizontal-scroll-icon_hand {
+                        animation: tooltip-horizontal-scroll-icon_anim-scroll-hand 2s infinite
+                    }
+
+                    .tooltip-horizontal-scroll-icon_card {
+                        animation: tooltip-horizontal-scroll-icon_anim-scroll-card 2s infinite
+                    }
+
+                    @keyframes tooltip-horizontal-scroll-icon_anim-scroll-hand {
+                        0% {
+                            transform: translateX(80px) scale(1);
+                            opacity: 0
+                        }
+
+                        10% {
+                            transform: translateX(80px) scale(1);
+                            opacity: 1
+                        }
+
+                        20%,
+                        60% {
+                            transform: translateX(175px) scale(.6);
+                            opacity: 1
+                        }
+
+                        80% {
+                            transform: translateX(5px) scale(.6);
+                            opacity: 1
+                        }
+
+                        to {
+                            transform: translateX(5px) scale(.6);
+                            opacity: 0
+                        }
+                    }
+
+                    @keyframes tooltip-horizontal-scroll-icon_anim-scroll-card {
+
+                        0%,
+                        60% {
+                            transform: translateX(0)
+                        }
+
+                        80%,
+                        to {
+                            transform: translateX(-240px)
+                        }
+                    }
+                </style>
+            </svg></div>
+        <div class="t754__parent t754__container_mobile-flex">
+            {% for a in prod %}
+            <div class="t754__col t-col t-col_3 t-align_center t-item js-product"><span onclick="prod({{a.id}})">
+                    <div class="t754__content">
+                        <div class="t754__imgwrapper t1002__picture-wrapper " style="padding-bottom:76.923076923077%;">
+                            <img src="{{ a.image.url }}" data-original="{{ a.image.url }}"
+                                class="t754__img t754__img_first_hover t-img js-product-img"
+                                imgfield="li_gallery__{{a.id}}:::0" /><img src="{{ a.image.url }}"
+                                data-original="{{ a.image.url }}" class="t754__img t754__img_second t-img" />
+                        </div>
+                        <div class="t754__textwrapper">
+                            <div class="t754__title t-name t-name_xs js-product-name" field="li_title__{{i.id}}">
+                                {{a.name}}</div>
+                            <div class="t754__price-wrapper ">
+                                <div class="t754__price t754__price-item t-name t-name_xs" style="">
+                                    <div class="t754__price-value js-product-price notranslate" translate="off"
+                                        field="li_price__{{a.id}}">{{a.price}}</div>
+                                    <div class="t754__price-currency">р.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span> 
+                <div class="js-product-controls-wrapper t-store__card__prod-controls-wrapper"
+                style="display:none;"></div>
+                <div class="t754__buttons t1002__btns-wrapper t1002__btns-wrapper_center"><span class="t754__btn t-btn t-btn_sm"
+                    style="color:black;padding: 0; background-color:#0af5dd;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;font-family:Arial; ">
+                    <table role="presentation" style="width:100%; height:100%;">
+                        {% with counter=count|index:a.id %}
+                        <tr id="btn{{a.id}}">
+                            <td class="button_bascet {% if not counter %} btn_bsk {% endif %}" onclick="bascet(0, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> -</td>
+                            <td class = 'counts{{a.id}} {% if  not counter  %} btn_bsk {% endif %}' style="width: 40px;" onchange=" bascet('N', {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> {{counter}}</td>
+                            <td class="button_bascet {% if not counter  %} btn_bsk {% endif %}" onclick="bascet(1, {{a.id}}, {% if user.username %} '{{user.username}}' {% else %} false {% endif %})"> +</td>
+                            
+                            <td  class = 'counts{{a.id}} {% if  counter %} btn_bsk {% endif %}' style="width: 40px;" onclick="cart({{a.id}},{% if user.username %} '{{user.username}}' {% else %} false {% endif %})">В корзину</td>
+                            
+                        </tr>
+                        {% endwith %}
+                    </table>
+                </span></div>
+            </div>
+            {% endfor %}
+
+            <div class="t-popup " style="background-color: rgba(255,255,255,1);">
+                <div class="t-popup__close" style="background-color: #ffffff;">
+                    <div class="t-popup__close-wrapper"><svg role="presentation"
+                            class="t-popup__close-icon t-popup__close-icon_arrow" width="26px" height="26px"
+                            viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path
+                                d="M10.4142136,5 L11.8284271,6.41421356 L5.829,12.414 L23.4142136,12.4142136 L23.4142136,14.4142136 L5.829,14.414 L11.8284271,20.4142136 L10.4142136,21.8284271 L2,13.4142136 L10.4142136,5 Z"
+                                fill="#000000"></path>
+                        </svg><svg role="presentation" class="t-popup__close-icon t-popup__close-icon_cross"
+                            width="23px" height="23px" viewBox="0 0 23 23" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="#000000" fill-rule="evenodd">
+                                <rect
+                                    transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                                    x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                                <rect
+                                    transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                                    x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            </g>
+                        </svg></div>
+                </div>
+                <div class="t754__close-text-wrapper">
+                    <div class="t754__close-text t-descr t-descr_xxs" style="color:#000000;">Все товары</div>
+                </div>
+                <div class="t-popup__container t-popup__container-static " style="background-color:#ffffff; overflow-x:scroll ">
+                    {% for i in prod %}
+                    <div id="t754__product-{{i.id}}" class="t754__product-full js-product" style="display:none;"
+                        data-product-lid="{{i.id}}">
+                        <div class="t754__container ">
+                            <div class="t754__col_left t-col t-col_6 t754__default-gallery"><!-- gallery -->
+                                <div class="t-slds" style="visibility: hidden;">
+                                    <div class="t-slds__main">
+                                        <div class="t-slds__container" style="background-color:#ebebeb;">
+                                            <div class="t-slds__items-wrapper t-slds_animated-none t-slds__nocycle"
+                                                data-slider-transition="300" data-slider-with-cycle="false"
+                                                data-slider-correct-height="true"
+                                                data-auto-correct-mobile-width="false">
+                                                <div class="t-slds__item t-slds__item_active" data-slide-index="1">
+                                                    <div class="t-slds__wrapper" itemscope
+                                                        itemtype="http://schema.org/ImageObject">
+                                                        <meta itemprop="image"
+                                                            content="{{i.image.url}}">
+                                                        <div class="t-slds__imgwrapper" bgimgfield="gi_img__0"
+                                                            data-zoom-target="0" data-zoomable="yes"
+                                                            data-img-zoom-url="{{i.image.url}}">
+                                                            <div class="t-slds__bgimg t-bgimg js-product-img"
+                                                                data-original="{{i.image.url}}"
+                                                                style="padding-bottom:100%; background-image: url('{{i.image.url}}');">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="t-slds__item " data-slide-index="2">
+                                                    <div class="t-slds__wrapper" itemscope
+                                                        itemtype="http://schema.org/ImageObject">
+                                                        <meta itemprop="image"
+                                                            content="{{i.image.url}}">
+                                                        <div class="t-slds__imgwrapper" bgimgfield="gi_img__1"
+                                                            data-zoom-target="1" data-zoomable="yes"
+                                                            data-img-zoom-url="{{i.image.url}}">
+                                                            <div class="t-slds__bgimg t-bgimg "
+                                                                data-original="{{i.image.url}}"
+                                                                style="padding-bottom:100%; background-image: url('{{i.image.url}}');">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="t-slds__arrow_container t-slds__nocycle">
+                                                <li class="t-slds__arrow_wrapper t-slds__arrow_wrapper-left"
+                                                    data-slide-direction="left"><button type="button"
+                                                        class="t-slds__arrow t-slds__arrow-left t-slds__arrow-withbg"
+                                                        aria-controls="carousel_749301459" aria-disabled="false"
+                                                        aria-label="Предыдущий слайд"
+                                                        style="width: 30px; height: 30px;background-color: rgba(255,255,255,1);">
+                                                        <div class="t-slds__arrow_body t-slds__arrow_body-left"
+                                                            style="width: 7px;"><svg role="presentation"
+                                                                focusable="false" style="display: block"
+                                                                viewBox="0 0 7.3 13" xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                                <polyline fill="none" stroke="#000000"
+                                                                    stroke-linejoin="butt" stroke-linecap="butt"
+                                                                    stroke-width="1"
+                                                                    points="0.5,0.5 6.5,6.5 0.5,12.5" />
+                                                            </svg></div>
+                                                    </button></li>
+                                                <li class="t-slds__arrow_wrapper t-slds__arrow_wrapper-right"
+                                                    data-slide-direction="right"><button type="button"
+                                                        class="t-slds__arrow t-slds__arrow-right t-slds__arrow-withbg"
+                                                        aria-controls="carousel_749301459" aria-disabled="false"
+                                                        aria-label="Следующий слайд"
+                                                        style="width: 30px; height: 30px;background-color: rgba(255,255,255,1);">
+                                                        <div class="t-slds__arrow_body t-slds__arrow_body-right"
+                                                            style="width: 7px;"><svg role="presentation"
+                                                                focusable="false" style="display: block"
+                                                                viewBox="0 0 7.3 13" xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                                <polyline fill="none" stroke="#000000"
+                                                                    stroke-linejoin="butt" stroke-linecap="butt"
+                                                                    stroke-width="1"
+                                                                    points="0.5,0.5 6.5,6.5 0.5,12.5" />
+                                                            </svg></div>
+                                                    </button></li>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="t-slds__thumbsbullet-wrapper ">
+                                        <div class="t-slds__thumbsbullet t-slds__bullet t-slds__bullet_active"
+                                            data-slide-bullet-for="1">
+                                            <div class="t-slds__bgimg t-bgimg"
+                                                data-original="images/tild6334-6438-4537-a139-636666633238__f5f5f5.jpg"
+                                                style="padding-bottom: 100%; background-image: url('{{i.image.url}}');">
+                                            </div>
+                                            <div class="t-slds__thumbsbullet-border"></div>
+                                        </div>
+                                        <div class="t-slds__thumbsbullet t-slds__bullet " data-slide-bullet-for="2">
+                                            <div class="t-slds__bgimg t-bgimg"
+                                                data-original="{{i.image.url}}"
+                                                style="padding-bottom: 100%; background-image: url('{{i.image.url}}');">
+                                            </div>
+                                            <div class="t-slds__thumbsbullet-border"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <style type="text/css">
+                                    #rec749301459 .t-slds__bullet_active .t-slds__bullet_body {
+                                        background-color: #222 !important;
+                                    }
+
+                                    #rec749301459 .t-slds__bullet:hover .t-slds__bullet_body {
+                                        background-color: #222 !important;
+                                    }
+
+                                    #rec749301459 .t-slds__bullet_body:focus-visible {
+                                        background-color: #222 !important;
+                                    }
+                                </style><!--/gallery -->
+                            </div>
+                            <div class="t754__col_left t-col t754__mobile-custom-gallery">
+                                <ul class="t754__mobile-custom-gallery-list">
+                                    <li class="t754__mobile-custom-gallery-list-item"><img
+                                            class="t754__mobile-custom-gallery-list-item-image"
+                                            src="{{i.image.url}}"
+                                            data-zoom-target="0" data-zoomable="yes"
+                                            data-img-zoom-url='{{i.image.url}}'>
+                                    </li>
+                                    <li class="t754__mobile-custom-gallery-list-item"><img
+                                            class="t754__mobile-custom-gallery-list-item-image"
+                                            src='{{i.image.url}}'
+                                            data-zoom-target="1" data-zoomable="yes"
+                                            data-img-zoom-url='{{i.image.url}}'>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="t754__wrapper t754__col_right t-col t-col_6 t-align_left ">
+                                <div class="t754__title-wrapper">
+                                    <div class="t754__title t-name t-name_xl js-product-name">{{i.name}}</div>
+                                </div>
+                                <div class="t754__price-wrapper ">
+                                    <div class="t754__price t754__price-item t-name t-name_xs" style="">
+                                        <div class="t754__price-value js-product-price notranslate" translate="off"
+                                            field="li_price__{{i.id}}">{{i.price}}</div>
+                                        <div class="t754__price-currency">р.</div>
+                                    </div>
+                                </div>
+                                <div class="t754__btn-wrapper t1002__btns-wrapper"><a href="#order"
+                                        class="t754__btn t-btn t-btn_sm"
+                                        style="color:#f50606;background-color:#0af5dd;border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;font-family:Arial;">
+                                        <table role="presentation" style="width:100%; height:100%;">
+                                            <tr>
+                                                <td>Добавить в корзину</td>
+                                            </tr>
+                                        </table>
+                                    </a></div>
+                            </div>
+                        </div>
+                    </div><!--.prod-full-->
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <script>t_onReady(function () {
+                t_onFuncLoad('t754__showMore', function () {
+                    t754__showMore('749301459');
+                });
+                t_onFuncLoad('t754__init', function () {
+                    t754__init('749301459');
+                });
+            });</script>
+        <style type="text/css">
+            #rec749301459 .t-slds__bullet_active .t-slds__bullet_body {
+                background-color: #222 !important;
+            }
+
+            #rec749301459 .t-slds__bullet:hover .t-slds__bullet_body {
+                background-color: #222 !important;
+            }
+        </style>
+        <style>
+            #rec749301459 .t754__content .t754__title {
+                font-size: 24px;
+                line-height: 1.5;
+                color: #0d9889;
+                font-weight: 700;
+                font-family: 'Arial';
+            }
+
+            #rec749301459 .t754__price {
+                font-size: 25px;
+                color: #0af5dd;
+                font-weight: 600;
+            }
+
+            #rec749301459 .t754__price_old {
+                font-size: 25px;
+                color: #f56105;
+                font-weight: 600;
+            }
+        </style>
+        <style>
+            #rec749301459 .t754__textwrapper .t754__descr {
+                font-size: 25px;
+                font-family: 'Arial';
+            }
+        </style>
+        <style>
+            #rec749301459 .t-popup .t754__title {
+                line-height: 1.5;
+                color: #0d9889;
+                font-weight: 700;
+                font-family: 'Arial';
+            }
+
+            #rec749301459 .t-popup .t754__descr {
+                font-family: 'Arial';
+            }
+        </style>
+    </div>
+    {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content_cms %}
+<div class="section">
+    <div class="container">
+        <div class="box " style="min-height:80vh; overflow-y:scroll;">
+            {% for i in ord %}
+            <div class="columns is-vcentered">
+                <div class="column is-1">
+                    <img src="https://www.tiffincurry.ca/wp-content/uploads/2021/02/default-product.png" alt="">
+                </div>
+                <div class="column">
+                    <div class="subtitle"> {{i.deliveryaddress}}</div>
+                    <div class="subtitle">
+                        {% for j in i.reservproduct_set.all %} {{j.product.name}},{% endfor %}
+                    </div>
+                </div>
+
+
+
+                <div class="column  has-text-centered">
+                    <div class="content">
+                        Статус:<br>
+                        <tag class="tag {{i.get_status_style}}">
+                            {{i.status}}
+                        </tag>
+                    </div>
+                </div>
+                <div class="column has-text-centered">
+                    <a href="{% url 'cms:status_edit' i.pk %}" class="button px-6 is-warning">
+                        Изменить статус
+                    </a>
+                </div>
+                <div class="column has-text-centered">
+                    <a href="{% url 'cms:order_detail' i.pk %}" class="button is-info">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
