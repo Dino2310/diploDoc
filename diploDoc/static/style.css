@@ -5212,11 +5212,13 @@ margin-bottom: 40px;
 .detail_image-1{
     float: left;
     width: auto;
-    height: 25em;
+    min-height: 20vh;
+    margin: 10px;
 }
 
 .detail_image-2{
     float: right;
     width: auto;
-    height: 40em;
+    min-height: 20vh;
+    margin: 10px;
 }
