@@ -39,4 +39,5 @@ jobs:
             git checkout main;
             #git pull origin main
             git merge origin/main --no-commit --no-ff
+            git pull origin main
             touch tmp/restart.txt;
