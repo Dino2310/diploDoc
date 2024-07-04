@@ -4,71 +4,82 @@
 
 {% load static %}
 {% load index %}
-{% block bulma %}
-        <link rel="stylesheet" href="{% static 'bulma.min.css' %}">
-        {% endblock %}
+
 {% block contetnt %}
-<a href="https://hagfish-star-strangely.ngrok-free.app/" target="_blank"
-style="position: fixed; right: 10vh; bottom: 10vw">
-<div
-    style=" display: inline-block; height: 100px; width: 100px; background-color: yellow; clip-path: polygon(50% 0%, 100% 57%, 75% 57%, 75% 100%, 25% 100%, 24% 56%, 0 56%);">
+<a href="https://hagfish-star-strangely.ngrok-free.app/" target="_blank">
+    style="position: fixed; right: 10vh; bottom: 10vw">
+    <div
+        style=" display: inline-block; height: 100px; width: 100px; background-color: yellow; clip-path: polygon(50% 0%, 100% 57%, 75% 57%, 75% 100%, 25% 100%, 24% 56%, 0 56%);">
 
-    <div style = 'justify-content: center; margin-top: 60px;'>
-        <div style="display: flex; justify-content: center;">
-            <div class="window"></div>
-            <div class="window"></div>
-        </div>
+        <div style='justify-content: center; margin-top: 60px;'>
+            <div style="display: flex; justify-content: center;">
+                <div class="window"></div>
+                <div class="window"></div>
+            </div>
 
-        <div style="display: flex; justify-content: center;">
-            <div class="window"></div>
-            <div class="window"></div>
+            <div style="display: flex; justify-content: center;">
+                <div class="window"></div>
+                <div class="window"></div>
+            </div>
         </div>
     </div>
-</div>
 </a>
-<div style="margin-top: 70px; background-color: rgb(51, 51, 51);  height: 84vh; padding-top: 50px; display: flex; justify-content: space-around;" class = 'client' >
-    <div><ul style="display: inline">
-        <li>Корзина</li>
-        <li>Адреса достваки</li>
-        <li>Акрхив заказов</li>
-    </ul></div>
-    <div style="border: 1px solid black;  border-radius: 10px ; margin-left: auto; margin-right: auto; background-color: azure; padding-left: 20px; padding-right: 20px; width: 25vw; align-items: center;">личные данные
+<div style="margin-top: 70px; background-color: rgb(51, 51, 51);  height: 84vh; padding-top: 50px; display: flex; justify-content: space-around;"
+    class='client'>
+
+
+    <div>
+        <ul style="display: inline">
+            <li>Корзина</li>
+            <li>Адреса достваки</li>
+            <li>Акрхив заказов</li>
+        </ul>
+    </div>
+    <div
+        style="border: 1px solid black;  border-radius: 10px ; margin-left: auto; margin-right: auto; background-color: azure; padding-left: 20px; padding-right: 20px; width: 25vw; align-items: center;">
+        личные данные
+
         <!-- <p class="lk">{{user.url_home}}</p> -->
         <br>
-        <div class = "first_name lk" style="text-align: center;" >{% if user.first_name  %} {{user.first_name}} {% else %} Введите имя {% endif %}</div> 
-        <input type="text" value="{{user.first_name}}" class = "first_name btn_bsk lk">
+        <div class="first_name lk" style="text-align: center;">{% if user.first_name %} {{user.first_name}} {% else %}
+            Введите имя {% endif %}</div>
+        <input type="text" value="{{user.first_name}}" class="first_name btn_bsk lk">
         <button onclick="change_class('first_name')" style="display: block;" class=" button">изменить</button>
-        <div class="second_name lk"> фамилия{{user.second_name}}</div>  
-              <input type="text" value="{{user.second_name}}" class = "second_name btn_bsk lk">
-        <button onclick="change_class('second_name')"  style="display: block;" class="button">изменить</button>
-        <div class = 'email lk'>email {{user.email}}</div> <input type="email" value="{{user.email}}" class = "email btn_bsk lk">
-        <button onclick="change_class('email')" style="display: block;"  class=" button">изменить</button>
-        <div class="username lk">{{user.username}}</div>         <input type="text" value="{{user.username}}" class = "username  lk   btn_bsk">
+        <div class="second_name lk"> фамилия{{user.second_name}}</div>
+        <input type="text" value="{{user.second_name}}" class="second_name btn_bsk lk">
+        <button onclick="change_class('second_name')" style="display: block;" class="button">изменить</button>
+        <div class='email lk'>email {{user.email}}</div> <input type="email" value="{{user.email}}"
+            class="email btn_bsk lk">
+        <button onclick="change_class('email')" style="display: block;" class=" button">изменить</button>
+        <div class="username lk">{{user.username}}</div> <input type="text" value="{{user.username}}"
+            class="username  lk   btn_bsk">
         <button onclick="change_class('username')" style="display: block;" class="button">изменить</button> <br>
-        <img class = "image" src="{{user.image.url}}" alt=""> <input type="file" class = "image btn_bsk lk" ><button onclick="change_class('image')">изменить</button> 
-        <div class="phone">{{user.phone}}</div>         <input type="text" value="{{user.phone}}" class = "phone  lk   btn_bsk">
-        
+        <img class="image" src="{{user.image.url}}" alt=""> <input type="file" class="image btn_bsk lk"><button
+            onclick="change_class('image')">изменить</button>
+        <div class="phone">{{user.phone}}</div> <input type="text" value="{{user.phone}}" class="phone  lk   btn_bsk">
+
         <button onclick="change_class('phone')">изменить</button> <br>
     </div>
-        <div>Заказы
-            {% for i in ord %}
-            <div>
-                {{i}} {% if i.status == 'assembling' %} <button>Пепрейти к оформлению </button> {% else %} <button>Подобнее</button>{% endif %}
-            </div>
-            {% endfor %}
-        </div>
+    <div>Заказы
+        {% for i in ord %}
         <div>
-            Адреса Достакви
-    
-            {% for i in delivery %}
-            <div>
-                {{i}}
-            </div>
-            {% endfor %}
-            <button>Добавить адрес доставки</button>
+            {{i}} {% if i.status == 'assembling' %} <button>Пепрейти к оформлению </button> {% else %}
+            <button>Подобнее</button>{% endif %}
         </div>
-    
+        {% endfor %}
     </div>
+    <div>
+        Адреса Достакви
+
+        {% for i in delivery %}
+        <div>
+            {{i}}
+        </div>
+        {% endfor %}
+        <button>Добавить адрес доставки</button>
+    </div>
+
+</div>
 
 
 {% endblock %}
